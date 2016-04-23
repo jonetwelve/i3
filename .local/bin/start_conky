@@ -1,0 +1,6 @@
+#!/bin/bash
+
+conky -c $HOME/.config/conky/left_bottom &&
+conky -c $HOME/.config/conky/top_right &&
+
+exit 0
