@@ -1,7 +1,7 @@
 # i3
 i3wm
 
-###required
+###software
 | package                                | description |
 | :------------------------------------: |:---------------- |
 | urxvt-perls                            | terminal |
@@ -23,4 +23,5 @@ i3wm
 |xautolock                               | |
 |light                                   | |
 |bmenu                                   | |
+|xblacklight                             | |
 

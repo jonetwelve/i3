@@ -24,36 +24,13 @@ font pango:DejaVu Sans Mono 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec lxterminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
-################################################################################################
-
-exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
-
-################################################################################################
-
-# Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-
-bindsym Print exec "scrot -e 'mv $f ~/Pictures/Screenshots'; sleep 1; exec notify-send 'screenshot has been saved to ~/Pictures/Screenshots'"
-bindsym $mod+Print --release exec "scrot -ue 'mv $f ~/Pictures/Screenshots'; sleep 1; exec notify-send 'screenshot has been saved to ~/Pictures/Screenshots'"
-bindsym $mod+Shift+Print --release exec "notify-send 'selection will be saved to ~/Pictures/Screenshots'; scrot -se 'mv $f ~/Pictures/Screenshots'"
-
-# focus_follows_mouse no
+bindsym $mod+d exec --no-startup-id ~/.local/bin/dmenu_recency
 
 # change focus
 bindsym $mod+j focus left
@@ -153,18 +130,6 @@ bindsym $mod+Shift+7 move container to workspace number 7; workspace 7
 bindsym $mod+Shift+8 move container to workspace number 8; workspace 8
 bindsym $mod+Shift+9 move container to workspace number 9; workspace 9
 
-
-# Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 2
-for_window [class="Clipgrab"] floating enable
-for_window [class="Galculator"] floating enable border pixel 2
-for_window [class="GParted"] floating enable border normal
-for_window [class="Lightdm-gtk-greeter-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
-
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -222,32 +187,29 @@ bar {
 	}
 }
 
+# key map
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
+bindsym Print ~/.local/bin/screenshot
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
+bindsym $mod+z exec ~/.local/bin/morc_menu
+
 ## Autostart applications
-#pocity
 exec --no-startup-id compton -b
-#background
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-#desktop plugin
-exec --no-startup-id start_conky
+exec --no-startup-id volumeicon
+exec --no-startup-id fcitx
+exec --no-startup-id ~/.local/bin/start_conky
 exec --no-startup-id xautolock -time 10 -locker "i3lock -c 222222"
-
 
 # Theme colors
 client.focused #2ECC71 #2ECC71 #000000 #FFFFFF
 client.unfocused #222222 #222222 #2ECC71 #222222
 client.urgent #274D01 #900000 #FFFFFF #900000
-
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
-bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-exec fcitx
 
 set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
 mode $powerlist {
