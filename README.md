@@ -4,24 +4,15 @@ i3wm
 ###software
 | package                                | description |
 | :------------------------------------: |:---------------- |
-| urxvt-perls                            | terminal |
-| dmenu                                  | dmenu |
+| rofi                                   | menu |
 |volumeicon                              | voice |
 |scrot                                   | screenshot |
-|clipgrab                                | clip |
-|galculator                              | culator |
-|lightdm-gtk-greeter-settings            | login set |
 |lxappearance                            | appearance set|
 |nitrogen                                | |
-|py3status                               | |
 |compton                                 | |
 |networkmanager-applet                   | |
 |xfce4-power-manager                     | |
-|pamac-aur                               | |
-|clipit                                  | |
 |conky                                   | |
 |xautolock                               | |
-|light                                   | |
-|bmenu                                   | |
 |xblacklight                             | |
 

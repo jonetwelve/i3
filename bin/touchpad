@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# toggle touchpad
+touchpad=`synclient | sed -n '/TouchpadOff/p'`
+statu=`echo ${touchpad: -1}`
+
+if [ 1 == $statu ]
+then
+    synclient touchpadoff=0
+else
+    synclient touchpadoff=1
+fi

@@ -1,0 +1,90 @@
+" 全局配置"
+filetype plugin on
+:syntax on
+:set number
+:set noswapfile
+:set hls is				" 搜索高亮"
+:set ic					" 搜索忽略大小写"
+:set autoindent			" 设置自动缩进"
+:set tabstop=4			" tag长度"
+:set softtabstop=4		" 用空格代替tab"
+:set cursorline			" 高亮显示当前行"
+:set bsdir=buffer		" 文件浏览目录为当前目录"
+:set autochdir			" 自动切换当前目录为文件所在目录"
+:set autoread			" 文件被修改后自动加载"
+:set nowrap				" 关闭自动换行"
+:set shiftwidth=4
+:set encoding=utf-8
+:set clipboard=unnamed	" 支持系统剪切板"
+:set mouse=a			" 设置可以使用鼠标变化窗口大小"
+
+" 配色方案
+colo slate
+" 设置当前行背景色o"
+hi CursorLine cterm=NONE ctermbg=236 guibg=NONE
+
+" 记录光标位置
+augroup resCur
+  autocmd!
+  autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
+
+" 自动补全括号引号
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {}<ESC>i
+inoremap < <><ESC>i
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+
+
+
+""""""""""""""""""" 插件
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'dkprice/vim-easygrep'
+Plug 'davidhalter/jedi-vim'
+Plug 'majutsushi/tagbar'
+Plug 'valloric/youcompleteme'
+Plug 'davidhalter/jedi-vim'
+Plug 'lokaltog/vim-powerline'
+Plug 'davidhalter/jedi-vim'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-markdown'
+call plug#end()
+""""""""""""""""""""""插件配置
+" NERDT
+map <F3> <ESC>:NERDTreeMirror<CR>
+map <F3> <ESC>:NERDTreeToggle<CR>
+let NERDTreeIgnore=['.*\.pyc', '__pycache__']
+" tagbar"
+nmap <F8> :TagbarToggle<CR>
+" youcompleteme"
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = 'python'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" jedi"
+let g:jedi#auto_initialization = 1
+let g:jedi#auto_vim_configuration = 1
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#completions_enabled = 1
+" markdown"
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+let g:markdown_syntax_conceal = 0
+
+
+""""""""""""""""""""自定义快捷键
+" 打开上一个文件"
+map <F4> <ESC>:bp<CR>
+" 删除上一个buff
+map <A-B> <ESC>:bd #<CR>
+" 自动补全"
+imap <C-a> <C-x><C-o>
+" 切换打开的窗口"
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+"" I       切换是否显示隐藏文件
