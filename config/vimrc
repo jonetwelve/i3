@@ -9,6 +9,7 @@ filetype plugin on
 :set tabstop=4			" tag长度"
 :set softtabstop=4		" 用空格代替tab"
 :set cursorline			" 高亮显示当前行"
+:set t_Co=256           " 设置终端支持的颜色是256颜色，这样才支持高亮当前行"
 :set bsdir=buffer		" 文件浏览目录为当前目录"
 :set autochdir			" 自动切换当前目录为文件所在目录"
 :set autoread			" 文件被修改后自动加载"
@@ -18,10 +19,11 @@ filetype plugin on
 :set clipboard=unnamed	" 支持系统剪切板"
 :set mouse=a			" 设置可以使用鼠标变化窗口大小"
 
+
 " 配色方案
 colo slate
 " 设置当前行背景色o"
-hi CursorLine cterm=NONE ctermbg=236 guibg=NONE
+hi CursorLine cterm=NONE ctermbg=236 guibg=#3a3a3a
 
 " 记录光标位置
 augroup resCur
@@ -88,3 +90,18 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 "" I       切换是否显示隐藏文件
+
+"" 运行python
+function CheckPythonSyntax()  
+    let mp = &makeprg  
+    let ef = &errorformat  
+    let exeFile = expand("%:t")  
+    setlocal makeprg=python\ -u  
+    set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m  
+    silent make %  
+    copen  
+    let &makeprg     = mp  
+    let &errorformat = ef  
+endfunction  
+  
+map <F10> :call CheckPythonSyntax()<CR> 
