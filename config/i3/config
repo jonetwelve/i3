@@ -151,6 +151,7 @@ bindsym $mod+0 exec --no-startup-id blurlock
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar -t
+	#i3bar_command i3bar -t的-t参数实现i3bar的透明，前提是安装了i3gap，没有则不用-t
 	tray_output yes
 	separator_symbol " -ღღ⇢ "
 	workspace_buttons yes
