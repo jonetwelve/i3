@@ -25,6 +25,8 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strf
 set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离 
 set completeopt=preview,menu       "代码补全 
 set autowrite           "自动保存
+set relativenumber
+let mapleader="\<space>"
 
 " 配色方案
 colo slate
@@ -51,7 +53,12 @@ Plug 'garbas/vim-snipmate'
 Plug 'marcweber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets'
+"Plug 'liuchengxu/eleline.vim'
+Plug 'bling/vim-airline'
+Plug 'davidhalter/jedi-vim'
+Plug 'm2mdas/phpcomplete-extended'
 call plug#end()
+
 "插件配置
 " NERDT
 map <F3> <ESC>:NERDTreeMirror<CR>
@@ -65,15 +72,47 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:markdown_syntax_conceal = 0
 " snippets"
 let g:snippets_dir="~/.vim/plugged/vim-snippets/snippets"
+" jedi"
+if &filetype == 'python'
+    let g:jedi#completions_enabled = 1
+    let g:jedi#auto_initialization = 1
+    let g:jedi#auto_vim_configuration = 1
+    let g:jedi#use_tabs_not_buffers = 1
+endif
+" phpcomplete"
+if &filetype == 'php'
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+let g:phpcomplete_relax_static_constraint = 1
+let g:phpcomplete_complete_for_unknown_classes = 1
+let g:phpcomplete_search_tags_for_variables = 1
+endif
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#tab_nr_type = 1
+
+set laststatus=2
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+"nmap <leader>- <Plug>AirlineSelectPrevTab
+"map <C-tab> <Plug>AirlineSelectNextTab
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 "自定义快捷键
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 打开上一个文件"
-map <F4> <ESC>:bp<CR>
-" 删除上一个buff
-map <A-B> <ESC>:bd #<CR>
 " 自动补全"
 imap <C-a> <C-x><C-o>
 " 切换打开的窗口"
@@ -83,8 +122,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 "去空行  
 nnoremap <F2> :g/^\s*$/d<CR> 
-" 下一个标签页"
-map <F7> <ESC>:tabn<CR>
+" tab"
+imap <silent><C-n> <ESC><ESC>:tabnew<cr>
+nmap <silent><C-n> <ESC><ESC>:tabnew<cr>
+imap <silent><C-w> <ESC><ESC>:tabc!<cr>
+nmap <silent><C-w> <ESC><ESC>:tabc!<cr>
+nmap <silent><tab> <ESC><ESC>:tabnext<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -93,7 +136,7 @@ map <F7> <ESC>:tabn<CR>
 "新建.py文件，自动插入文件头 
 autocmd BufNewFile *.php,*.py exec ":call SetTitle()" 
 ""定义函数SetTitle，自动插入文件头 
-func SetTitle() 
+func! SetTitle() 
     "如果文件类型为.sh文件 
     if &filetype == 'php' 
         call setline(1,"<?php") 
@@ -133,26 +176,17 @@ endfunc
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-"python补全
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pydiction_location = '~/.vim/complete-dict'
-let g:pydiction_menu_height = 20
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "代码格式优化化
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F6> :call FormartSrc()<CR><CR>
-func FormartSrc()
+func! FormartSrc()
     exec "w"
     if &filetype == 'py'||&filetype == 'python'
         exec "r !autopep8 -i --aggressive %"
     endif
     exec "e! %"
 endfunc
+
+
+
 
