@@ -9,3 +9,9 @@ xautolock
 xblacklight
 fcitx
 synapse
+
+
+**vim**
+python-pyflakes
+tidy
+vim-syntastic

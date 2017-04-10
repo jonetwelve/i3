@@ -5,6 +5,7 @@ filetype on             " 侦测文件类型
 filetype plugin on      " 载入文件类型插件
 filetype indent on      " 为特定文件类型载入相关缩进文件
 syntax on
+let mapleader="\<space>"
 set number
 set hls is              " 搜索高亮"
 set ic                  " 搜索忽略大小写"
@@ -14,7 +15,7 @@ set softtabstop=4       " 用空格代替tab"
 set cursorline          " 高亮显示当前行"
 set t_Co=256           " 设置终端支持的颜色是256颜色，这样才支持高亮当前行"
 set bsdir=buffer        " 文件浏览目录为当前目录"
-set autochdir           " 自动切换当前目录为文件所在目录"
+"set autochdir           " 自动切换当前目录为文件所在目录"
 set autoread            " 文件被修改后自动加载"
 set nowrap              " 关闭自动换行"
 set shiftwidth=4
@@ -26,7 +27,9 @@ set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离
 set completeopt=preview,menu       "代码补全 
 set autowrite           "自动保存
 set relativenumber
-let mapleader="\<space>"
+set noswapfile
+set nobackup
+set nowritebackup
 
 " 配色方案
 colo slate
@@ -53,10 +56,12 @@ Plug 'garbas/vim-snipmate'
 Plug 'marcweber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets'
-"Plug 'liuchengxu/eleline.vim'
 Plug 'bling/vim-airline'
+Plug 'kien/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'm2mdas/phpcomplete-extended'
+Plug 'shougo/neocomplete.vim'
+Plug 'scrooloose/syntastic'
 call plug#end()
 
 "插件配置
@@ -108,6 +113,35 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 "map <C-tab> <Plug>AirlineSelectNextTab
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+" syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol="\u2717"
+let g:syntastic_warning_symbol="\u26A0"
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_enable_highlighting=1
+let g:syntastic_python_checkers=['pyflakes'] " 使用pyflakes,速度比pylint快
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_html_checkers=['tidy', 'jshint']
+
+" to see error location list
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_loc_list_height = 5
+func! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, open syntastic error location panel
+        Errors
+    endif
+endfunction
+nnoremap <Leader>s :call ToggleErrors()<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
