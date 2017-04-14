@@ -65,7 +65,6 @@ call plug#end()
 map <F3> <ESC>:NERDTreeMirror<CR>
 map <F3> <ESC>:NERDTreeToggle<CR>
 let NERDTreeIgnore=['.*\.pyc', '__pycache__']
-autocmd VimEnter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " tagbar"
 nmap <F8> :TagbarToggle<CR>
