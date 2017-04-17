@@ -1,7 +1,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 全局配置"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off            " 侦测文件类型
+filetype on             " 侦测文件类型
+filetype plugin on      " 载入文件类型插件
+filetype indent on      " 为特定文件类型载入相关缩进文件
 syntax on
 let mapleader="\<space>"
 set number
@@ -11,16 +13,15 @@ set autoindent          " 设置自动缩进"
 set tabstop=4           " tag长度"
 set softtabstop=4       " 用空格代替tab"
 set cursorline          " 高亮显示当前行"
-set cursorcolumn        " 高亮显示当前列"
-set t_Co=256            " 设置终端支持的颜色是256颜色，这样才支持高亮当前行"
+set t_Co=256           " 设置终端支持的颜色是256颜色，这样才支持高亮当前行"
 set bsdir=buffer        " 文件浏览目录为当前目录"
 set autoread            " 文件被修改后自动加载"
 set nowrap              " 关闭自动换行"
 set shiftwidth=4
 set encoding=utf-8
 set clipboard=unnamed   " 支持系统剪切板"
-set mouse=a             " 设置可以使用鼠标变化窗口大小"
-set scrolloff=3         " 光标移动到buffer的顶部和底部时保持3行距离 
+set mouse=a         " 设置可以使用鼠标变化窗口大小"
+set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离 
 set completeopt=preview,menu       "代码补全 
 set autowrite           "自动保存
 set relativenumber
@@ -29,22 +30,23 @@ set nobackup
 set nowritebackup
 set lcs=tab:\┆\ 
 set list
+
 " 配色方案
 colo slate
-" 设置当前行背景色"
-hi CursorLine cterm=NONE ctermbg=236 guibg=#222222
-" 设置当前列背景色"
-hi CursorColumn cterm=NONE ctermbg=236 guibg=#222222
+" 设置当前行背景色o"
+hi CursorLine cterm=NONE ctermbg=236 guibg=#3a3a3a
+
 " 记录光标位置
 augroup resCur
   autocmd!
   autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'						" 文件树
 Plug 'majutsushi/tagbar'						" tagbar
 Plug 'tpope/vim-markdown'						" markdown
@@ -53,6 +55,7 @@ Plug 'honza/vim-snippets'						" 自动补全
 Plug 'bling/vim-airline'						" airline
 Plug 'kien/ctrlp.vim'							" 全能查找
 Plug 'davidhalter/jedi-vim'						" python 支持
+Plug 'm2mdas/phpcomplete-extended'				" php 补全
 Plug 'shougo/neocomplete.vim'					" 自动提示
 Plug 'scrooloose/syntastic'						" 错误，警告显示
 Plug 'garbas/vim-snipmate'                      " 错误，警告显示相关插件
@@ -60,11 +63,13 @@ Plug 'marcweber/vim-addon-mw-utils'             " 错误，警告显示相关插
 Plug 'tomtom/tlib_vim'                          " 错误，警告显示相关插件
 Plug 'jmcantrell/vim-virtualenv'				" python 虚拟环境
 call plug#end()
-"""""""""插件配置
+
+"插件配置
 " NERDT
 map <F3> <ESC>:NERDTreeMirror<CR>
 map <F3> <ESC>:NERDTreeToggle<CR>
 let NERDTreeIgnore=['.*\.pyc', '__pycache__']
+autocmd VimEnter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " tagbar"
 nmap <F8> :TagbarToggle<CR>
@@ -73,12 +78,18 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:markdown_syntax_conceal = 0
 " snippets"
-let g:snippets_dir="~/.config/nvim/plugged/vim-snippets/snippets"
+let g:snippets_dir="~/.vim/plugged/vim-snippets/snippets"
 " jedi"
 let g:jedi#completions_enabled = 1
 let g:jedi#auto_initialization = 1
 let g:jedi#auto_vim_configuration = 1
 let g:jedi#use_tabs_not_buffers = 1
+" phpcomplete"
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+let g:phpcomplete_relax_static_constraint = 1
+let g:phpcomplete_complete_for_unknown_classes = 1
+let g:phpcomplete_search_tags_for_variables = 1
+let g:phpcomplete_index_composer_command='/usr/bin/composer'
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -125,24 +136,25 @@ func! ToggleErrors()
 endfunction
 nnoremap <Leader>s :call ToggleErrors()<cr>
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 "自定义快捷键
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 自动补全"
 imap <C-a> <C-x><C-o>
+" 切换打开的窗口"
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 "去空行  
 nnoremap <F2> :g/^\s*$/d<CR> 
 " tab"
 imap <silent><C-n> <ESC><ESC>:tabnew<cr>
 nmap <silent><C-n> <ESC><ESC>:tabnew<cr>
 imap <silent><C-w> <ESC><ESC>:tabc!<cr>
+nmap <silent><C-w> <ESC><ESC>:tabc!<cr>
 nmap <silent><tab> <ESC><ESC>:tabnext<CR>
-nmap <C-j> <C-w>j
-imap <silent><C-j> <ESC><C-w> j
-nmap <C-k> <C-w>k
-imap <silent><C-k> <ESC><C-w> k
-nmap <C-l> <C-w>l
-imap <silent><C-l> <ESC><C-w> l
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,3 +213,6 @@ func! FormartSrc()
     endif
     exec "e! %"
 endfunc
+
+
+
