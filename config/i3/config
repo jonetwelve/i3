@@ -1,119 +1,57 @@
-# i3 config file (v4)
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
-# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+# global
 set $mod Mod4
-
-# set default desktop layout (default is tiling)
-# workspace_layout tabbed <stacking|tabbed>
-
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
-#new_window pixel 2
 new_float normal
-
-# Hide borders
 hide_edge_borders none
-
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-#font pango:Cantarell 9
 font pango:DejaVu Sans Mono 9
-
-# Use Mouse+$mod to drag floating windows
 floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec lxterminal
-
-# kill focused window
+bindsym $mod+Return exec sakura
 bindsym $mod+Shift+q kill
-
-# start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
-################################################################################################
-
 exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
 
-################################################################################################
-
-# Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-
-# focus_follows_mouse no
-
-# change focus
+# nav
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+odiaeresis move right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
-# split in horizontal orientation
-#bindsym $mod+h split h;exec notify-send 'tile horizontally'
-
-# split in vertical orientation
 bindsym $mod+v split toggle
 
-# toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# toggle sticky
 bindsym $mod+Shift+s sticky toggle
 
-# focus the parent container
 bindsym $mod+a focus parent
 
 # Workspace names
-# set $ws1 1:
-# set $ws2 2:
-# set $ws3 3:
-# set $ws3 4:
-
-# switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -124,11 +62,9 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 
-#navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
-# Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace number 1
 bindsym $mod+Ctrl+2 move container to workspace number 2
 bindsym $mod+Ctrl+3 move container to workspace number 3
@@ -139,7 +75,6 @@ bindsym $mod+Ctrl+7 move container to workspace number 7
 bindsym $mod+Ctrl+8 move container to workspace number 8
 bindsym $mod+Ctrl+9 move container to workspace number 9
 
-# Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace number 1; workspace 1
 bindsym $mod+Shift+2 move container to workspace number 2; workspace 2
 bindsym $mod+Shift+3 move container to workspace number 3; workspace 3
@@ -150,13 +85,9 @@ bindsym $mod+Shift+7 move container to workspace number 7; workspace 7
 bindsym $mod+Shift+8 move container to workspace number 8; workspace 8
 bindsym $mod+Shift+9 move container to workspace number 9; workspace 9
 
-
 # Open specific applications in floating mode
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Electronic WeChat"] floating enable sticky enable border normal
-
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -170,53 +101,19 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 5 px or 5 ppt
         bindsym k resize grow height 5 px or 5 ppt
         bindsym l resize shrink height 5 px or 5 ppt
         bindsym odiaeresis resize grow width 5 px or 5 ppt
 
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # exit resize mode: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-bindsym $mod+m mode "mouse"
-mode "mouse" {
-		bindsym u exec  python3 ~/.local/bin/key_mouse.py u
-		bindsym d exec  python3 ~/.local/bin/key_mouse.py d
-		bindsym x exec  python3 ~/.local/bin/key_mouse.py x
-
-		bindsym space exec  python3 ~/.local/bin/key_mouse.py zuo
-		bindsym r exec  python3 ~/.local/bin/key_mouse.py you
-
-		bindsym h exec  python3 ~/.local/bin/key_mouse.py H
-		bindsym j exec  python3 ~/.local/bin/key_mouse.py J
-		bindsym k exec  python3 ~/.local/bin/key_mouse.py K
-		bindsym l exec  python3 ~/.local/bin/key_mouse.py L
-		bindsym m exec  python3 ~/.local/bin/key_mouse.py m
-
-		bindsym Left exec  python3 ~/.local/bin/key_mouse.py h
-		bindsym Down exec  python3 ~/.local/bin/key_mouse.py j
-		bindsym Up exec  python3 ~/.local/bin/key_mouse.py k
-		bindsym Right exec  python3 ~/.local/bin/key_mouse.py l
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-# Lock screen
-bindsym $mod+0 exec --no-startup-id blurlock
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
@@ -224,8 +121,7 @@ bar {
     tray_output yes
     separator_symbol " -ღღ⇢ "
     workspace_buttons yes
-   status_command /home/jone/.config/i3/bumblebee-status/bumblebee-status -t solarized-powerline -m netspeed nic battery brightness time -p  time.format="%m月%d日%H:%M:%S" nic.left-click="lxterminal -e nmtui"
-#    status_command py3status -c ~/.config/i3/i3status.conf
+    status_command py3status -c ~/.config/i3/i3status.conf
     position top
     font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 10
     colors {
@@ -243,27 +139,17 @@ bar {
 #assign [class="VirtualBox*"] workspace 3
 
 ## Autostart applications
-exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id ss-qt5
 exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec fcitx
-#exec --no-startup-id conky -c ~/.config/conky/top_middle
-exec --no-startup-id touchpad
-#exec --no-startup-id python3 ~/.local/bin/autolight.py
+exec --no-startup-id ~/.local/bin/touchpad
 exec --no-startup-id /usr/lib/notification-daemon-1.0/notification-daemon
-exec --nostartup-id yakuake
-exec --nostartup-id ss-qt5
 exec --nostartup-id seahorse
-#exec --no-startup-id /home/jone/workspace/linux-script/drink
-
 
 # Theme colors
-#client.focused #2ECC71 #2ECC71 #000000 #FFFFFF
-#client.unfocused #222222 #222222 #2ECC71 #222222
-#client.urgent #274D01 #900000 #FFFFFF #900000
 client.focused #444444 #444444 #000000 #FFFFFF
 client.unfocused #222222 #222222 #444444 #222222
 client.urgent #444444 #900000 #FFFFFF #900000
@@ -275,12 +161,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show 
-bindsym $mod+t touchpad
+bindsym $mod+t ~/.local/bin/touchpad
 bindsym $mod+Tab exec --no-startup-id rofi -show window
-##################### make  backlight full
-#bindsym $mod+m exec --no-startup-id ~/.local/bin/fulllight.sh
-# next workspace
 bindsym Mod1+Tab workspace next_on_output
+bindsym Print --release exec ~/.local/bin/screenshot
 
 set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
 mode $powerlist {
@@ -293,52 +177,3 @@ mode $powerlist {
 }
 bindsym $mod+Escape mode $powerlist
 
-
-workspace 1 output eDP1
-workspace 2 output eDP1
-workspace 3 output eDP1
-workspace 4 output eDP1
-workspace 5 output eDP1
-workspace 6 output eDP1
-workspace 7 output eDP1
-workspace 8 output eDP1
-workspace 9 output eDP1
-
-
-workspace _1 output HDMI2
-workspace _2 output HDMI2
-workspace _3 output HDMI2
-workspace _4 output HDMI2
-workspace _5 output HDMI2
-workspace _6 output HDMI2
-workspace _7 output HDMI2
-workspace _8 output HDMI2
-workspace _9 output HDMI2
-workspace _92 output HDMI2
-
-
-bindsym $mod+F1 workspace _1
-bindsym $mod+F2 workspace _2
-bindsym $mod+F3 workspace _3
-bindsym $mod+F4 workspace _4
-bindsym $mod+F5 workspace _5
-bindsym $mod+F6 workspace _6
-bindsym $mod+F7 workspace _7
-bindsym $mod+F8 workspace _8
-bindsym $mod+F9 workspace _9
-bindsym $mod+F12 workspace _92
-
-bindsym $mod+Shift+F1 move container to workspace _1; workspace _1
-bindsym $mod+Shift+F2 move container to workspace _2; workspace _2
-bindsym $mod+Shift+F3 move container to workspace _3; workspace _3
-bindsym $mod+Shift+F4 move container to workspace _4; workspace _4
-bindsym $mod+Shift+F5 move container to workspace _5; workspace _5
-bindsym $mod+Shift+F6 move container to workspace _6; workspace _6
-bindsym $mod+Shift+F7 move container to workspace _7; workspace _7
-bindsym $mod+Shift+F8 move container to workspace _8; workspace _8
-bindsym $mod+Shift+F9 move container to workspace _9; workspace _9
-bindsym $mod+Shift+F12 move container to workspace _92; workspace _92
-
-
-
-bindsym Print --release exec '/home/jone/.local/bin/screenshot.sh'
