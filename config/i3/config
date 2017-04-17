@@ -161,7 +161,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show 
-bindsym $mod+t ~/.local/bin/touchpad
+bindsym $mod+t exec ~/.local/bin/touchpad
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Mod1+Tab workspace next_on_output
 bindsym Print --release exec ~/.local/bin/screenshot
