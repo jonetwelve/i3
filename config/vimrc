@@ -62,6 +62,8 @@ Plug 'garbas/vim-snipmate'                      " 错误，警告显示相关插
 Plug 'marcweber/vim-addon-mw-utils'             " 错误，警告显示相关插件
 Plug 'tomtom/tlib_vim'                          " 错误，警告显示相关插件
 Plug 'jmcantrell/vim-virtualenv'				" python 虚拟环境
+Plug 'vimwiki/vimwiki'                          " 临时笔记本
+Plug 'todo-vim'                                 " 列出文本内所有todo
 call plug#end()
 
 "插件配置
@@ -134,6 +136,8 @@ func! ToggleErrors()
     endif
 endfunction
 nnoremap <Leader>s :call ToggleErrors()<cr>
+"todo
+nmap <F7> :TODOToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
