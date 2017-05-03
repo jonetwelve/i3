@@ -12,6 +12,7 @@ set ic                  " 搜索忽略大小写"
 set autoindent          " 设置自动缩进"
 set tabstop=4           " tag长度"
 set softtabstop=4       " 用空格代替tab"
+set expandtab           " 空格代替tab
 set cursorline          " 高亮显示当前行"
 set t_Co=256           " 设置终端支持的颜色是256颜色，这样才支持高亮当前行"
 set bsdir=buffer        " 文件浏览目录为当前目录"
