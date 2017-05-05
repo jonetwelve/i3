@@ -20,14 +20,12 @@ if [	! -d ~/.config ]
 then
 	mkdir -p ~/.config
 fi
-cp config/* ~/.config
+cp config/* ~/.config/
 
 mv ~/.config/gitconfig ~/.gitconfig
 
-# vim配置
-mv ~/.config/vimrc ~/.vimrc
-mkdir ~/.vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+# nvim配置
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 mv Templates ~/
