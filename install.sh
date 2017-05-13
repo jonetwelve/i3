@@ -6,6 +6,8 @@ pacman -S --noconfirm git volumeicon scrot lxappearance compton feh conky\
 	xautolock xbacklight fcitx fcitx-im fcitx-sunpin sakura rofi volumeicon\
 	fcitx-configtool firefox python-pip
 
+# oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 if [ ! -d ~/.local/bin ]
 then
