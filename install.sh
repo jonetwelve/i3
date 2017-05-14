@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 
 #安装软件
-pacman -Syy --noconfirm
-pacman -S --noconfirm git volumeicon scrot lxappearance compton feh conky\
+sudo pacman -Syy --noconfirm
+sudo pacman -S --noconfirm git volumeicon scrot lxappearance compton feh conky\
 	xautolock xbacklight fcitx fcitx-im fcitx-sunpin sakura rofi volumeicon\
-	fcitx-configtool firefox python-pip
+	fcitx-configtool firefox python-pip neovim python-neovim
+
+sudo ln -s /usr/bin/nvim /usr/local/bin/vi
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -33,6 +35,6 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 mv Templates ~/
 
 mv ~/.config/pip ~/.pip
-pip install py3status
+sudo pip install py3status
 
 

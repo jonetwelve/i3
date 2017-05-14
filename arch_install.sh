@@ -154,6 +154,8 @@ function install_software(){
 	sakura "" on\
     thunderbird "" off\
     udisks2 "" on\
+    ufw "" on\
+    gufw "" on\
     unrar "" on\
     unzip "" on\
     virtualbox "" on\
@@ -180,6 +182,9 @@ function install_software(){
     powerpill -S --noconfirm $i
     done
     fi
+
+    # enable ufw
+    systemctl enable ufw
 }
 
 function jconfig(){
@@ -233,8 +238,8 @@ function jconfig(){
     powerpill -S --noconfirm zsh
 
 
-    echo "${newuser} ALL=(ALL) ALL" >> /etc/sudoers
-    echo "Defaults:${newuser}      !authenticate" >> /etc/sudoers
+    echo "jone ALL=(ALL) ALL" >> /etc/sudoers
+    echo "Defaults:jone      !authenticate" >> /etc/sudoers
 
     #install software
     install_software
