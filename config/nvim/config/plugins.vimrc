@@ -11,7 +11,6 @@ Plug 'marcweber/vim-addon-mw-utils'             " 错误，警告显示相关插
 Plug 'tomtom/tlib_vim'                          " 错误，警告显示相关插件
 Plug 'jmcantrell/vim-virtualenv'				" python 虚拟环境
 Plug 'vimwiki/vimwiki'                          " 临时笔记本
-Plug 'todo-vim'                                 " 列出文本内所有todo
 Plug 'shougo/deoplete.nvim'                     " 黑魔法补全
 Plug 'zchee/deoplete-jedi'                      " 黑魔法补全python 
 call plug#end()

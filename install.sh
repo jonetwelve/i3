@@ -4,7 +4,7 @@
 sudo pacman -Syy --noconfirm
 sudo pacman -S --noconfirm git volumeicon scrot lxappearance compton feh conky\
 	xautolock xbacklight fcitx fcitx-im fcitx-sunpin sakura rofi volumeicon\
-	fcitx-configtool firefox python-pip neovim python-neovim
+	fcitx-configtool firefox python-pip neovim python-neovim powerline-fonts
 
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
 
@@ -15,7 +15,7 @@ if [ ! -d ~/.local/bin ]
 then
 	mkdir -p ~/.local/bin
 fi
-cp bin/* ~/.local/bin/
+cp -a bin/* ~/.local/bin/
 chmod 777 ~/.local/bin/*
 
 
@@ -24,7 +24,7 @@ if [	! -d ~/.config ]
 then
 	mkdir -p ~/.config
 fi
-cp config/* ~/.config/
+cp -a config/* ~/.config/
 
 mv ~/.config/gitconfig ~/.gitconfig
 
