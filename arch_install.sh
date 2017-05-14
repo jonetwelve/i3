@@ -87,13 +87,6 @@ function install_software(){
     adwaita-icon-theme  "" off \
     evince "pdf reader" on\
     faience-icon-theme "icon theme" off\
-    fcitx "input method" on\
-    fcitx-im "input method" on\
-    fcitx-configtool "input method" on\
-    fcitx-sunpinyin "input method" on\
-    ibus "input method" off\
-    ibus-qt "input method" off\
-    ibus-pinyin "input method" off\
     deadbeef "music player" on\
 	dosfstools "music player" on\
 	feh "picture player" on\
@@ -166,7 +159,7 @@ function install_software(){
     2>/tmp/jarch/software.txt
     then
     dialog --backtitle "Configure" --title "Install software" --infobox "ing..." 20 90
-    powerpill -S --noconfirm mesa
+    powerpill -S --noconfirm mesa fcitc fcitx-im fcitx-configtool fcitx-sunpinyin
     powerpill -S --noconfirm wqy-microhei
     powerpill -S --noconfirm ttf-dejavu
     powerpill -S --noconfirm xf86-video-vesa
@@ -185,6 +178,11 @@ function install_software(){
 
     # enable ufw
     systemctl enable ufw
+
+    rm -rf /etc/skel/*
+    echo 'export GTK_IM_MODULE=fcitx' >> /etc/skel/.xprofile
+    echo 'export QT_IM_MODULE=fcitx' >> /etc/skel/.xprofile
+    echo 'export XMODIFIERS=@im=fcitx' >> /etc/skel/.xprofile
 }
 
 function jconfig(){
