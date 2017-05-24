@@ -1,5 +1,6 @@
 syntax on
 syntax enable
+filetype plugin on
 let mapleader="\<space>"
 set number              " 显示行号
 set hls                 " 搜索高亮
@@ -8,8 +9,8 @@ set autoindent          " 设置自动缩进"
 set tabstop=4           " tag长度"
 set softtabstop=4       " 用空格代替tab"
 set expandtab           " 空格代替tab
-set smarttab            " 智能tab
-set smartindent         " 只能缩进
+set smarttab
+set smartindent
 set bsdir=buffer        " 文件浏览目录为当前目录"
 set autoread            " 文件被修改后自动加载"
 set nowrap              " 关闭自动换行"
@@ -21,19 +22,24 @@ set scrolloff=3         " 光标移动到buffer的顶部和底部时保持3行�
 set completeopt=preview,menu       "代码补全
 set autowrite           "自动保存
 set relativenumber
-set lcs=tab:\┆\
+set lcs=tab:\┆\ 
 set list
 set showcmd             " display incomplete commands
 set cursorline
+hi CursorLine cterm=NONE ctermbg=black ctermfg=gray guibg=NONE guifg=NONE
+"set cursorcolumn
+"hi CursorColumn cterm=NONE ctermbg=black ctermfg=gray guibg=NONE guifg=NONE
+"
+set cc=100
+
+"""""""配色方案
+colo slate
 
 """""""记录光标位置
 augroup resCur
   autocmd!
   autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
-
-"""""""配色方案
-colo slate
 
 """""""备份相关
 set undodir=~/.config/nvim/undodir
