@@ -22,15 +22,14 @@ set scrolloff=3         " 光标移动到buffer的顶部和底部时保持3行�
 set completeopt=preview,menu       "代码补全
 set autowrite           "自动保存
 set relativenumber
-set lcs=tab:\┆\ 
+set lcs=tab:»·,trail:·
 set list
 set showcmd             " display incomplete commands
-set cursorline
+set cursorline cursorcolumn
 hi CursorLine cterm=NONE ctermbg=black ctermfg=gray guibg=NONE guifg=NONE
-"set cursorcolumn
-"hi CursorColumn cterm=NONE ctermbg=black ctermfg=gray guibg=NONE guifg=NONE
-"
-set cc=100
+set cc=100              " 100个字符折叠
+
+
 
 """""""配色方案
 colo slate
