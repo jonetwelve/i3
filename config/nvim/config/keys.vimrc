@@ -5,14 +5,14 @@ nnoremap <F2> :g/^\s*$/d<CR>
 map <F3> <ESC>:NERDTreeMirror<CR>
 map <F3> <ESC>:NERDTreeToggle<CR>
 
+" neoformat
+nmap <F6> :Neoformat<CR>
+
 "todo
 nmap <F7> :TODOToggle<CR>
 
 " tagbar"
 nmap <F8> :TagbarToggle<CR>
-
-" neoformat
-nmap <F6> :Neoformat
 
 " airline
 nmap <leader>1 <Plug>AirlineSelectTab1
