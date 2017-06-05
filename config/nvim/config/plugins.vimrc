@@ -18,5 +18,6 @@ Plug 'reedes/vim-lexical'                                           " 拼写检�
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}                   " php自动补全
 Plug 'vim-scripts/todo-vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'sbdchd/neoformat'                                             " 自动格式化
 
 call plug#end()

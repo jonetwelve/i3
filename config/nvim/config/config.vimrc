@@ -6,7 +6,7 @@ let g:airline#extensions#tabline#enabled         = 1
 let g:airline#extensions#tabline#left_sep        = ''
 let g:airline#extensions#tabline#left_alt_sep    = '|'
 let g:airline#extensions#tabline#tab_nr_type     = 1
-set laststatus                                   = 2
+set laststatus                                   =2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -43,8 +43,7 @@ let g:python3_host_prog              = '/usr/bin/python3'
 let g:ctrlp_prompt_mappings  = {'PrtClearCache()':['<Leader><F5>']}
 let g:ctrlp_prompt_mappings  = {'PrtdeleteEnt()':['<Leader><F7>']}
 let g:ctrlp_match_window     = 'bottom,order:btt,min:2,max:15'
-set wildmenu                 " enhanced autocomplete
-set wildignore              += */tmp/*,*/node_modules/*,*/.git/*,*.so,*.swp,*.zip,*node_modules*,*.jpg,*.png,*.svg,*.ttf,*.woff,*.woff3,*.eot,*public/css/*,*public/js*
+set wildmenu                  " enhanced autocomplete
 " 使用ag代替默认的grep搜索
 if executable('ag')
   " Use Ag over Grep
@@ -57,13 +56,13 @@ endif
 
 
 " nerdtree
-let NERDTreeIgnore                 = ['.*\.pyc', '__pycache__']
+let NERDTreeIgnore=['.*\.pyc', '__pycache__']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " markdown"
-autocmd BufNewFile,BufReadPost *.md set filetype = markdown
-let g:markdown_fenced_languages                  = ['html', 'python', 'bash=sh']
-let g:markdown_syntax_conceal                    = 0
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+let g:markdown_syntax_conceal = 0
 
 " snippets"
 let g:snippets_dir="~/.vim/plugged/vim-snippets/snippets"
@@ -88,7 +87,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " syntastic
-let g:syntastic_check_on_open            = 1
+let g:syntastic_check_on_open            = 0
 let g:syntastic_html_tidy_ignore_errors  = [" proprietary attribute \"ng-"]
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list            = 1
