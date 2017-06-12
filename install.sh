@@ -3,7 +3,7 @@
 #安装软件
 sudo pacman -Syy --noconfirm
 sudo pacman -S --noconfirm git volumeicon scrot lxappearance compton feh conky\
-	xautolock xbacklight fcitx fcitx-im fcitx-sunpin sakura rofi volumeicon\
+	xautolock xbacklight fcitx fcitx-im fcitx-sunpin sakura rofi curl \
 	fcitx-configtool firefox python-pip neovim python-neovim powerline-fonts
 
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
@@ -36,5 +36,3 @@ mv Templates ~/
 
 mv ~/.config/pip ~/.pip
 sudo pip install py3status
-
-

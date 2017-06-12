@@ -99,7 +99,7 @@ function install_software(){
     gimp "picture editor" on\
     git "" on\
     gnome-mplayer  "video player" on\
-    vlc "video player" off \
+    vlc "video player" on \
     parole "video player" off \
     gnome-screenshot "" off\
     gstreamer0.10-plugins "" on\
@@ -156,6 +156,8 @@ function install_software(){
     xarchiver "" on\
     compton "" on\
     zip "" on\
+    zsh "" on\
+    sudo "" on\
     2>/tmp/jarch/software.txt
     then
     dialog --backtitle "Configure" --title "Install software" --infobox "ing..." 20 90
@@ -180,18 +182,20 @@ function install_software(){
     systemctl enable ufw
 
     rm -rf /etc/skel/*
-    echo 'export GTK_IM_MODULE=fcitx' >> /etc/skel/.xprofile
-    echo 'export QT_IM_MODULE=fcitx' >> /etc/skel/.xprofile
-    echo 'export XMODIFIERS=@im=fcitx' >> /etc/skel/.xprofile
+    echo 'export GTK_IM_MODULE=fcitx' >> /etc/skel/.zprofile
+    echo 'export QT_IM_MODULE=fcitx' >> /etc/skel/.zprofile
+    echo 'export XMODIFIERS=@im=fcitx' >> /etc/skel/.zprofile
 }
 
 function jconfig(){
 	read -p "Input root passwd:" -s rootpwd
     (echo $rootpwd;sleep 1;echo $rootpwd) | passwd > /dev/null
+    read -p "Input jone passwd:" -s jonepwd
 
     mkdir /tmp/jarch
     install_dialog
     install_powerpill
+    install_software
     #init
     clear
     mkinitcpio -p linux
@@ -229,18 +233,11 @@ function jconfig(){
     #new user
 	clear
     useradd -m -s /usr/bin/zsh jone
-    read -p "Input jone passwd:" -s jonepwd
     (echo $jonepwd;sleep 1;echo $jonepwd) | passwd jone > /dev/null
-
-    powerpill -S --noconfirm sudo
-    powerpill -S --noconfirm zsh
-
 
     echo "jone ALL=(ALL) ALL" >> /etc/sudoers
     echo "Defaults:jone      !authenticate" >> /etc/sudoers
 
-    #install software
-    install_software
     systemctl enable lightdm
 
     clear
