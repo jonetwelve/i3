@@ -24,6 +24,7 @@ set autowrite           "自动保存
 set relativenumber
 set lcs=tab:»·,trail:·
 set list
+set termguicolors
 set showcmd             " display incomplete commands
 set cursorline cursorcolumn
 hi CursorLine cterm=NONE ctermbg=black ctermfg=gray guibg=NONE guifg=NONE
