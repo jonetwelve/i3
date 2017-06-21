@@ -22,18 +22,18 @@ set scrolloff=3         " 光标移动到buffer的顶部和底部时保持3行�
 set completeopt=preview,menu       "代码补全
 set autowrite           "自动保存
 set relativenumber
-set lcs=tab:»·,trail:·
-set list
+"set lcs=tab:»·,trail:·
+"set list
 set termguicolors
 set showcmd             " display incomplete commands
-set cursorline cursorcolumn
-hi CursorLine cterm=NONE ctermbg=black ctermfg=gray guibg=NONE guifg=NONE
+set cursorline " cursorcolumn
+hi CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=NONE guifg=NONE
 set cc=100              " 100个字符折叠
 
 
 
 """""""配色方案
-colo slate
+colo evening
 
 """""""记录光标位置
 augroup resCur
