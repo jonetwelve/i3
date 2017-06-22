@@ -5,14 +5,14 @@ nnoremap <F2> :g/^\s*$/d<CR>
 map <F3> <ESC>:NERDTreeMirror<CR>
 map <F3> <ESC>:NERDTreeToggle<CR>
 
-" neoformat
-nmap <F6> :Neoformat<CR>
-
 "todo
 nmap <F7> :TODOToggle<CR>
 
 " tagbar"
 nmap <F8> :TagbarToggle<CR>
+
+" neoformat
+nmap <F6> :Neoformat
 
 " airline
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -41,6 +41,7 @@ nmap <silent><C-w> <ESC><ESC>:tabc!<cr>
 nmap <silent><tab> <ESC><ESC>:tabnext<CR>
 
 " deoplete tab-complete
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+inoremap <silent><expr> <cr> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 " ,<tab> for regular tab
 inoremap <Leader><Tab> <Space><Space>
+
