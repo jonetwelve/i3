@@ -12,7 +12,7 @@ nmap <F7> :TODOToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 " neoformat
-nmap <F6> :Neoformat
+nmap <F6> :Neoformat<cr>
 
 " airline
 nmap <leader>1 <Plug>AirlineSelectTab1

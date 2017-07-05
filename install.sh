@@ -35,4 +35,3 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 mv Templates ~/
 
 mv ~/.config/pip ~/.pip
-sudo pip install py3status
