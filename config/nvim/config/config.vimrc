@@ -65,7 +65,7 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:markdown_syntax_conceal = 0
 
 " snippets"
-let g:snippets_dir="~/.vim/plugged/vim-snippets/snippets"
+let g:snippets_dir="~/.config/nvim/plugged/vim-snippets/snippets"
 
 " jedi"
 let g:jedi#completions_enabled    = 1
@@ -86,12 +86,9 @@ let g:lexical#spell = 1         " 0=disabled, 1=enabled
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_php_checkers = ['php']
+" ale
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '◐'
+hi clear ALEErrorSign
+hi clear ALEWarningSign
