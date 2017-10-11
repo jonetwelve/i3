@@ -12,6 +12,7 @@ func! SetTitle()
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
         call append(line("."),"# coding=utf-8")
+        call append(line(".")+1, "# File Name: ".expand("%")) 
         call append(line(".")+1, "") 
         call append(line(".")+1, "") 
         call append(line(".")+1, "") 

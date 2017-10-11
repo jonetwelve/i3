@@ -3,7 +3,7 @@ nnoremap <Leader>q :q<cr>
 
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
-inoremap { {<CR>}<Esc>O
+inoremap { {}<Esc>i
 autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
@@ -26,7 +26,7 @@ nmap <F7> :TODOToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 " neoformat
-nmap <F6> :Neoformat<cr>
+nmap <F6> :Neoformat
 
 " airline
 nmap <leader>1 <Plug>AirlineSelectTab1

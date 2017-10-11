@@ -27,13 +27,14 @@ set relativenumber
 set termguicolors
 set showcmd             " display incomplete commands
 set cursorline " cursorcolumn
-hi CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=NONE guifg=NONE
 set cc=100              " 100个字符折叠
-
 
 
 """""""配色方案
 colo evening
+
+hi SignColumn guibg=grey guifg=red
+hi CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=NONE guifg=NONE
 
 """""""记录光标位置
 augroup resCur
