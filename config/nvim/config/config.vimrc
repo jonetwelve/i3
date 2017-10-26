@@ -40,19 +40,19 @@ let g:deoplete#disable_auto_complete = 0
 let g:python3_host_prog              = '/usr/bin/python3'
 
 " CtrlP
-let g:ctrlp_prompt_mappings  = {'PrtClearCache()':['<Leader><F5>']}
-let g:ctrlp_prompt_mappings  = {'PrtdeleteEnt()':['<Leader><F7>']}
-let g:ctrlp_match_window     = 'bottom,order:btt,min:2,max:15'
-set wildmenu                  " enhanced autocomplete
-" 使用ag代替默认的grep搜索
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files.
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " Ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+""let g:ctrlp_prompt_mappings  = {'PrtClearCache()':['<Leader><F5>']}
+""let g:ctrlp_prompt_mappings  = {'PrtdeleteEnt()':['<Leader><F7>']}
+""let g:ctrlp_match_window     = 'bottom,order:btt,min:2,max:15'
+""set wildmenu                  " enhanced autocomplete
+""" 使用ag代替默认的grep搜索
+""if executable('ag')
+""  " Use Ag over Grep
+""  set grepprg=ag\ --nogroup\ --nocolor
+""  " Use ag in CtrlP for listing files.
+""  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+""  " Ag is fast enough that CtrlP doesn't need to cache
+""  let g:ctrlp_use_caching = 0
+""endif
 
 
 " nerdtree
@@ -88,7 +88,34 @@ nmap ga <Plug>(EasyAlign)
 
 " ale
 let g:ale_sign_column_always = 1
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '◐'
 hi clear ALEErrorSign
 hi clear ALEWarningSign
+
+" rainbow_parentheses
+let g:rbpt_colorpairs = [
+                        \ ['brown',       'RoyalBlue3'],
+                        \ ['Darkblue',    'SeaGreen3'],
+                        \ ['darkgray',    'DarkOrchid3'],
+                        \ ['darkgreen',   'firebrick3'],
+                        \ ['darkcyan',    'RoyalBlue3'],
+                        \ ['darkred',     'SeaGreen3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['brown',       'firebrick3'],
+                        \ ['gray',        'RoyalBlue3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['Darkblue',    'firebrick3'],
+                        \ ['darkgreen',   'RoyalBlue3'],
+                        \ ['darkcyan',    'SeaGreen3'],
+                        \ ['darkred',     'DarkOrchid3'],
+                        \ ['red',         'firebrick3'],
+                        \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
