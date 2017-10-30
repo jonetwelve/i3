@@ -9,4 +9,4 @@
 	email = jone.liu@etocrm.com
 	name = jone
 [core]
-	editor = vim
+	editor = vi
