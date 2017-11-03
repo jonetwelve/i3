@@ -22,7 +22,7 @@ set scrolloff=3         " 光标移动到buffer的顶部和底部时保持3行�
 set completeopt=preview,menu       "代码补全
 set autowrite           "自动保存
 set relativenumber
-set lcs=tab:»·,trail:·
+set lcs=tab:»·,trail:· 
 set list
 set termguicolors
 set showcmd             " display incomplete commands

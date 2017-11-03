@@ -32,10 +32,21 @@ autocmd BufNewFile * normal G
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 按F4自动impor
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+func! AutoImport()
+    if &filetype == 'python'
+        exec "ImportName"
+    elseif &filetype == 'php'
+        call PhpExpandClass()
+    endif
+endfunc
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按F5编译运行
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F5> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
+func! RunScript()
     exec "w"
     if &filetype == 'python'
         exec "!time python3 %"
@@ -48,18 +59,14 @@ endfunc
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-"代码格式优化化
+" 按F6格式化代码
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F6> :call FormartSrc()<CR><CR>
-func! FormartSrc()
+func! FormatScript()
     exec "w"
-    if &filetype == 'py'||&filetype == 'python'
-        exec "r !autopep8 -i --aggressive %"
+    if &filetype == 'python'
+        exec "Neoformat"
     endif
-    exec "e! %"
 endfunc
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 自动补全括号，引号

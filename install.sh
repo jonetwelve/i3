@@ -27,6 +27,7 @@ fi
 cp -a config/* ~/.config/
 
 mv ~/.config/gitconfig ~/.gitconfig
+mv ~/.config/gitignore_global ~/.gitignore_global
 
 # nvim配置
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \

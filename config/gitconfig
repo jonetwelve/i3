@@ -1,12 +1,18 @@
 [alias]
-    st = status
+    st = status 
     ci = commit
     co = checkout
-    br = branch
+    br = branch -a
     unstage = reset HEAD --
     last = log -1 HEAD
+    remotes = remote -v
+    logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 [user]
-	email = jone.liu@etocrm.com
+	email = jonetwelve@hotmail.com
 	name = jone
 [core]
 	editor = vi
+	fileMode = false
+    excludesfile = ~/.gitignore_global
+[commit]
+	template = ~/Templates/git-commit-template.txt

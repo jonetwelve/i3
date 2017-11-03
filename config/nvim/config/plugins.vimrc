@@ -9,6 +9,7 @@ Plug 'davidhalter/jedi-vim',       { 'for': 'python'}               " python 支
 Plug 'w0rp/ale'                                                     " 错误，警告显示
 Plug 'jmcantrell/vim-virtualenv',  { 'for' : 'python'}              " python 虚拟环境
 Plug 'Shougo/deoplete.nvim',       { 'do': ':UpdateRemotePlugins' } " 黑魔法补全
+Plug 'ervandew/supertab'                                            " tab键自动补全
 Plug 'zchee/deoplete-jedi'
 Plug 'reedes/vim-lexical'                                           " 拼写检查
 Plug 'vim-scripts/todo-vim'
@@ -18,7 +19,9 @@ Plug 'honza/vim-snippets'
 Plug 'ddollar/nerdcommenter'                                        " 代码注释快捷键
 Plug 'kshenoy/vim-signature'                                        " 位置标记
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
-Plug 'yggdroot/leaderf'                                             " 全能查找
+Plug 'yggdroot/leaderf'                                             " 全能查找,需要命令the_platinum_searcher
+Plug 'mgedmin/python-imports.vim',  {'do': './install.sh'}
+Plug 'arnaud-lb/vim-php-namespace'
 
 
 call plug#end()

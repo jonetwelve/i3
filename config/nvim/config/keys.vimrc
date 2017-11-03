@@ -19,14 +19,21 @@ nnoremap <F2> :g/^\s*$/d<CR>
 map <F3> <ESC>:NERDTreeMirror<CR>
 map <F3> <ESC>:NERDTreeToggle<CR>
 
+" 自动import
+map <F4> :call AutoImport()<CR>
+
+" 运行代码
+map <F5> :call RunScript()<CR>
+
+" neoformat,格式化代码
+nmap <F6> :call FormatScript()<CR><CR>
+
 "todo
 nmap <F7> :TODOToggle<CR>
 
 " tagbar"
 nmap <F8> :TagbarToggle<CR>
 
-" neoformat
-nmap <F6> :Neoformat
 
 " airline
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -61,3 +68,4 @@ inoremap <Leader><Tab> <Space><Space>
 
 " copy to system clipboard
 vnoremap <C-y> "+y
+
