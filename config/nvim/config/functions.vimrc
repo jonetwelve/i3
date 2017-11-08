@@ -63,9 +63,7 @@ endfunc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 func! FormatScript()
     exec "w"
-    if &filetype == 'python'
-        exec "Neoformat"
-    endif
+    exec "Neoformat"
 endfunc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
