@@ -2,36 +2,34 @@ syntax on
 syntax enable
 filetype plugin on
 let mapleader="\<space>"
-set number              " 显示行号
-set hls                 " 搜索高亮
-set ic                  " 搜索忽略大小写"
-set autoindent          " 设置自动缩进"
-set tabstop=4           " tag长度"
-set softtabstop=4       " 用空格代替tab"
-set expandtab           " 空格代替tab
+set number                   " 显示行号
+set hls                      " 搜索高亮
+set ic                       " 搜索忽略大小写"
+set autoindent               " 设置自动缩进"
+set tabstop=4                " tag长度"
+set softtabstop=4            " 用空格代替tab"
+set expandtab                " 空格代替tab
 set smarttab
 set smartindent
-set bsdir=buffer        " 文件浏览目录为当前目录"
-set autoread            " 文件被修改后自动加载"
-set nowrap              " 关闭自动换行"
+set bsdir=buffer             " 文件浏览目录为当前目录"
+set autoread                 " 文件被修改后自动加载"
+set nowrap                   " 关闭自动换行"
 set shiftwidth=4
 set encoding=utf-8
-set clipboard=unnamed   " 支持系统剪切板"
-set mouse=a             " 设置可以使用鼠标变化窗口大小"
-set scrolloff=3         " 光标移动到buffer的顶部和底部时保持3行距离
-set completeopt=preview,menu       "代码补全
-set autowrite           "自动保存
+set clipboard=unnamed        " 支持系统剪切板"
+set mouse=a                  " 设置可以使用鼠标变化窗口大小"
+set scrolloff=3              " 光标移动到buffer的顶部和底部时保持3行距离
+set completeopt=preview,menu " 代码补全
+set autowrite                " 自动保存
 set relativenumber
-set lcs=tab:»·,trail:· 
-set list
 set termguicolors
-set showcmd             " display incomplete commands
-set cursorline " cursorcolumn
-set cc=100              " 100个字符折叠
+set showcmd                  " display incomplete commands
+set cursorline               " cursorcolumn
+
 
 
 """""""配色方案
-colo evening
+colo desert
 
 hi SignColumn guibg=grey guifg=red
 hi CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=grey guifg=NONE

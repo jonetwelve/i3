@@ -10,9 +10,9 @@ func! SetTitle()
         call setline(1,"<?php") 
         call append(line("."), "") 
     elseif &filetype == 'python'
-        call setline(1,"#!/usr/bin/env python")
+        call setline(1,"# File Name: ".expand("%"))
         call append(line("."),"")
-        call append(line(".")+1,"")
+        call append(line(".")+1, "") 
         call append(line(".")+2, "") 
     else 
         call setline(1, "/*************************************************************************") 

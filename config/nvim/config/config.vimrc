@@ -1,6 +1,8 @@
 filetype plugin indent on
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts                    = 1
 let g:airline#extensions#tabline#enabled         = 1
 let g:airline#extensions#tabline#left_sep        = ''
@@ -34,46 +36,43 @@ let g:airline#extensions#tagbar#enabled          = 0
 let g:airline#extensions#virtualenv#enabled      = 0
 let g:airline#extensions#whitespace#enabled      = 0
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " deoplete
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup     = 1
 let g:deoplete#disable_auto_complete = 0
 let g:python3_host_prog              = '/usr/bin/python3'
 
-" CtrlP
-""let g:ctrlp_prompt_mappings  = {'PrtClearCache()':['<Leader><F5>']}
-""let g:ctrlp_prompt_mappings  = {'PrtdeleteEnt()':['<Leader><F7>']}
-""let g:ctrlp_match_window     = 'bottom,order:btt,min:2,max:15'
-""set wildmenu                  " enhanced autocomplete
-""" 使用ag代替默认的grep搜索
-""if executable('ag')
-""  " Use Ag over Grep
-""  set grepprg=ag\ --nogroup\ --nocolor
-""  " Use ag in CtrlP for listing files.
-""  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-""  " Ag is fast enough that CtrlP doesn't need to cache
-""  let g:ctrlp_use_caching = 0
-""endif
 
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerdtree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeIgnore=['.*\.pyc', '__pycache__']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " markdown"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:markdown_syntax_conceal = 0
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " snippets"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:snippets_dir="~/.config/nvim/plugged/vim-snippets/snippets"
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " jedi"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jedi#completions_enabled    = 1
 let g:jedi#auto_initialization    = 1
 let g:jedi#auto_vim_configuration = 1
 let g:jedi#use_tabs_not_buffers   = 1
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-lexical
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup lexical
   autocmd!
   autocmd FileType markdown,mkd call lexical#init()
@@ -82,11 +81,15 @@ augroup lexical
 augroup END
 let g:lexical#spell = 1         " 0=disabled, 1=enabled
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-easy-align
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_sign_column_always = 1
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -95,7 +98,9 @@ let g:ale_sign_warning = '◐'
 hi clear ALEErrorSign
 hi clear ALEWarningSign
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " rainbow_parentheses
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rbpt_colorpairs = [
                         \ ['brown',       'RoyalBlue3'],
                         \ ['Darkblue',    'SeaGreen3'],
@@ -120,5 +125,41 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-php-namespace"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:php_namespace_sort_after_insert = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neoformat
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neoformat_basic_format_align = 1
+let g:neoformat_basic_format_retab = 1
+let g:neoformat_basic_format_trim = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" indentline
+"缩进指示线"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indentLine_char='┆'
+let g:indentLine_enabled = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gruvbox
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme gruvbox
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neocomplete
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neocomplcache
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
