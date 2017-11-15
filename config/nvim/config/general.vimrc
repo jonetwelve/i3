@@ -25,6 +25,7 @@ set relativenumber
 set termguicolors
 set showcmd                  " display incomplete commands
 set cursorline               " cursorcolumn
+set cc=120
 
 
 

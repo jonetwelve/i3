@@ -136,6 +136,9 @@ let g:php_namespace_sort_after_insert = 1
 let g:neoformat_basic_format_align = 1
 let g:neoformat_basic_format_retab = 1
 let g:neoformat_basic_format_trim = 1
+let g:neoformat_enabled_python = ['yapf']
+let g:neoformat_python_yapf= {'exe': 'yapf','args': ["--style '{column_limit:120}'"],'stdin': 1}
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " indentline
@@ -161,5 +164,5 @@ let g:neocomplete#enable_smart_case = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_min_syntax_length = 2
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
