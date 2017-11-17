@@ -6,7 +6,6 @@ Plug 'tpope/vim-markdown',         { 'for': 'markdown'}             " markdown
 Plug 'bling/vim-airline'                                            " airline
 Plug 'davidhalter/jedi-vim',       { 'for': 'python'}               " python 支持
 Plug 'w0rp/ale'                                                     " 错误，警告显示
-Plug 'shougo/vimproc.vim'                                           " ale依赖
 Plug 'jmcantrell/vim-virtualenv',  { 'for' : 'python'}              " python 虚拟环境
 Plug 'Shougo/deoplete.nvim',       { 'do': ':UpdateRemotePlugins' } " 黑魔法补全
 Plug 'ervandew/supertab'                                            " tab键自动补全
@@ -27,7 +26,6 @@ Plug 'yggdroot/indentline'                                          " 缩进线�
 Plug 'dyng/ctrlsf.vim'                                              " ctrl+shift+f sublime
 Plug 'morhetz/gruvbox'                                              " 黑色主题
 Plug 'shougo/neocomplete.vim'                                       " auto complete
-Plug 'shougo/neocomplcache.vim'                                     " auto complete
 Plug 'terryma/vim-expand-region'                                    " +,_快捷键选择区域块
 
 
