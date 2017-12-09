@@ -34,8 +34,7 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 " html"
 Plug 'mattn/emmet-vim'
-Plug 'jvanja/vim-bootstrap4-snippets'
-Plug 'gregsexton/matchtag'
+Plug 'rstacruz/sparkup'
 
 
 call plug#end()
