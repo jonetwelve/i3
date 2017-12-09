@@ -27,6 +27,15 @@ Plug 'dyng/ctrlsf.vim'                                              " ctrl+shift
 Plug 'morhetz/gruvbox'                                              " 黑色主题
 Plug 'shougo/neocomplete.vim'                                       " auto complete
 Plug 'terryma/vim-expand-region'                                    " +,_快捷键选择区域块
+Plug 'fatih/vim-go'
+" js"
+Plug 'isruslan/vim-es6'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+" html"
+Plug 'mattn/emmet-vim'
+Plug 'jvanja/vim-bootstrap4-snippets'
+Plug 'gregsexton/matchtag'
 
 
 call plug#end()

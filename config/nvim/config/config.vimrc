@@ -167,3 +167,9 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 2
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+"jsx
+let g:jsx_ext_required = 0
+
+" javascript"
+let g:javascript_plugin_jsdoc = 1

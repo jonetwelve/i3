@@ -27,6 +27,7 @@ set showcmd                  " display incomplete commands
 set cursorline               " cursorcolumn
 set cc=120
 
+
 hi SignColumn guibg=grey guifg=red
 hi CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=grey guifg=NONE
 
