@@ -59,8 +59,10 @@ endfunc
 " 按F6格式化代码
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 func! FormatScript()
-    exec "w"
-    exec "Neoformat"
+	exec "w"
+	exec "Neoformat"
+	exec "!isort %"
+	exec "e!"
 endfunc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""

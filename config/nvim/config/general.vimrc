@@ -26,6 +26,7 @@ set termguicolors
 set showcmd                  " display incomplete commands
 set cursorline               " cursorcolumn
 set cc=120
+set tw=179
 
 
 hi SignColumn guibg=grey guifg=red

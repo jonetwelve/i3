@@ -88,22 +88,22 @@ hi clear ALEWarningSign
 " rainbow_parentheses
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rbpt_colorpairs = [
-                        \ ['brown',       'RoyalBlue3'],
-                        \ ['Darkblue',    'SeaGreen3'],
-                        \ ['darkgray',    'DarkOrchid3'],
-                        \ ['darkgreen',   'firebrick3'],
-                        \ ['darkcyan',    'RoyalBlue3'],
-                        \ ['darkred',     'SeaGreen3'],
-                        \ ['darkmagenta', 'DarkOrchid3'],
-                        \ ['brown',       'firebrick3'],
-                        \ ['gray',        'RoyalBlue3'],
-                        \ ['darkmagenta', 'DarkOrchid3'],
-                        \ ['Darkblue',    'firebrick3'],
-                        \ ['darkgreen',   'RoyalBlue3'],
-                        \ ['darkcyan',    'SeaGreen3'],
-                        \ ['darkred',     'DarkOrchid3'],
-                        \ ['red',         'firebrick3'],
-                        \ ]
+            \ ['brown',       'RoyalBlue3'],
+            \ ['Darkblue',    'SeaGreen3'],
+            \ ['darkgray',    'DarkOrchid3'],
+            \ ['darkgreen',   'firebrick3'],
+            \ ['darkcyan',    'RoyalBlue3'],
+            \ ['darkred',     'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown',       'firebrick3'],
+            \ ['gray',        'RoyalBlue3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue',    'firebrick3'],
+            \ ['darkgreen',   'RoyalBlue3'],
+            \ ['darkcyan',    'SeaGreen3'],
+            \ ['darkred',     'DarkOrchid3'],
+            \ ['red',         'firebrick3'],
+            \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 au VimEnter * RainbowParenthesesToggle
@@ -118,7 +118,7 @@ let g:neoformat_basic_format_align = 1
 let g:neoformat_basic_format_retab = 1
 let g:neoformat_basic_format_trim = 1
 let g:neoformat_enabled_python = ['yapf']
-let g:neoformat_python_yapf= {'exe': 'yapf','args': ["--style '{column_limit:120}'"],'stdin': 1}
+let g:neoformat_python_yapf= {'exe': 'yapf','args': ["--style '{column_limit:80}'"],'stdin': 1}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,17 +141,6 @@ set background=dark
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
