@@ -20,6 +20,7 @@ Plug 'ervandew/supertab'											" tab键增强
 Plug 'airblade/vim-gitgutter'										" git支持
 Plug 'w0rp/ale'                                                     " 语法检查
 Plug 'scrooloose/nerdcommenter'										" 注释快捷键
+Plug 'kshenoy/vim-signature'										" 标记跳转点
 " js"
 Plug 'mxw/vim-jsx'
 Plug 'isruslan/vim-es6'
