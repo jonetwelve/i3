@@ -60,8 +60,13 @@ endfunc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 func! FormatScript()
 	exec "w"
-	exec "Neoformat"
-	exec "!isort %"
+    if &filetype == 'python'
+        exec "Neoformat"
+        exec "!isort %"
+        exec "!firefox % &"
+    elseif &filetype == 'php'
+        exec "!php-cs-fixer fix %"
+    endif
 	exec "e!"
 endfunc
 
