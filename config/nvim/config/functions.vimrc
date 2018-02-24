@@ -70,6 +70,18 @@ func! FormatScript()
 endfunc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 按F9插入方法注释
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+func! InsertDoc()
+    if &filetype == 'python'
+        exec "Pydocstring"
+    elseif &filetype == 'php'
+        call PhpDocSingle()
+    endif
+
+endfunc
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 自动补全括号，引号
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 function ClosePair(char)

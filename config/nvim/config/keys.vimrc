@@ -34,6 +34,9 @@ nmap <F7> :TODOToggle<CR>
 " tagbar"
 nmap <F8> :TagbarToggle<CR>
 
+" insert doc"
+nmap <F9> :call InsertDoc()<CR>
+
 " airline
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2

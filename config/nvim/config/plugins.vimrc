@@ -24,8 +24,10 @@ Plug 'davidhalter/jedi-vim',       { 'for': 'python'}               " python 支
 Plug 'jmcantrell/vim-virtualenv',  { 'for' : 'python'}              " python 虚拟环境
 Plug 'roxma/nvim-completion-manager'								" 自动弹出代码提示,依赖:pip3 install jedi psutil setproctitle isort
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
+Plug 'heavenshell/vim-pydocstring'                                  " 自动生成代码文档
 " php
 " format php file, need command:php-cs-fixer
+Plug 'vim-scripts/PDV--phpDocumentor-for-Vim'                       " 自动生成代码文档
 " js"
 Plug 'mxw/vim-jsx'
 Plug 'isruslan/vim-es6'
