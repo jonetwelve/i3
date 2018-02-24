@@ -48,8 +48,8 @@ let g:python3_host_prog              = '/usr/bin/python3'
 " nerdtree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeIgnore=['.*\.pyc', '__pycache__']
-let g:NERDTreeQuitOnOpen = 1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:nerdtree_tabs_open_on_console_startup=1
+let NERDTreeShowBookmarks=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " markdown"
