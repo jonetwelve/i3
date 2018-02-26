@@ -33,6 +33,9 @@ Plug 'mxw/vim-jsx'
 Plug 'isruslan/vim-es6'
 Plug 'pangloss/vim-javascript'
 Plug 'mattn/jscomplete-vim'
+Plug 'michalliu/jsruntime.vim'
+Plug 'michalliu/sourcebeautify.vim'
+Plug 'michalliu/jsoncodecs.vim'
 " html"
 Plug 'othree/html5.vim'                                             " h5支持n
 Plug 'mattn/emmet-vim'
