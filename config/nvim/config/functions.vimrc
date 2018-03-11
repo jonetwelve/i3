@@ -54,21 +54,6 @@ func! RunScript()
     endif
 endfunc
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 按F6格式化代码
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-func! FormatScript()
-	exec "w"
-    if &filetype == 'python'
-        exec "Neoformat"
-        exec "!isort %"
-    elseif &filetype == 'php'
-        exec "!php-cs-fixer fix %"
-    endif
-	exec "e!"
-endfunc
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按F9插入方法注释
 """""""""""""""""""""""""""""""""""""""""""""""""""""""

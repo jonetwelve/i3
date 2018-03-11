@@ -5,7 +5,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar',          { 'on': 'TagbarToggle'}          " tagbar
 Plug 'bling/vim-airline'                                            " airline
 Plug 'junegunn/vim-easy-align'										" 代码对其
-Plug 'sbdchd/neoformat'                                             " 自动格式化
+Plug 'sbdchd/neoformat'                                             " 自动格式化,js:pip install jsbeautifier,
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
 Plug 'yggdroot/leaderf'                                             " 全能查找,需要命令the_platinum_searcher
 Plug 'yggdroot/indentline'                                          " 缩进线显示
@@ -31,11 +31,7 @@ Plug 'vim-scripts/PDV--phpDocumentor-for-Vim'                       " 自动生�
 " js"
 Plug 'mxw/vim-jsx'
 Plug 'isruslan/vim-es6'
-Plug 'pangloss/vim-javascript'
-Plug 'mattn/jscomplete-vim'
-Plug 'michalliu/jsruntime.vim'
-Plug 'michalliu/sourcebeautify.vim'
-Plug 'michalliu/jsoncodecs.vim'
+Plug 'chemzqm/vim-jsx-improve'
 " html"
 Plug 'othree/html5.vim'                                             " h5支持n
 Plug 'mattn/emmet-vim'
