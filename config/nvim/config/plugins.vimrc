@@ -1,8 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'scrooloose/nerdtree',                                         " 文件树
-Plug 'xuyuanp/nerdtree-git-plugin'                                  " nerdtree git显示
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar',          { 'on': 'TagbarToggle'}          " tagbar
 Plug 'bling/vim-airline'                                            " airline
 Plug 'junegunn/vim-easy-align'										" 代码对其
