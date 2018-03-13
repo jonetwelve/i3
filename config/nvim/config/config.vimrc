@@ -118,7 +118,20 @@ let g:neoformat_basic_format_align = 1
 let g:neoformat_basic_format_retab = 1
 let g:neoformat_basic_format_trim = 1
 let g:neoformat_enabled_python = ['yapf']
-let g:neoformat_python_yapf= {'exe': 'yapf','args': ["--style '{column_limit:80}'"],'stdin': 1}
+let g:neoformat_python_yapf= {'exe': 'yapf',
+            \'args': 
+                \["--style '{
+                    \column_limit:79,
+                    \based_on_style:pep8,
+                    \spaces_before_comment:4,
+                    \split_before_logical_operator: True,
+                    \align_closing_bracket_with_visual_indent: False,
+                    \blank_line_before_class_docstring:False,
+                    \dedent_closing_brackets: True,
+                    \indent_dictionary_value: True
+                \}'"],
+            \'stdin': 1
+            \}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
