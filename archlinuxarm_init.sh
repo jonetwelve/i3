@@ -4,11 +4,11 @@ read -p "New root password: " rootpw
 read -p "New user: " newuser
 read -p "${newuser}'s password: " userpw
 #update os
-echo -e "Server = http://mirror.nus.edu.sg/archlinux-arm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" 
-echo -e "Server = http://ftp.tku.edu.tw/Linux/ArchLinux-arm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" 
-echo -e "Server = http://mirrors.hust.edu.cn/archlinux-arm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" 
-echo -e "Server = http://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" 
-echo -e "Server = http://mirrors.ustc.edu.cn/archlinuxarm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" 
+echo -e "Server = http://mirror.nus.edu.sg/archlinux-arm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" > /etc/pacman.d/mirrorlist
+echo -e "Server = http://ftp.tku.edu.tw/Linux/ArchLinux-arm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" > /etc/pacman.d/mirrorlist
+echo -e "Server = http://mirrors.hust.edu.cn/archlinux-arm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" > /etc/pacman.d/mirrorlist
+echo -e "Server = http://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" > /etc/pacman.d/mirrorlist
+echo -e "Server = http://mirrors.ustc.edu.cn/archlinuxarm/\$arch/\$repo\n`cat /etc/pacman.d/mirrorlist`" > /etc/pacman.d/mirrorlist
 
 pacman -Syu --noconfirm
 pacman -S --noconfirm dialog git zsh sudo base-devel
