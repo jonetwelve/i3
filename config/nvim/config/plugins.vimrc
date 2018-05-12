@@ -9,7 +9,6 @@ Plug 'junegunn/vim-easy-align'										" 代码对其
 Plug 'sbdchd/neoformat'                                             " 自动格式化,js:pip install jsbeautifier,
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
 Plug 'yggdroot/leaderf'                                             " 全能查找,需要命令the_platinum_searcher
-Plug 'yggdroot/indentline'                                          " 缩进线显示
 Plug 'morhetz/gruvbox'                                              " 黑色主题
 Plug 'terryma/vim-expand-region'                                    " +,_快捷键选择区域块
 Plug 'ervandew/supertab'											" tab键增强
@@ -37,6 +36,8 @@ Plug 'chemzqm/vim-jsx-improve'
 Plug 'othree/html5.vim'                                             " h5支持n
 Plug 'mattn/emmet-vim'
 Plug 'rstacruz/sparkup'
+" golang"
+Plug 'fatih/vim-go'
 
 
 call plug#end()
