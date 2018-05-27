@@ -71,3 +71,5 @@ inoremap <Leader><Tab> <Space><Space>
 " copy to system clipboard
 vnoremap <C-y> "+y
 
+" 查找插件
+nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p

@@ -121,7 +121,7 @@ let g:neoformat_enabled_python = ['yapf']
 let g:neoformat_python_yapf= {'exe': 'yapf',
             \'args': 
                 \["--style '{
-                    \column_limit:79,
+                    \column_limit:140,
                     \based_on_style:pep8,
                     \spaces_before_comment:4,
                     \split_before_logical_operator: True,

@@ -21,12 +21,11 @@ set mouse=a                  " 设置可以使用鼠标变化窗口大小"
 set scrolloff=3              " 光标移动到buffer的顶部和底部时保持3行距离
 set completeopt=preview,menu " 代码补全
 set autowrite                " 自动保存
-set relativenumber
+" set relativenumber         " 相对行号
 set termguicolors
 set showcmd                  " display incomplete commands
 set cursorline               " cursorcolumn
-set cc=80
-set tw=80
+set cc=140
 
 
 hi SignColumn guibg=grey guifg=red
