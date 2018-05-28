@@ -10,15 +10,6 @@ let g:airline#extensions#tabline#left_alt_sep    = '|'
 let g:airline#extensions#tabline#tab_nr_type     = 1
 set laststatus                                   =2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
 let g:airline#extensions#syntastic#enabled       = 1
 let g:airline#extensions#quickfix#quickfix_text  = 'QF'
 let g:airline#extensions#quickfix#location_text  = 'LL'
@@ -35,13 +26,6 @@ let g:airline#extensions#taboo#enabled           = 0
 let g:airline#extensions#tagbar#enabled          = 0
 let g:airline#extensions#virtualenv#enabled      = 0
 let g:airline#extensions#whitespace#enabled      = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" deoplete
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup     = 1
-let g:deoplete#disable_auto_complete = 0
-let g:python3_host_prog              = '/usr/bin/python3'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -66,12 +50,6 @@ let g:jedi#auto_initialization    = 1
 let g:jedi#auto_vim_configuration = 1
 let g:jedi#use_tabs_not_buffers   = 1
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-easy-align
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale
@@ -144,7 +122,7 @@ let g:indentLine_enabled = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme gruvbox
+colorscheme onedark
 set background=dark
 
 

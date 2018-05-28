@@ -10,7 +10,7 @@ Plug 'sbdchd/neoformat'                                             " 自动格�
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
 Plug 'yggdroot/leaderf'                                             " 全能查找,需要命令the_platinum_searcher
 Plug 'ddrscott/vim-side-search'
-Plug 'morhetz/gruvbox'                                              " 黑色主题
+Plug 'joshdick/onedark.vim'                                         " 黑色主题
 Plug 'terryma/vim-expand-region'                                    " +,_快捷键选择区域块
 Plug 'ervandew/supertab'											" tab键增强
 Plug 'airblade/vim-gitgutter'										" git支持

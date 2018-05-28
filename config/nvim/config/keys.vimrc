@@ -73,3 +73,9 @@ vnoremap <C-y> "+y
 
 " 查找插件
 nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-easy-align
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
