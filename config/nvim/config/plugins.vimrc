@@ -39,7 +39,7 @@ Plug 'mattn/emmet-vim'
 Plug 'rstacruz/sparkup'
 Plug 'maxmellon/vim-jsx-pretty'
 " golang"
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 
 call plug#end()
