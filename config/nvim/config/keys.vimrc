@@ -61,7 +61,7 @@ imap <silent><C-n> <ESC><ESC>:tabnew<cr>
 nmap <silent><C-n> <ESC><ESC>:tabnew<cr>
 imap <silent><C-w> <ESC><ESC>:tabc!<cr>
 nmap <silent><C-w> <ESC><ESC>:tabc!<cr>
-nmap <silent><tab> <ESC><ESC>:tabnext<CR>
+nmap <silent><tab> <ESC><ESC>:bn<CR>
 
 " deoplete tab-complete
 "inoremap <silent><expr> <Space> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
@@ -79,3 +79,4 @@ nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+

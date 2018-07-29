@@ -97,7 +97,7 @@ let g:neoformat_basic_format_retab = 1
 let g:neoformat_basic_format_trim = 1
 let g:neoformat_enabled_python = ['yapf']
 let g:neoformat_python_yapf= {'exe': 'yapf',
-            \'args': 
+            \'args':
                 \["--style '{
                     \column_limit:140,
                     \based_on_style:pep8,
@@ -141,3 +141,29 @@ let g:phpcomplete_relax_static_constraint = 1
 let g:phpcomplete_complete_for_unknown_classes = 1
 let g:phpcomplete_search_tags_for_variables = 1
 let g:phpcomplete_parse_docblock_comments = 1
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" startify
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"起始页显示的列表长度
+let g:startify_files_number = 5
+"自动加载session
+let g:startify_session_autoload = 1
+let g:startify_padding_left = 11
+"自定义Header和Footer
+let g:startify_custom_header = ['    *-------------------------------------------------------------------*',
+\'    |  F2:去除空行                             +/-:选取模块             |',
+\'    |  F4:自动import                           mx:当前位置打标签x       |',
+\"    |  F7:TODOToggle                           'x:跳转到标签x           |",
+\'    |  F8:Tagbar                               m<Space>:删除所有标签    |',
+\'    |  F9:插入注释文档                         \c<space>:取消注释       |',
+\'    |  \ss:边栏查找                            \cc:单行注释             |',
+\'    |  <c-y>,:emmet补全                        \cs:块注释               |',
+\'    *-------------------------------------------------------------------*',
+\'       o',
+\'        o   ^__^',
+\'         o  (oo)\_______',
+\'            (__)\       )\/\',
+\'                ||----w |',
+\'                ||     ||']

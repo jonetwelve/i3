@@ -1,7 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'scrooloose/nerdtree',                                         " 文件树
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar',          { 'on': 'TagbarToggle'}          " tagbar
 Plug 'bling/vim-airline'                                            " airline
@@ -9,7 +8,7 @@ Plug 'junegunn/vim-easy-align'										" 代码对其
 Plug 'sbdchd/neoformat'                                             " 自动格式化,js:pip install jsbeautifier,
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
 Plug 'yggdroot/leaderf'                                             " 全能查找,需要命令the_platinum_searcher
-Plug 'ddrscott/vim-side-search'
+Plug 'ddrscott/vim-side-search'                                     " 内容搜索
 Plug 'joshdick/onedark.vim'                                         " 黑色主题
 Plug 'terryma/vim-expand-region'                                    " +,_快捷键选择区域块
 Plug 'ervandew/supertab'											" tab键增强
@@ -18,6 +17,8 @@ Plug 'w0rp/ale'                                                     " 语法检�
 Plug 'scrooloose/nerdcommenter'										" 注释快捷键
 Plug 'kshenoy/vim-signature'										" 标记跳转点
 Plug 'shougo/neocomplete.vim'                                       " 拼写检查
+Plug 'mhinz/vim-startify'											" 启动界面修改
+Plug 'vim-scripts/todo-vim'										    " todo
 " markdown"
 Plug 'tpope/vim-markdown',         { 'for': 'markdown'}             " markdown
 " python"
@@ -36,7 +37,6 @@ Plug 'chemzqm/vim-jsx-improve'
 " html"
 Plug 'othree/html5.vim'                                             " h5支持n
 Plug 'mattn/emmet-vim'
-Plug 'rstacruz/sparkup'
 Plug 'maxmellon/vim-jsx-pretty'
 " golang"
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }

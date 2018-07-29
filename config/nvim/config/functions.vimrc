@@ -51,6 +51,8 @@ func! RunScript()
         exec "!firefox % &"
     elseif &filetype == 'php'
         exec "!php %"
+    elseif &filetype == 'go'
+        exec "!time go run %"
     endif
 endfunc
 
