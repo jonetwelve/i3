@@ -26,7 +26,8 @@ map <F4> :call AutoImport()<CR>
 map <F5> :call RunScript()<CR>
 
 " neoformat,格式化代码
-nmap <F6> :Neoformat<CR>
+nmap <F6> :call Jformater()<CR>
+""nmap <F6> :Neoformat<CR>
 
 "todo
 nmap <F7> :TODOToggle<CR>

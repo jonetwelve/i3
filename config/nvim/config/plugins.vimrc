@@ -37,7 +37,6 @@ Plug 'chemzqm/vim-jsx-improve'
 " html"
 Plug 'othree/html5.vim'                                             " h5支持n
 Plug 'mattn/emmet-vim'
-Plug 'maxmellon/vim-jsx-pretty'
 " golang"
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 

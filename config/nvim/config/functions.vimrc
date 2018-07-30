@@ -57,6 +57,19 @@ func! RunScript()
 endfunc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 按F6格式化代码
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+func! Jformater()
+    if &filetype == 'html'
+        exec "Neoformat! html js-beautify"
+    else
+        exec "Neoformat"
+    endif
+
+	exec "w"
+endfunc
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按F9插入方法注释
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 func! InsertDoc()
@@ -72,32 +85,33 @@ endfunc
 " 自动补全括号，引号
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 function ClosePair(char)
- if getline('.')[col('.') - 1] == a:char
- return "\<Right>"
- else
- return a:char
- endif
+	if getline('.')[col('.') - 1] == a:char
+		return "\<Right>"
+	else
+		return a:char
+	endif
 endf
 
 function CloseBracket()
- if match(getline(line('.') + 1), '\s*}') < 0
- return "\<CR>}"
- else
- return "\<Esc>j0f}a"
- endif
+	if match(getline(line('.') + 1), '\s*}') < 0
+		return "\<CR>}"
+	else
+		return "\<Esc>j0f}a"
+	endif
 endf
 
 function QuoteDelim(char)
- let line = getline('.')
- let col = col('.')
- if line[col - 2] == "\\"
- "Inserting a quoted quotation mark into the string
- return a:char
- elseif line[col - 1] == a:char
- "Escaping out of the string
- return "\<Right>"
- else
- "Starting a string
- return a:char.a:char."\<Esc>i"
- endif
+	let line = getline('.')
+	let col = col('.')
+
+	if line[col - 2] == "\\"
+		"Inserting a quoted quotation mark into the string
+		return a:char
+	elseif line[col - 1] == a:char
+		"Escaping out of the string
+		return "\<Right>"
+	else
+		"Starting a string
+		return a:char.a:char."\<Esc>i"
+	endif
 endf
