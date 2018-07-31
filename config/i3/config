@@ -5,8 +5,8 @@ hide_edge_borders none
 font pango:DejaVu Sans Mono 0
 floating_modifier $mod
 bindsym $mod+Return exec sakura
+bindsym $mod+d exec rofi -show run
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
 
 # nav
@@ -87,6 +87,7 @@ bindsym $mod+Shift+9 move container to workspace number 9; workspace 9
 # Open specific applications in floating mode
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Electronic WeChat"] floating enable sticky enable border normal
+for_window [class="netease-cloud-music"] floating enable sticky
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -117,20 +118,20 @@ mode "resize" {
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
     i3bar_command i3bar -t
-    tray_output yes
+    tray_output primary
     separator_symbol " -ღღ⇢ "
     workspace_buttons yes
     status_command py3status -c ~/.config/i3/i3status.conf
     position top
-    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 6
+    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
     colors {
-        separator #2ECC71
+#        separator #2ECC71
         background #10101000
-        statusline #DDDDDD
-        focused_workspace #FFFFFF #2ECC71 #000000
-        active_workspace #000000 #A4A28D #FFFFFF
-        inactive_workspace #A4A28D #000000 #DDDDDD
-        urgent_workspace #2ECC71 #900000 #FFFFFF
+#        statusline #DDDDDD
+#        focused_workspace #FFFFFF #2ECC71 #000000
+#        active_workspace #000000 #A4A28D #FFFFFF
+#        inactive_workspace #A4A28D #000000 #DDDDDD
+#        urgent_workspace #2ECC71 #900000 #FFFFFF
     }
 }
 
@@ -143,25 +144,27 @@ exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec fcitx
 exec --no-startup-id volumeicon
+exec --no-startup-id nm-applet
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/notification-daemon-1.0/notification-daemon
 exec --no-startup-id conky -c ~/.config/conky/top_right
 
 # Theme colors
-client.focused #444444 #2ecc71 #000000 #FFFFFF
-client.unfocused #222222 #222222 #444444 #222222
-client.urgent #444444 #900000 #FFFFFF #900000
+#client.focused #444444 #2ecc71 #000000 #FFFFFF
+#client.unfocused #222222 #222222 #444444 #222222
+#client.urgent #444444 #900000 #FFFFFF #900001
 
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+m scratchpad show
 bindsym $mod+t exec ~/.local/bin/touchpad
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Mod1+Tab workspace next_on_output
-bindsym Print --release exec ~/.local/bin/screenshot
+bindsym Mod1+ctrl+a --release exec ~/.local/bin/screenshot
 
 set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
 mode $powerlist {
