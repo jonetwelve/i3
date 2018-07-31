@@ -19,6 +19,8 @@ Plug 'kshenoy/vim-signature'										" 标记跳转点
 Plug 'shougo/neocomplete.vim'                                       " 拼写检查
 Plug 'mhinz/vim-startify'											" 启动界面修改
 Plug 'vim-scripts/todo-vim'										    " todo
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 " markdown"
 Plug 'tpope/vim-markdown',         { 'for': 'markdown'}             " markdown
 " python"

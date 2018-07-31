@@ -62,12 +62,9 @@ imap <silent><C-n> <ESC><ESC>:tabnew<cr>
 nmap <silent><C-n> <ESC><ESC>:tabnew<cr>
 imap <silent><C-w> <ESC><ESC>:tabc!<cr>
 nmap <silent><C-w> <ESC><ESC>:tabc!<cr>
-nmap <silent><tab> <ESC><ESC>:bn<CR>
+""nmap <silent><tab> <ESC><ESC>:bn<CR>
 
-" deoplete tab-complete
-"inoremap <silent><expr> <Space> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 " ,<tab> for regular tab
-inoremap <Leader><Tab> <Space><Space>
 
 " copy to system clipboard
 vnoremap <C-y> "+y
