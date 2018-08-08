@@ -21,12 +21,21 @@ Plug 'mhinz/vim-startify'											" 启动界面修改
 Plug 'vim-scripts/todo-vim'										    " todo
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
+" 自动补全
+Plug 'ncm2/ncm2'													" 自动补全核心
+Plug 'roxma/nvim-yarp'												" 自动补全依赖
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}						" javascript
+Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-go'
+Plug 'ncm2/ncm2-jedi'
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+Plug 'phpactor/ncm2-phpactor'
 " markdown"
 Plug 'tpope/vim-markdown',         { 'for': 'markdown'}             " markdown
 " python"
 Plug 'davidhalter/jedi-vim',       { 'for': 'python'}               " python 支持, yapf
 Plug 'jmcantrell/vim-virtualenv',  { 'for' : 'python'}              " python 虚拟环境
-Plug 'roxma/nvim-completion-manager'								" 自动弹出代码提示,依赖:pip3 install jedi psutil setproctitle isort
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
 Plug 'heavenshell/vim-pydocstring'                                  " 自动生成代码文档
 " php
