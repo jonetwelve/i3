@@ -1,39 +1,59 @@
-#!/usr/bin/env sh
 
-#安装软件
-sudo pacman -Syy --noconfirm
-sudo pacman -S --noconfirm git volumeicon scrot lxappearance compton notrogen conky\
-	xautolock fcitx fcitx-im fcitx-sunpinyin sakura rofi curl \
-	fcitx-configtool firefox python-pip neovim python-neovim powerline-fonts notification-daemon \
-    xfce4-power-manager 
+# python
+sudo pacman --noconfirm -S python-pip
+sudo ln -s /usr/bin/python3 /usr/local/bin/python
+sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
+
+# sudo
+echo "`whoami` ALL=(ALL) ALL" | sudo tee -a /etc/sudoers
+echo "Defaults:`whoami`    !authenticate" | sudo tee -a /etc/sudoers
+
+# neovim
+sudo pacman --noconfirm -S neovim git zsh powerpill go
 
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-if [ ! -d ~/.local/bin ]
+if [	! -d /home/$(whoami)/.config ]
 then
-	mkdir -p ~/.local/bin
+	mkdir -p /home/$(whoami)/.config
 fi
-cp -a bin/* ~/.local/bin/
-chmod 777 ~/.local/bin/*
+cp -a config/* /home/$(whoami)/.config/
+
+mv /home/$(whoami)/.config/gitconfig /home/$(whoami)/.gitconfig
+mv /home/$(whoami)/.config/gitignore_global /home/$(whoami)/.gitignore_global
+
+mv /home/$(whoami)/.config/pip /home/$(whoami)/.pip
 
 
+sudo pacman --noconfirm -S pcmanfm sakura conky fcitx fcitx-im fcitx-sunpinyin rofi curl
+sudo pacman --noconfirm -S fcitx-configtool python-neovim powerline-fonts trizen ntfs-3g
 
-if [	! -d ~/.config ]
+# docker
+sudo pacman -S --noconfirm docker docker-compose
+if [	! -d /etc/docker ]
 then
-	mkdir -p ~/.config
+	mkdir -p /etc/docker
 fi
-cp -a config/* ~/.config/
 
-mv ~/.config/gitconfig ~/.gitconfig
-mv ~/.config/gitignore_global ~/.gitignore_global
+echo '{"registry-mirrors": ["https://registry.docker-cn.com"]}' > /etc/docker/daemon.json
+sudo systemctl enable docker
+sudo gpasswd -a `whoami` docker
 
-# nvim配置
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# editor
+trizen visual-studio-code-bin
 
-mv Templates ~/
+trizen yandex-browser-beta
 
-mv ~/.config/pip ~/.pip
+sudo pip install jedi psutil setproctitle isort
+
+trizen the_platinum_searcher-bin
+sudo pip install jsbeautifier
+
+# node
+sudo pacman -S --noconfirm nodejs npm
+sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
