@@ -21,28 +21,12 @@ function install_powerpill(){
     echo 1 | yaourt --noconfirm powerpill
 
     rm -rf /etc/pacman.conf
-    cp /etc/pacman.conf.default /etc/pacman.conf
+    mv /etc/pacman.conf.default /etc/pacman.conf
     pacman -Syy
 }
 
 
 function jbase(){
-    dialog --backtitle "Archlinux install script" --clear \
-    --title "Description" \
-    --yesno "Mount the / to mnt yourseld\n\n\
-    Click yes to start install.\nClick no to exit\nClick esc to reboot" 20 90
-
-    respose=$?
-    case $respose in
-    0)
-    ;;
-    1)
-    exit 1
-    ;;
-    *)
-    reboot;;
-    esac
-
     #add packages source
     if [ -f "/etc/pacman.d/mirrorlist" ]
     then
@@ -72,98 +56,16 @@ function jbase(){
     clear
     echo "/root/${0} to continue"
     arch-chroot /mnt
-
-    umount -R /mnt
-    systemctl reboot
 }
 
 function install_software(){
-    clear
-    if dialog --backtitle "Configure" --title "Install software" \
-    --checklist "Click space to select or deselect ,enter to confirm ,click other to cancel" 20 90 20 \
-    libreoffice "office" on\
-    abiword "office work" off\
-    gnumeric "office excel" off\
-    adwaita-icon-theme  "" off \
-    evince "pdf reader" on\
-    faience-icon-theme "icon theme" off\
-    deadbeef "music player" on\
-	dosfstools "music player" on\
-	feh "picture player" on\
-	fuse "picture player" on\
-    firefox "web brower" on\
-	chromium "web brower" on\
-    epiphany "web brower" off\
-    flashplugin "brower plugin" on\
-    gftp "ftp client" off\
-    gimp "picture editor" on\
-    git "" on\
-    gnome-mplayer  "video player" on\
-    vlc "video player" on \
-    parole "video player" off \
-    gnome-screenshot "" off\
-    gstreamer0.10-plugins "" on\
-    gtk-engines "" on\
-    gvfs "" on\
-    seahorse "" on\
-	gvfs-nfs "" on\
-	neovim "" on\
-    gvfs-mtp "" on\
-    lightdm-gtk-greeter-settings "" on \
-    i3 "desktop environment" on\
-    lxde "desktop environment" off\
-    cinnamon "desktop environment" off\
-    deepin "desktop environment" on\
-    xfce4 "desktop environment" off\
-    mate "desktop environment" off\
-    plasma "desktop environment" off\
-    gnome "desktop environment" off\
-    enlightenment "desktop environment" off\
-    cairo-dock "customer desktop-taskbar" off\
-    plank "customer desktop-taskbar" off\
-    tint2 "customer desktop-taskbar" off\
-    awesome "customer desktop-window manager" off\
-    lxterminal "customer desktop-terminal emulator" off\
-    medit "editor" on\
-    network-manager-applet "" on\
-    networkmanager-openconnect "" on\
-    networkmanager-openvpn "" on\
-    networkmanager-pptp "" on\
-    networkmanager-vpnc "" on\
-    xf86-video-intel "" on\
-    xf86-video-ati "" off\
-    xf86-video-nouveau "" off\
-    ntfs-3g "" on\
-    numlockx "" off\
-    openssh "" on\
-    p7zip "" on\
-    php "" on\
-    python-pip "" on\
-	python-neovim "" on\
-	rofi "" on\
-    plank "" off\
-    scrot "" off\
-	shadowsocks-qt5 "" on\
-	sakura "" on\
-    thunderbird "" off\
-    udisks2 "" on\
-    ufw "" on\
-    gufw "" on\
-    unrar "" on\
-    unzip "" on\
-    virtualbox "" on\
-    virtualbox-host-modules "" on\
-    xarchiver "" on\
-    compton "" on\
-    zip "" on\
-    zsh "" on\
-    sudo "" on\
-    2>/tmp/jarch/software.txt
-    then
-    dialog --backtitle "Configure" --title "Install software" --infobox "ing..." 20 90
+	powerpill -S --noconfirm libreoffice adwaita-icon-theme evince faience-icon-theme deadbeef dosfstools  \
+	chromium gimp git gstreamer0.10-plugins gtk-engines gvfs gvfs-nfs neovim gvfs-mtp i3 deepin \
+    network-manager-applet networkmanager-openconnect networkmanager-openvpn networkmanager-pptp \
+    networkmanager-vpnc xf86-video-intel ntfs-3g openssh p7zip python-pip python-neovim rofi plank \
+	sakura udisks2 unrar unzip xarchiver compton zip zsh sudo 
     powerpill -S --noconfirm mesa fcitc fcitx-im fcitx-configtool fcitx-sunpinyin
     powerpill -S --noconfirm wqy-microhei
-    powerpill -S --noconfirm ttf-dejavu
     powerpill -S --noconfirm xf86-video-vesa
     powerpill -S --noconfirm xf86-input-evdev
     powerpill -S --noconfirm xorg-xinit
@@ -172,14 +74,6 @@ function install_software(){
     powerpill -S --noconfirm ntfs-3g gvfs
     powerpill -S --noconfirm lightdm lightdm-gtk-greeter
     systemctl enable lightdm
-       selections=`cat /tmp/jarch/software.txt`
-    for i in $selections ; do
-    powerpill -S --noconfirm $i
-    done
-    fi
-
-    # enable ufw
-    systemctl enable ufw
 
     rm -rf /etc/skel/*
     echo 'export GTK_IM_MODULE=fcitx' >> /etc/skel/.zprofile
@@ -193,8 +87,7 @@ function jconfig(){
     read -p "Input jone passwd:" -s jonepwd
 
     mkdir /tmp/jarch
-    install_dialog
-    install_powerpill
+    install_powerpil
     install_software
     #init
     clear
@@ -222,13 +115,13 @@ function jconfig(){
     #network
     clear
     echo "auto start network"
-    powerpill -S --noconfirm networkmanager
+    pacman -S --noconfirm networkmanager
     systemctl enable NetworkManager
 
 
     #pc name
     clear
-    pcname="Archlinux"
+	echo "Archlinux" > /etc/hostname
 
     #new user
 	clear
