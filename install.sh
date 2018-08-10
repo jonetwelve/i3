@@ -6,12 +6,8 @@ sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
 sudo pip install pipenv -i https://mirrors.aliyun.com/pypi/simple
 sudo pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple
 
-# sudo
-echo "`whoami` ALL=(ALL) ALL" | sudo tee -a /etc/sudoers
-echo "Defaults:`whoami`    !authenticate" | sudo tee -a /etc/sudoers
-
 # neovim
-sudo pacman --noconfirm -S neovim git zsh powerpill go chromium wqy-microhei
+sudo pacman --noconfirm -S neovim git zsh go chromium wqy-microhei
 sudo pacman --noconfirm -S ttf-font-icons compton nitrogen
 
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
@@ -19,7 +15,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 sudo pacman --noconfirm -S pcmanfm sakura conky fcitx fcitx-im fcitx-sunpinyin rofi curl
-sudo pacman --noconfirm -S fcitx-configtool python-neovim powerline-fonts yaourt ntfs-3g
+sudo pacman --noconfirm -S fcitx-configtool python-neovim powerline-fonts ntfs-3g
 
 # docker
 sudo pacman -S --noconfirm docker docker-compose
@@ -36,7 +32,6 @@ sudo gpasswd -a `whoami` docker
 # editor
 yaourt visual-studio-code-bin
 
-yaourt yandex-browser-beta
 
 yaourt the_platinum_searcher-bin
 sudo pip install jsbeautifier
