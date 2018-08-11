@@ -126,13 +126,13 @@ bar {
     position top
     font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
     colors {
-#        separator #2ECC71
+        separator #2ECC71
         background #10101000
-#        statusline #DDDDDD
-#        focused_workspace #FFFFFF #2ECC71 #000000
-#        active_workspace #000000 #A4A28D #FFFFFF
-#        inactive_workspace #A4A28D #000000 #DDDDDD
-#        urgent_workspace #2ECC71 #900000 #FFFFFF
+        statusline #DDDDDD
+        focused_workspace #FFFFFF #2ECC71 #000000
+        active_workspace #000000 #A4A28D #FFFFFF
+        inactive_workspace #A4A28D #000000 #DDDDDD
+        urgent_workspace #2ECC71 #900000 #FFFFFF
     }
 }
 
@@ -151,9 +151,9 @@ exec --no-startup-id nitrogen --restore
 #exec --no-startup-id conky -c ~/.config/conky/top_right
 
 # Theme colors
-#client.focused #444444 #2ecc71 #000000 #FFFFFF
-#client.unfocused #222222 #222222 #444444 #222222
-#client.urgent #444444 #900000 #FFFFFF #900001
+client.focused #444444 #2ecc71 #000000 #FFFFFF
+client.unfocused #222222 #222222 #444444 #222222
+client.urgent #444444 #900000 #FFFFFF #900001
 
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
@@ -165,7 +165,7 @@ bindsym $mod+m scratchpad show
 bindsym $mod+t exec ~/.local/bin/touchpad
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Mod1+Tab workspace next_on_output
-bindsym Mod1+ctrl+a --release exec ~/.local/bin/screenshot
+bindsym Mod1+ctrl+a --release exec deepin-screenshot
 
 set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
 mode $powerlist {
