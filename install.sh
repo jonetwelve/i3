@@ -78,6 +78,7 @@ sudo pacman -S --noconfirm virtualbox
 yaourt virtualbox-ext-oracle
 sudo pacman -S --noconfirm mongodb
 yaourt mongodb-compass
+yaourt sequeler-git
 
 
 
