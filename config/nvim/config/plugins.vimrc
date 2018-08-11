@@ -8,7 +8,9 @@ Plug 'junegunn/vim-easy-align'										" 代码对其
 Plug 'sbdchd/neoformat'                                             " 自动格式化,js:pip install jsbeautifier,
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
 Plug 'yggdroot/leaderf'                                             " 全能查找,需要命令the_platinum_searcher
-Plug 'ddrscott/vim-side-search'                                     " 内容搜索
+""Plug 'ddrscott/vim-side-search'                                     " 内容搜索
+Plug 'dyng/ctrlsf.vim'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'joshdick/onedark.vim'                                         " 黑色主题
 Plug 'terryma/vim-expand-region'                                    " +,_快捷键选择区域块
 Plug 'ervandew/supertab'											" tab键增强
@@ -22,15 +24,6 @@ Plug 'vim-scripts/todo-vim'										    " todo
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 " 自动补全
-Plug 'ncm2/ncm2'													" 自动补全核心
-Plug 'roxma/nvim-yarp'												" 自动补全依赖
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}						" javascript
-Plug 'ncm2/ncm2-html-subscope'
-Plug 'ncm2/ncm2-cssomni'
-Plug 'ncm2/ncm2-go'
-Plug 'ncm2/ncm2-jedi'
-Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
-Plug 'phpactor/ncm2-phpactor'
 " markdown"
 Plug 'tpope/vim-markdown',         { 'for': 'markdown'}             " markdown
 " python"

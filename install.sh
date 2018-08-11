@@ -68,12 +68,14 @@ sudo pacman -S --noconfirm awesome-terminal-fonts
 yaourt bumblebee-status
 
 
+# software
+yaourt gitkraken
 
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-if [	! -d /home/$(whoami)/.config ]
+if [ ! -d /home/$(whoami)/.config ]
 then
 	mkdir -p /home/$(whoami)/.config
 fi
@@ -85,3 +87,23 @@ mv /home/$(whoami)/.config/gitignore_global /home/$(whoami)/.gitignore_global
 mv /home/$(whoami)/.config/pip /home/$(whoami)/.pip
 
 sudo pacman -Syu --noconfirm
+
+echo 'export ZSH="/home/jone/.oh-my-zsh"' > /home/`whoami`/.zshrc
+
+echo '' >> /home/`whoami`/.zshrc
+echo 'ZSH_THEME="agnoster"' >> /home/`whoami`/.zshrc
+echo 'DISABLE_AUTO_UPDATE="true"' >> /home/`whoami`/.zshrc
+echo 'DISABLE_LS_COLORS="true"' >> /home/`whoami`/.zshrc
+echo 'ENABLE_CORRECTION="true"' >> /home/`whoami`/.zshrc
+echo '' >> /home/`whoami`/.zshrc
+
+echo '' >> /home/`whoami`/.zshrc
+echo 'plugins=(' >> /home/`whoami`/.zshrc
+echo 'archlinux,autoenv,autopep8,composer,cp,docker,docker-compose,docker-machine,' >> /home/`whoami`/.zshrc
+echo 'dotenv,fabric,git,git-extras,git-flow,gitignore,go,golang,history,laravel5,' >> /home/`whoami`/.zshrc
+echo 'meteor,npm,pip,pylint,python,sudo,supervisor,systemd,virtualenv,vscode,yarn' >> /home/`whoami`/.zshrc
+echo ')' >> /home/`whoami`/.zshrc
+echo '' >> /home/`whoami`/.zshrc
+
+echo '' >> /home/`whoami`/.zshrc
+echo 'source $ZSH/oh-my-zsh.sh' >> /home/`whoami`/.zshrc

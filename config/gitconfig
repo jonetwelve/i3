@@ -14,5 +14,3 @@
 	editor = vi
 	fileMode = false
     excludesfile = ~/.gitignore_global
-[commit]
-	template = ~/Templates/git-commit-template.txt
