@@ -76,6 +76,8 @@ yaourt wechat-devtools
 yaourt franz4-bin
 sudo pacman -S --noconfirm virtualbox
 yaourt virtualbox-ext-oracle
+sudo pacman -S --noconfirm mongodb
+yaourt mongodb-compass
 
 
 
