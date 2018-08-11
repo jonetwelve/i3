@@ -70,6 +70,13 @@ yaourt bumblebee-status
 
 # software
 yaourt gitkraken
+sudo pacman -S --noconfirm mariadb
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+yaourt wechat-devtools
+yaourt franz4-bin
+sudo pacman -S --noconfirm virtualbox
+yaourt virtualbox-ext-oracle
+
 
 
 # oh-my-zsh
@@ -107,3 +114,7 @@ echo '' >> /home/`whoami`/.zshrc
 
 echo '' >> /home/`whoami`/.zshrc
 echo 'source $ZSH/oh-my-zsh.sh' >> /home/`whoami`/.zshrc
+
+
+clear
+echo "Need init:\nyaourt\nmariadb\n"
