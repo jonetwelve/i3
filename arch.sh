@@ -59,20 +59,57 @@ function jconfig(){
     echo "Server = http://mirror.lzu.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
     echo "update packages"
     pacman -Syy
-	pacman -S --noconfirm libreoffice adwaita-icon-theme evince faience-icon-theme deadbeef dosfstools  
-	pacman -S --noconfirm chromium gimp git gstreamer0.10-plugins gtk-engines gvfs gvfs-nfs neovim gvfs-mtp deepin 
-    pacman -S --noconfirm network-manager-applet networkmanager-openconnect networkmanager-openvpn networkmanager-pptp 
-    pacman -S --noconfirm networkmanager-vpnc xf86-video-intel ntfs-3g openssh p7zip python-pip python-neovim rofi plank 
-	pacman -S --noconfirm sakura udisks2 unrar unzip xarchiver compton zip zsh sudo firefox-developer-edition
-    pacman -S --noconfirm mesa fcitc fcitx-im fcitx-configtool fcitx-sunpinyin git
+	pacman -S --noconfirm libreoffice 
+	pacman -S --noconfirm chromium 
+    pacman -S --noconfirm lightdm
+    pacman -S --noconfirm network-manager-applet
+	pacman -S --noconfirm gimp 
+	pacman -S --noconfirm git 
+	pacman -S --noconfirm gstreamer0.10-plugins 
+	pacman -S --noconfirm gtk-engines 
+	pacman -S --noconfirm gvfs 
+	pacman -S --noconfirm gvfs-nfs 
+	pacman -S --noconfirm neovim 
+	pacman -S --noconfirm gvfs-mtp 
+	pacman -S --noconfirm deepin 
+	pacman -S --noconfirm evince 
+	pacman -S --noconfirm dosfstools  
+	pacman -S --noconfirm volumeicon
+	pacman -S --noconfirm gvfs
+	pacman -S --noconfirm lightdm-gtk-greeter
+	pacman -S --noconfirm networkmanager-openconnect
+	pacman -S --noconfirm networkmanager-openvpn
+	pacman -S --noconfirm networkmanager-pptp 
+    pacman -S --noconfirm networkmanager-vpnc
+	pacman -S --noconfirm xf86-video-intel
+	pacman -S --noconfirm ntfs-3g
+	pacman -S --noconfirm openssh
+	pacman -S --noconfirm p7zip
+	pacman -S --noconfirm python-pip
+	pacman -S --noconfirm python-neovim
+	pacman -S --noconfirm rofi
+	pacman -S --noconfirm sakura
+	pacman -S --noconfirm udisks2
+	pacman -S --noconfirm unrar
+	pacman -S --noconfirm unzip
+	pacman -S --noconfirm xarchiver
+	pacman -S --noconfirm compton
+	pacman -S --noconfirm zip
+	pacman -S --noconfirm zsh
+	pacman -S --noconfirm sudo
+	pacman -S --noconfirm firefox-developer-edition
+    pacman -S --noconfirm mesa
+	pacman -S --noconfirm fcitc
+	pacman -S --noconfirm fcitx-im
+	pacman -S --noconfirm fcitx-configtool
+	pacman -S --noconfirm fcitx-sunpinyin git
     pacman -S --noconfirm wqy-microhei
     pacman -S --noconfirm xf86-video-vesa
     pacman -S --noconfirm xf86-input-evdev
     pacman -S --noconfirm xorg-xinit
-    pacman -S --noconfirm xorg-server volumeicon
+    pacman -S --noconfirm xorg-server
     pacman -S --noconfirm alsa-utils
-    pacman -S --noconfirm ntfs-3g gvfs
-    pacman -S --noconfirm lightdm lightdm-gtk-greeter
+    pacman -S --noconfirm ntfs-3g
     systemctl enable lightdm
 
     rm -rf /etc/skel/*
@@ -80,7 +117,6 @@ function jconfig(){
     echo 'export QT_IM_MODULE=fcitx' >> /etc/skel/.zprofile
     echo 'export XMODIFIERS=@im=fcitx' >> /etc/skel/.zprofile
 
-    mkdir /tmp/jarch
     #init
     clear
     mkinitcpio -p linux
@@ -93,6 +129,7 @@ function jconfig(){
     locale-gen
     echo "make language "
     echo "en_US.UTF-8 UTF-8" > /etc/locale.conf
+	rm -f /etc/localtime
     ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     echo "make time"
     hwclock --systohc --utc
@@ -126,12 +163,7 @@ function jconfig(){
     systemctl enable lightdm
 
     clear
-    echo "Delete something"
-    rm -rf /tmp/jarch
-    pacman -Rscn --noconfirm dialog
-
-    clear
-    echo "Install over . Input exit and click enter to reboot"
+    echo "Install over . Input exit and umount -R /mnt to reboot"
     exit 0
 }
 

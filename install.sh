@@ -7,18 +7,36 @@ sudo pip install pipenv -i https://mirrors.aliyun.com/pypi/simple
 sudo pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple
 
 # neovim
-sudo pacman --noconfirm -S neovim git zsh go chromium wqy-microhei
-sudo pacman --noconfirm -S ttf-font-icons compton nitrogen
+sudo pacman --noconfirm -S neovim
+sudo pacman -S --noconfirm git
+sudo pacman -S --noconfirm zsh
+sudo pacman -S --noconfirm go
+sudo pacman -S --noconfirm chromium
+sudo pacman -S --noconfirm wqy-microhei
+sudo pacman -S --noconfirm nitrogen
+sudo pacman --noconfirm -S compton
+yaourt ttf-font-icons 
 
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-sudo pacman --noconfirm -S pcmanfm sakura conky fcitx fcitx-im fcitx-sunpinyin rofi curl
-sudo pacman --noconfirm -S fcitx-configtool python-neovim powerline-fonts ntfs-3g
+sudo pacman --noconfirm -S pcmanfm
+sudo pacman --noconfirm -S sakura
+sudo pacman --noconfirm -S conky
+sudo pacman --noconfirm -S fcitx
+sudo pacman --noconfirm -S fcitx-im
+sudo pacman --noconfirm -S fcitx-sunpinyin
+sudo pacman --noconfirm -S rofi
+sudo pacman --noconfirm -S curl
+sudo pacman --noconfirm -S fcitx-configtool
+sudo pacman --noconfirm -S python-neovim
+sudo pacman --noconfirm -S powerline-fonts
+sudo pacman --noconfirm -S ntfs-3g
 
 # docker
-sudo pacman -S --noconfirm docker docker-compose
+sudo pacman -S --noconfirm docker
+sudo pacman -S --nocnofirm docker-compose
 if [ ! -d /etc/docker ]
 then
 	sudo mkdir -p /etc/docker
@@ -42,7 +60,11 @@ sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
 sudo npm install -g vue
 
 # i3wm
-sudo pacman -S --noconfirm i3-gaps i3lock i3blocks i3status
+sudo pacman -S --noconfirm i3-gaps
+sudo pacman -S --noconfirm i3lock
+sudo pacman -S --noconfirm i3blocks
+sudo pacman -S --noconfirm i3status
+sudo pacman -S --noconfirm awesome-terminal-fonts
 yaourt bumblebee-status
 
 
