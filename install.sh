@@ -5,6 +5,10 @@ sudo ln -s /usr/bin/python3 /usr/local/bin/python
 sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
 sudo pip install pipenv -i https://mirrors.aliyun.com/pypi/simple
 sudo pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple
+sudo pip install flake8
+sudo pip install autoflake
+sudo pip install yapf
+sudo pip install isort
 
 # neovim
 sudo pacman --noconfirm -S neovim
@@ -58,6 +62,7 @@ sudo pip install jsbeautifier
 sudo pacman -S --noconfirm nodejs npm
 sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
 sudo npm install -g vue
+sudo pacman -S --noconfirm eslint
 
 # i3wm
 sudo pacman -S --noconfirm i3-gaps
@@ -79,6 +84,10 @@ yaourt virtualbox-ext-oracle
 sudo pacman -S --noconfirm mongodb
 yaourt mongodb-compass
 yaourt sequeler-git
+sudo pacman -S --noconfirm ctags medit
+sudo pacman -S --noconfirm php composer
+sudo pacman -S --noconfirm xorg-xbacklight
+sudo pacman -S --noconfirm nginx
 
 
 
