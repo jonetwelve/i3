@@ -95,7 +95,7 @@ function jconfig(){
 	pacman -S --noconfirm xarchiver
 	pacman -S --noconfirm compton
 	pacman -S --noconfirm zip
-	pacman -S --noconfirm zsh
+	pacman -S --noconfirm fish
 	pacman -S --noconfirm sudo
 	pacman -S --noconfirm firefox-developer-edition
     pacman -S --noconfirm mesa
@@ -154,7 +154,7 @@ function jconfig(){
 
     #new user
 	clear
-    useradd -m -s /usr/bin/zsh jone
+    useradd -m -s /bin/bash jone
     (echo $jonepwd;sleep 1;echo $jonepwd) | passwd jone > /dev/null
 
     echo "jone ALL=(ALL) ALL" >> /etc/sudoers

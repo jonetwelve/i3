@@ -4,7 +4,7 @@ new_float normal
 hide_edge_borders none
 font pango:DejaVu Sans Mono 0
 floating_modifier $mod
-bindsym $mod+Return exec sakura
+bindsym $mod+Return exec sakura -e fish
 bindsym $mod+d exec rofi -show run
 bindsym $mod+Shift+q kill
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
