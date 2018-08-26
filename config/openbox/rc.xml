@@ -204,24 +204,24 @@
         <y>20</y>
       </action>
     </keybind>
-    
+
     <!---->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>pamixer -i 2</command>
+        <command>amixer set Master 5%+</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>pamixer -d 2</command>
+        <command>amixer set Master 5%-</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>pamixer -t</command>
+        <command>amixer set Master toggle</command>
       </action>
     </keybind>
-   
+
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>xbacklight +10</command>
@@ -232,13 +232,19 @@
         <command>xbacklight -10</command>
       </action>
     </keybind>
-    
+
     <keybind key="Print">
       <action name="Execute">
-        <command>scrot 'ArchLabs_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; gpicview $$(xdg-user-dir PICTURES)/$f'</command>
+        <command>scrot '%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots'</command>
       </action>
     </keybind>
-  
+
+    <keybind key="C-A-a">
+      <action name="Execute">
+        <command>scrot '%Y-%m-%d-%H%M%S_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots' -s</command>
+      </action>
+    </keybind>
+
   <!--
     <keybind key="C-space">
       <action name="Execute">
@@ -246,7 +252,7 @@
       </action>
     </keybind>
     -->
-  
+
     <keybind key="W-S-q">
       <action name="Close"/>
     </keybind>
@@ -255,23 +261,23 @@
     <keybind key="W-m">
       <action name="ToggleMaximize"/>
     </keybind>
- 
+
     <keybind key="S-W-q">
       <action name="Close"/>
     </keybind>
-    
+
     <keybind key="W-d">
       <action name="Execute">
         <command>rofi -modi run,drun -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons</command>
       </action>
     </keybind>
-    
+
     <keybind key="W-Return">
       <action name="Execute">
         <command>sakura</command>
       </action>
     </keybind>
- 
+
   </keyboard>
   <mouse>
     <dragThreshold>4</dragThreshold>
