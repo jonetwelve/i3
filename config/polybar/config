@@ -1,0 +1,23 @@
+;=====================================================
+;     File Includes
+;=====================================================
+
+[section/base]
+include-file = ~/.config/polybar/master.conf
+include-file = ~/.config/polybar/modules.conf
+
+
+;=====================================================
+;     Openbox Bars
+;=====================================================
+
+[bar/bar]
+inherit = bar/master
+
+; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
+monitor =
+
+modules-left   = jgmenu workspaces i3
+modules-center = window_switch clock
+modules-right  = battery volume-bar network
+

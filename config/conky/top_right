@@ -7,7 +7,7 @@ conky.config = {
 	double_buffer = true,
 	font = 'WenQuanYi Micro Hei Mono:size=8',
 	gap_x = 15,
-	gap_y = 13,
+	gap_y = 33,
 	minimum_width = 200,
 	no_buffers = true,
 	own_window = true,

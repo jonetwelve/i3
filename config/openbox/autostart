@@ -1,0 +1,12 @@
+# restore wallpaper
+nitrogen --restore &
+
+# start panel
+polybar bar &
+
+compton --config ~/.config/compton.conf -b &
+xautolock -time 22 -locker "i3lock -c 222222" &
+fcitx &
+conky -c ~/.config/conky/top_right &
+
+
