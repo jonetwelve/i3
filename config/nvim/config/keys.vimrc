@@ -70,7 +70,7 @@ nmap <silent><C-w> <ESC><ESC>:tabc!<cr>
 vnoremap <C-y> "+y
 
 " 查找插件
-nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
+nnoremap <Leader>ss :CtrlSF 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-easy-align

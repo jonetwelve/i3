@@ -36,22 +36,6 @@ let g:nerdtree_tabs_open_on_console_startup=0
 let NERDTreeShowBookmarks=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" markdown"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:markdown_syntax_conceal = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" jedi"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jedi#completions_enabled    = 1
-let g:jedi#auto_initialization    = 1
-let g:jedi#auto_vim_configuration = 1
-let g:jedi#use_tabs_not_buffers   = 1
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_sign_column_always = 1
@@ -127,14 +111,6 @@ set background=dark
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ultisnips
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsUsePythonVersion = 3
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " phpcomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:phpcomplete_relax_static_constraint = 1
@@ -158,7 +134,7 @@ let g:startify_custom_header = ['    *------------------------------------------
 \"    |  F7:TODOToggle                           'x:跳转到标签x           |",
 \'    |  F8:Tagbar                               m<Space>:删除所有标签    |',
 \'    |  F9:插入注释文档                         \c<space>:取消注释       |',
-\'    |  CtrlSF [patern]:文件夹里查找            \cc:单行注释             |',
+\'    |  <leader>ss:文件夹里查找                 \cc:单行注释             |',
 \'    |  <c-y>,:emmet补全                        \cs:块注释               |',
 \'    *-------------------------------------------------------------------*',
 \'       o',
@@ -168,14 +144,15 @@ let g:startify_custom_header = ['    *------------------------------------------
 \'                ||----w |',
 \'                ||     ||']
 
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" deoplete
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" multi_cursor
+" jedi"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:multi_cursor_use_default_mapping=0
-" Default mapping
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+let g:jedi#completions_enabled    = 1
+let g:jedi#auto_initialization    = 1
+let g:jedi#auto_vim_configuration = 1
+let g:jedi#use_tabs_not_buffers   = 1
