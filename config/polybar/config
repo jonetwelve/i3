@@ -19,5 +19,19 @@ monitor =
 
 modules-left   = jgmenu workspaces i3
 modules-center = window_switch clock
-modules-right  = battery volume-bar network
+modules-right  = compton battery volume-bar network
 
+
+;=====================================================
+;     i3
+;=====================================================
+
+[bar/i3bar]
+inherit = bar/master
+
+; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
+monitor =
+
+modules-left   = workspaces
+modules-center = clock
+modules-right  = compton battery volume-bar network

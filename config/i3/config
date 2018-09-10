@@ -1,96 +1,109 @@
-# global
 set $mod Mod4
-new_float normal
-hide_edge_borders none
-font pango:DejaVu Sans Mono 0
-floating_modifier $mod
-bindsym $mod+Return exec sakura
-bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
-bindsym $mod+Shift+q kill
-bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
 
-# nav
+# 界面所用颜色
+set_from_resource $bg      background  #19043C
+set_from_resource $fg      foreground  #F1F1F1
+set_from_resource $black   color0      #19043C
+set_from_resource $red     color1      #EE79A9
+set_from_resource $green   color2      #8C9440
+set_from_resource $yellow  color3      #DE935F
+set_from_resource $blue    color4      #05C6F1
+set_from_resource $purple  color5      #85678F
+set_from_resource $cyan    color6      #5E8D87
+set_from_resource $grey    color7      #969CD3
+
+# 界面颜色设置
+# class                 bd    bg  txt    ind   child_bd
+client.focused          $grey $bg $fg    $blue $grey
+client.unfocused        $grey $bg $black $bg   $bg
+client.focused_inactive $grey $bg $black $bg   $bg
+client.urgent           $red  $bg $red   $red  $red
+client.placeholder      $grey $bg $bg    $bg   $bg
+client.background       $bg
+
+# border & title.. Must be set to border pixel for gaps to work
+for_window [class="^.*"] border pixel 2, title_format "<b> %class >> %title </b>"
+
+# gaps
+gaps inner 15
+gaps outer 5
+
+# font
+font pango:DejaVu Sans Mono 10
+
+set $Mon1 HDMI1
+set $Mon2 HDMI2
+
+new_float normal
+new_window normal
+hide_edge_borders both
+popup_during_fullscreen smart
+
+# 切换设置
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Left	focus left
+bindsym $mod+Down	focus down
+bindsym $mod+Up		focus up
+bindsym $mod+Right	focus right
 
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+h move left  10px
+bindsym $mod+Shift+j move down  10px
+bindsym $mod+Shift+k move up    10px
+bindsym $mod+Shift+l move right 10px
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+Shift+Left		move left
+bindsym $mod+Shift+Down		move down
+bindsym $mod+Shift+Up		move up
+bindsym $mod+Shift+Right	move right
 
 bindsym $mod+v split toggle
 
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
 bindsym $mod+Shift+space floating toggle
-
 bindsym $mod+space focus mode_toggle
-
-bindsym $mod+Shift+s sticky toggle
 
 bindsym $mod+a focus parent
 
-# Workspace names
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
+# 工作空间
+set $WS1 "1: "
+set $WS2 "2: "
+set $WS3 "3: "
+set $WS4 "4: "
+set $WS5 "5: "
+set $WS6 "6: "
+set $WS7 "7: "
+set $WS8 "8: "
 
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+assign [class="(?i)(?:firefox)"] → $WS2
 
-bindsym $mod+Ctrl+1 move container to workspace number 1
-bindsym $mod+Ctrl+2 move container to workspace number 2
-bindsym $mod+Ctrl+3 move container to workspace number 3
-bindsym $mod+Ctrl+4 move container to workspace number 4
-bindsym $mod+Ctrl+5 move container to workspace number 5
-bindsym $mod+Ctrl+6 move container to workspace number 6
-bindsym $mod+Ctrl+7 move container to workspace number 7
-bindsym $mod+Ctrl+8 move container to workspace number 8
-bindsym $mod+Ctrl+9 move container to workspace number 9
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
 
-bindsym $mod+Shift+1 move container to workspace number 1; workspace 1
-bindsym $mod+Shift+2 move container to workspace number 2; workspace 2
-bindsym $mod+Shift+3 move container to workspace number 3; workspace 3
-bindsym $mod+Shift+4 move container to workspace number 4; workspace 4
-bindsym $mod+Shift+5 move container to workspace number 5; workspace 5
-bindsym $mod+Shift+6 move container to workspace number 6; workspace 6
-bindsym $mod+Shift+7 move container to workspace number 7; workspace 7
-bindsym $mod+Shift+8 move container to workspace number 8; workspace 8
-bindsym $mod+Shift+9 move container to workspace number 9; workspace 9
+bindsym $mod+Shift+1 move container to workspace $WS1; workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2; workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3; workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4; workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5; workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6; workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7; workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8; workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9; workspace $WS9
 
-# Open specific applications in floating mode
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Electronic WeChat"] floating enable sticky enable border normal
-for_window [class="netease-cloud-music"] floating enable sticky
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
+# switch to workspace with urgent window
+for_window [urgent="latest"] focus
+focus_on_window_activation   focus
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -113,45 +126,37 @@ mode "resize" {
 }
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-    i3bar_command i3bar -t
-    tray_output none
-    #tray_output primary
-    separator_symbol " -ღღ⇢ "
-    workspace_buttons yes
-    status_command bumblebee-status -m traffic cpu memory battery datetime pasink nic -p nic.states="up" nic.exclude="br,lo,virbr,docker,vboxnet,veth" datetime.format="%Y-%m-%d %H:%M:%S" memory.usedonly=True -t solarized-powerline
-    position top
-    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
-    colors {
-        separator #2ECC71
-        background #10101000
-        statusline #DDDDDD
-        focused_workspace #FFFFFF #2ECC71 #000000
-        active_workspace #000000 #A4A28D #FFFFFF
-        inactive_workspace #A4A28D #000000 #DDDDDD
-        urgent_workspace #2ECC71 #900000 #FFFFFF
-    }
-}
+#bar {
+#    i3bar_command i3bar -t
+#    tray_output none
+#    #tray_output primary
+#    separator_symbol " -ღღ⇢ "
+#    workspace_buttons yes
+#    status_command bumblebee-status -m traffic cpu memory battery datetime pasink nic jcompton -p nic.states="up" nic.exclude="br,lo,virbr,docker,vboxnet,veth" datetime.format="%Y-%m-%d %H:%M:%S" memory.usedonly=True -t solarized-powerline
+#    position top
+#    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
+#    colors {
+#        separator #2ECC71
+#        background #10101000
+#        statusline #DDDDDD
+#        focused_workspace #FFFFFF #2ECC71 #000000
+#        active_workspace #000000 #A4A28D #FFFFFF
+#        inactive_workspace #A4A28D #000000 #DDDDDD
+#        urgent_workspace #2ECC71 #900000 #FFFFFF
+#    }
+#}
 
 #for_window [class="^.*"] border pixel 3
 #assign [class="VirtualBox*"] workspace 3
 
-## Autostart applications
-#exec --no-startup-id xfce4-power-manager
-exec --no-startup-id compton --config ~/.config/compton.conf -b
-exec --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
-exec fcitx
-#exec --no-startup-id volumeicon
-#exec --no-startup-id nm-applet
-exec --no-startup-id nitrogen --restore
-#exec --no-startup-id /usr/lib/notification-daemon-1.0/notification-daemon
-exec --no-startup-id conky -c ~/.config/conky/top_right
+## 自动启动
+exec_always --no-startup-id compton --config ~/.config/compton.conf -b
+exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
+exec_always fcitx
+exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Theme colors
-client.focused #444444 #2ecc71 #000000 #FFFFFF
-client.unfocused #222222 #222222 #444444 #222222
-client.urgent #444444 #900000 #FFFFFF #900001
-
+# 快捷键绑定
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
@@ -163,15 +168,34 @@ bindsym $mod+t exec ~/.local/bin/touchpad
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Mod1+Tab workspace next_on_output
 bindsym Mod1+ctrl+a --release exec scrot '%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots' -s
+bindsym $mod+Return exec lxterminal
+bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
+bindsym $mod+Shift+q kill
+bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
+bindsym $mod+Escape exec --no-startup-id ~/.local/bin/rofr.sh -l
 
-set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
-mode $powerlist {
-    bindsym 1 exec sudo shutdown -h now
-    bindsym 2 exec sudo reboot
-    bindsym 3 exec exec i3-msg exit
-    bindsym 4 mode "default" exec i3lock -c 222222
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Escape mode $powerlist
+#set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
+#mode $powerlist {
+#    bindsym 1 exec sudo shutdown -h now
+#    bindsym 2 exec sudo reboot
+#    bindsym 3 exec exec i3-msg exit
+#    bindsym 4 mode "default" exec i3lock -c 222222
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
+#}
+#bindsym $mod+Escape mode $powerlist
+
+
+for_window [class="(?i)(?:qt5ct|pinentry)"] floating enable, focus
+for_window [class="(?i)(?:termite|thunar)"] focus
+for_window [class="(?i)(?:geany|firefox)"] focus
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Electronic WeChat"] floating enable sticky enable border normal
+for_window [class="netease-cloud-music"] floating enable sticky
+for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
+for_window [window_role="(?i)(?:pop-up|setup)"] floating enable
+
+# Assign Applications to specific workspace
+# get class with xprop
+assign [class="(?i)(?:firefox)"] → $WS1
 
