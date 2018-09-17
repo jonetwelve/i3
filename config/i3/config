@@ -69,6 +69,10 @@ bindsym $mod+space focus mode_toggle
 
 bindsym $mod+a focus parent
 
+# 显示器
+set $screen1 LVDS1
+set $screen2 VGA1
+
 # 工作空间
 set $WS1 "1: "
 set $WS2 "2: "
@@ -78,8 +82,37 @@ set $WS5 "5: "
 set $WS6 "6: "
 set $WS7 "7: "
 set $WS8 "8: "
+set $WS9 "9: "
+workspace $WS1 output $screen1
+workspace $WS2 output $screen1
+workspace $WS3 output $screen1
+workspace $WS4 output $screen1
+workspace $WS5 output $screen1
+workspace $WS6 output $screen1
+workspace $WS7 output $screen1
+workspace $WS8 output $screen1
+workspace $WS9 output $screen1
+# 第二个屏幕
+set $WS11 "11"
+set $WS12 "12"
+set $WS13 "13"
+set $WS14 "14"
+set $WS15 "15"
+set $WS16 "16"
+set $WS17 "17"
+set $WS18 "18"
+set $WS19 "19"
+workspace $WS11 output $screen2
+workspace $WS12 output $screen2
+workspace $WS13 output $screen2
+workspace $WS14 output $screen2
+workspace $WS15 output $screen2
+workspace $WS16 output $screen2
+workspace $WS17 output $screen2
+workspace $WS18 output $screen2
+workspace $WS19 output $screen2
 
-assign [class="(?i)(?:firefox)"] → $WS2
+workspace_auto_back_and_forth yes
 
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
@@ -91,6 +124,16 @@ bindsym $mod+7 workspace $WS7
 bindsym $mod+8 workspace $WS8
 bindsym $mod+9 workspace $WS9
 
+bindsym $mod+F1 workspace $WS11
+bindsym $mod+F2 workspace $WS12
+bindsym $mod+F3 workspace $WS13
+bindsym $mod+F4 workspace $WS14
+bindsym $mod+F5 workspace $WS15
+bindsym $mod+F6 workspace $WS16
+bindsym $mod+F7 workspace $WS17
+bindsym $mod+F8 workspace $WS18
+bindsym $mod+F9 workspace $WS19
+
 bindsym $mod+Shift+1 move container to workspace $WS1; workspace $WS1
 bindsym $mod+Shift+2 move container to workspace $WS2; workspace $WS2
 bindsym $mod+Shift+3 move container to workspace $WS3; workspace $WS3
@@ -100,6 +143,16 @@ bindsym $mod+Shift+6 move container to workspace $WS6; workspace $WS6
 bindsym $mod+Shift+7 move container to workspace $WS7; workspace $WS7
 bindsym $mod+Shift+8 move container to workspace $WS8; workspace $WS8
 bindsym $mod+Shift+9 move container to workspace $WS9; workspace $WS9
+
+bindsym $mod+Shift+F1 move container to workspace $WS11; workspace $WS11
+bindsym $mod+Shift+F2 move container to workspace $WS12; workspace $WS12
+bindsym $mod+Shift+F3 move container to workspace $WS13; workspace $WS13
+bindsym $mod+Shift+F4 move container to workspace $WS14; workspace $WS14
+bindsym $mod+Shift+F5 move container to workspace $WS15; workspace $WS15
+bindsym $mod+Shift+F6 move container to workspace $WS16; workspace $WS16
+bindsym $mod+Shift+F7 move container to workspace $WS17; workspace $WS17
+bindsym $mod+Shift+F8 move container to workspace $WS18; workspace $WS18
+bindsym $mod+Shift+F9 move container to workspace $WS19; workspace $WS19
 
 # switch to workspace with urgent window
 for_window [urgent="latest"] focus
@@ -155,6 +208,8 @@ exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec_always fcitx
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# 设置第二个显示器
+exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
 
 # 快捷键绑定
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
@@ -168,22 +223,22 @@ bindsym $mod+t exec ~/.local/bin/touchpad
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Mod1+Tab workspace next_on_output
 bindsym Mod1+ctrl+a --release exec scrot '%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots' -s
-bindsym $mod+Return exec lxterminal
+bindsym $mod+Return exec termite
 bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
 bindsym $mod+Shift+q kill
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
-bindsym $mod+Escape exec --no-startup-id ~/.local/bin/rofr.sh -l
+#bindsym $mod+Escape exec --no-startup-id ~/.local/bin/rofr.sh -l
 
-#set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
-#mode $powerlist {
-#    bindsym 1 exec sudo shutdown -h now
-#    bindsym 2 exec sudo reboot
-#    bindsym 3 exec exec i3-msg exit
-#    bindsym 4 mode "default" exec i3lock -c 222222
-#    bindsym Return mode "default"
-#    bindsym Escape mode "default"
-#}
-#bindsym $mod+Escape mode $powerlist
+set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
+mode $powerlist {
+    bindsym 1 exec sudo shutdown -h now
+    bindsym 2 exec sudo reboot
+    bindsym 3 exec exec i3-msg exit
+    bindsym 4 mode "default" exec i3lock -c 222222
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Escape mode $powerlist
 
 
 for_window [class="(?i)(?:qt5ct|pinentry)"] floating enable, focus
@@ -197,5 +252,5 @@ for_window [window_role="(?i)(?:pop-up|setup)"] floating enable
 
 # Assign Applications to specific workspace
 # get class with xprop
-assign [class="(?i)(?:firefox)"] → $WS1
+assign [class="(?i)(?:firefox)"] → $WS2
 

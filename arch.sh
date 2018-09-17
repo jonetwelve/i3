@@ -45,7 +45,7 @@ function jconfig(){
   echo "Server = http://repo.archlinuxcn.org/\$arch" >> /etc/pacman.conf
 
   pacman -Syy
-  pacman -S --noconfirm yaourt 
+  pacman -S --noconfirm yaourt
 
   rm -rf /etc/pacman.conf
   mv /etc/pacman.conf.default /etc/pacman.conf
@@ -59,26 +59,26 @@ function jconfig(){
   echo "Server = http://mirror.lzu.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
   echo "update packages"
   pacman -Syy
-	pacman -S --noconfirm libreoffice 
-	pacman -S --noconfirm chromium 
+	pacman -S --noconfirm libreoffice
+	pacman -S --noconfirm chromium
   pacman -S --noconfirm lightdm
   pacman -S --noconfirm network-manager-applet
-	pacman -S --noconfirm gimp 
-	pacman -S --noconfirm git 
-	pacman -S --noconfirm gstreamer0.10-plugins 
-	pacman -S --noconfirm gtk-engines 
-	pacman -S --noconfirm gvfs 
-	pacman -S --noconfirm gvfs-nfs 
-	pacman -S --noconfirm neovim 
-	pacman -S --noconfirm gvfs-mtp 
+	pacman -S --noconfirm gimp
+	pacman -S --noconfirm git
+	pacman -S --noconfirm gstreamer0.10-plugins
+	pacman -S --noconfirm gtk-engines
+	pacman -S --noconfirm gvfs
+	pacman -S --noconfirm gvfs-nfs
+	pacman -S --noconfirm neovim
+	pacman -S --noconfirm gvfs-mtp
 	pacman -S --noconfirm epdfview
-	pacman -S --noconfirm dosfstools  
+	pacman -S --noconfirm dosfstools
 	pacman -S --noconfirm volumeicon
 	pacman -S --noconfirm gvfs
 	pacman -S --noconfirm lightdm-gtk-greeter
 	pacman -S --noconfirm networkmanager-openconnect
 	pacman -S --noconfirm networkmanager-openvpn
-	pacman -S --noconfirm networkmanager-pptp 
+	pacman -S --noconfirm networkmanager-pptp
   pacman -S --noconfirm nitrogen
   pacman --noconfirm -S compton
   pacman -S --noconfirm networkmanager-vpnc
@@ -100,7 +100,6 @@ function jconfig(){
 	pacman -S --noconfirm sudo
 	pacman -S --noconfirm firefox-developer-edition
   pacman -S --noconfirm mesa
-	pacman -S --noconfirm fcitc
 	pacman -S --noconfirm fcitx-im
 	pacman -S --noconfirm fcitx-configtool
 	pacman -S --noconfirm fcitx-sunpinyin git
@@ -114,8 +113,8 @@ function jconfig(){
   pacman -S --noconfirm zsh
   pacman --noconfirm -S curl
   pacman --noconfirm -S powerline-fonts
-  pacman -S --noconfirm wget 
-  pacman -S --noconfirm ranger 
+  pacman -S --noconfirm wget
+  pacman -S --noconfirm ranger
   pacman --noconfirm -S ntfs-3g
   systemctl enable lightdm
 
