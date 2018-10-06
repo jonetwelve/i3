@@ -25,8 +25,8 @@ client.background       $bg
 for_window [class="^.*"] border pixel 2, title_format "<b> %class >> %title </b>"
 
 # gaps
-gaps inner 15
-gaps outer 5
+gaps inner 4
+gaps outer 2
 
 # font
 font pango:DejaVu Sans Mono 10
@@ -76,15 +76,15 @@ set $screen1 LVDS1
 set $screen2 VGA1
 
 # 工作空间
-set $WS1 "1: "
-set $WS2 "2: "
-set $WS3 "3: "
-set $WS4 "4: "
-set $WS5 "5: "
-set $WS6 "6: "
-set $WS7 "7: "
-set $WS8 "8: "
-set $WS9 "9: "
+set $WS1 "✎"
+set $WS2 "♥"
+set $WS3 "▃"
+set $WS4 "▄"
+set $WS5 "▅"
+set $WS6 "▆"
+set $WS7 "▇"
+set $WS8 "▉"
+set $WS9 "㊙"
 workspace $WS1 output $screen1
 workspace $WS2 output $screen1
 workspace $WS3 output $screen1
@@ -181,37 +181,38 @@ mode "resize" {
 }
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-#bar {
-#    i3bar_command i3bar -t
-#    tray_output none
-#    #tray_output primary
-#    separator_symbol " -ღღ⇢ "
-#    workspace_buttons yes
-#    status_command bumblebee-status -m traffic cpu memory battery datetime pasink nic jcompton -p nic.states="up" nic.exclude="br,lo,virbr,docker,vboxnet,veth" datetime.format="%Y-%m-%d %H:%M:%S" memory.usedonly=True -t solarized-powerline
-#    position top
-#    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
-#    colors {
-#        separator #2ECC71
-#        background #10101000
-#        statusline #DDDDDD
-#        focused_workspace #FFFFFF #2ECC71 #000000
-#        active_workspace #000000 #A4A28D #FFFFFF
-#        inactive_workspace #A4A28D #000000 #DDDDDD
-#        urgent_workspace #2ECC71 #900000 #FFFFFF
-#    }
-#}
+bar {
+    i3bar_command i3bar -t
+    tray_output none
+    #tray_output primary
+    separator_symbol " -ღღ⇢ "
+    workspace_buttons yes
+    status_command bumblebee-status -m traffic cpu memory battery datetime pasink nic -p nic.states="up" nic.exclude="br,lo,virbr,docker,vboxnet,veth" datetime.format="%Y-%m-%d %H:%M:%S" memory.usedonly=True -t solarized-powerline
+    position top
+    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
+    colors {
+        separator #2ECC71
+        background #10101000
+        statusline #DDDDDD
+        focused_workspace #FFFFFF #2ECC71 #000000
+        active_workspace #000000 #A4A28D #FFFFFF
+        inactive_workspace #A4A28D #000000 #DDDDDD
+        urgent_workspace #2ECC71 #900000 #FFFFFF
+    }
+}
 
 #for_window [class="^.*"] border pixel 3
 #assign [class="VirtualBox*"] workspace 3
 
 ## 自动启动
-exec_always --no-startup-id compton --config ~/.config/compton.conf -b
-exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
-exec_always fcitx
-exec_always --no-startup-id nitrogen --restore
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
+exec fcitx
+exec --no-startup-id nitrogen --restore
+#exec --no-startup-id $HOME/.config/polybar/launch.sh
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
 # 快捷键绑定
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
