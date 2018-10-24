@@ -65,6 +65,8 @@ sudo pacman -S --noconfirm sakura
 sudo pacman -S --noconfirm scrot
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
+sudo pacman -S --noconfirm arc-icon-theme
+sudo pacman -S --noconfirm arc-gtk-theme
 yaourt electronic-wechat
 yaourt command-not-found 
 
