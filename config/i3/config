@@ -76,15 +76,15 @@ set $screen1 LVDS1
 set $screen2 VGA1
 
 # 工作空间
-set $WS1 "✎"
-set $WS2 "♥"
-set $WS3 "▃"
-set $WS4 "▄"
-set $WS5 "▅"
-set $WS6 "▆"
-set $WS7 "▇"
-set $WS8 "▉"
-set $WS9 "㊙"
+set $WS1 "1"
+set $WS2 "2"
+set $WS3 "3"
+set $WS4 "4"
+set $WS5 "5"
+set $WS6 "6"
+set $WS7 "7"
+set $WS8 "8"
+set $WS9 "9"
 workspace $WS1 output $screen1
 workspace $WS2 output $screen1
 workspace $WS3 output $screen1
@@ -183,15 +183,15 @@ mode "resize" {
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
     i3bar_command i3bar -t
-    tray_output none
-    #tray_output primary
-    separator_symbol " -ღღ⇢ "
+    #tray_output none
+    tray_output primary
+    separator_symbol " | "
     workspace_buttons yes
-    status_command bumblebee-status -m traffic cpu memory battery datetime pasink nic -p nic.states="up" nic.exclude="br,lo,virbr,docker,vboxnet,veth" datetime.format="%Y-%m-%d %H:%M:%S" memory.usedonly=True -t solarized-powerline
+    status_command i3pystatus --config ~/.config/i3/i3pystatus.py
     position top
     font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
     colors {
-        separator #2ECC71
+        separator #05c6f1
         background #10101000
         statusline #DDDDDD
         focused_workspace #FFFFFF #2ECC71 #000000
@@ -212,7 +212,7 @@ exec --no-startup-id nitrogen --restore
 #exec --no-startup-id $HOME/.config/polybar/launch.sh
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec --no-startup-id /usr/lib/polkit-1-dde/dde-polkit-agent
 
 # 快捷键绑定
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
@@ -226,7 +226,7 @@ bindsym $mod+t exec ~/.local/bin/touchpad
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Mod1+Tab workspace next_on_output
 bindsym Mod1+ctrl+a --release exec scrot '%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots' -s
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec sakura
 bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
 bindsym $mod+Shift+q kill
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
@@ -255,5 +255,5 @@ for_window [window_role="(?i)(?:pop-up|setup)"] floating enable
 
 # Assign Applications to specific workspace
 # get class with xprop
-assign [class="(?i)(?:firefox)"] → $WS2
+#assign [class="(?i)(?:firefox)"] → $WS2
 

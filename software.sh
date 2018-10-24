@@ -16,8 +16,6 @@ sudo ln -s /usr/bin/nvim /usr/local/bin/vi
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-sudo pacman --noconfirm -S conky
-
 # docker
 sudo pacman -S --noconfirm docker
 sudo pacman -S --nocnofirm docker-compose
@@ -62,33 +60,30 @@ sudo pacman -S --noconfirm pkgfile
 sudo pkgfile --update
 yaourt global
 yaourt idutils
+sudo pacman -S --noconfirm medit
+sudo pacman -S --noconfirm sakura
+sudo pacman -S --noconfirm scrot
+sudo pacman -S --noconfirm ttf-font-awesome
+sudo pacman -S --noconfirm ttf-ionicons
+yaourt electronic-wechat
+yaourt command-not-found 
+
+#deepin
+sudo pacman -S --noconfirm deepin
 
 # i3
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
-sudo pacman -S --noconfirm i3blocks
-sudo pacman -S --noconfirm i3status
 sudo pacman -S --noconfirm awesome-terminal-fonts
-yaourt bumblebee-status
+# i3pystatus
+yaourt i3pystatus
+sudo pacman -S --noconfirm python-netifaces
+sudo pacman -S --noconfirm python-colour
+sudo pacman -S --noconfirm python-psutil
+sudo pip install basiciw
+sudo pip install pyalsaaudio
+sudo pip install i3ipc
 
-# openbox
-sudo pacman -S --noconfirm openbox
-yaourt obkey
-yaourt ob-autostart
-yaourt networkmanager-dmenu
-yaourt polybar
-yaourt skippy-xd
-yaourt jgmenu
-yaourt ttf-material-icons
-yaourt otf-font-awesome-5-free
-sudo pacman -S --noconfirm obconf
-
-
-if [ ! -d /home/$(whoami)/.local ]
-then
-	mkdir -p /home/$(whoami)/.local
-fi
-cp -a bin /home/$(whoami)/.local/
 
 if [ ! -d /home/$(whoami)/.config ]
 then
@@ -101,8 +96,12 @@ mv /home/$(whoami)/.config/gitignore_global /home/$(whoami)/.gitignore_global
 
 mv /home/$(whoami)/.config/pip /home/$(whoami)/.pip
 
+mv /home/$(whoami)/.config/Xresources /home/$(whoami)/.Xresources
+
 
 sudo pacman -Syu --noconfirm
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 clear
 echo "Need init:\nyaourt\nmariadb\n"

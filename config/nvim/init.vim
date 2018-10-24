@@ -21,7 +21,6 @@ Plug 'vim-scripts/todo-vim'										    " todo
 Plug 'kien/ctrlp.vim'												" 查找并打开文件
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }		" 黑魔法补全
 let g:deoplete#enable_at_startup = 1
-Plug 'Valloric/YouCompleteMe'
 " python"
 Plug 'davidhalter/jedi-vim'
 Plug 'jmcantrell/vim-virtualenv',  { 'for' : 'python'}              " python 虚拟环境
