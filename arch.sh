@@ -41,7 +41,6 @@ function jconfig(){
   cp /etc/pacman.conf /etc/pacman.conf.default
 
   echo "[archlinuxcn]" >> /etc/pacman.conf
-  echo "SigLevel = Optional TrustAll" >> /etc/pacman.conf
   echo "Server = http://repo.archlinuxcn.org/\$arch" >> /etc/pacman.conf
 
   pacman -Syy
@@ -74,7 +73,6 @@ function jconfig(){
 	pacman -S --noconfirm epdfview
 	pacman -S --noconfirm dosfstools
 	pacman -S --noconfirm volumeicon
-	pacman -S --noconfirm gvfs
 	pacman -S --noconfirm lightdm-gtk-greeter
 	pacman -S --noconfirm networkmanager-openconnect
 	pacman -S --noconfirm networkmanager-openvpn
@@ -98,7 +96,7 @@ function jconfig(){
 	pacman -S --noconfirm compton
 	pacman -S --noconfirm zip
 	pacman -S --noconfirm sudo
-	pacman -S --noconfirm firefox-developer-edition
+	pacman -S --noconfirm firefox
   pacman -S --noconfirm mesa
 	pacman -S --noconfirm fcitx-im
 	pacman -S --noconfirm fcitx-configtool
@@ -114,8 +112,9 @@ function jconfig(){
   pacman --noconfirm -S curl
   pacman --noconfirm -S powerline-fonts
   pacman -S --noconfirm wget
-  pacman -S --noconfirm ranger
   pacman --noconfirm -S ntfs-3g
+  pacman --noconfirm -S deepin
+  pacman --noconfirm -S deepin-screen-recorder
   systemctl enable lightdm
 
   rm -rf /etc/skel/*
@@ -134,7 +133,7 @@ function jconfig(){
   echo "zh_CN.UTF-8 UTF-8" >> /etc/locale.gen
   locale-gen
   echo "make language "
-  echo "en_US.UTF-8 UTF-8" > /etc/locale.conf
+  echo "LANG=en_US.UTF-8" > /etc/locale.conf
 	rm -f /etc/localtime
   ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
   echo "make time"
@@ -143,7 +142,7 @@ function jconfig(){
   #GRUB
   clear
   echo "install and config grub"
-  pacman -S --noconfirm grub
+  pacman -S --noconfirm grub os-prober
 
   #network
   clear

@@ -31,6 +31,15 @@ status.register("mem_bar",
         format="MEM: {used_mem_bar}",
         color="#ffffff")
 
+status.register("network",
+        format_up="{essid} {bytes_recv}KB/s {bytes_sent}KB/s",
+        color_up="#FFFFFF",
+        dynamic_color=True,
+        start_color="#FFFFFF",
+        separate_color=True,
+        format_down="{interface} DOWN",
+        interface="wlp2s0")
+
 from i3pystatus.updates import yaourt
 status.register("updates",
         backends=[yaourt.Yaourt(False)])

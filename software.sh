@@ -9,7 +9,7 @@ sudo pip install yapf
 sudo pip install isort
 
 # neovim
-sudo pacman -S --noconfirm go
+sudo pacman -S --noconfirm go yaourt powerpill
 yaourt ttf-font-icons
 
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
@@ -44,6 +44,7 @@ sudo pacman -S --noconfirm eslint
 
 
 # software
+sudo pacman -S --noconfirm wine
 yaourt gitkraken
 sudo pacman -S --noconfirm mariadb
 yaourt wechat-devtools
@@ -70,9 +71,6 @@ sudo pacman -S --noconfirm arc-gtk-theme
 yaourt electronic-wechat
 yaourt command-not-found 
 
-#deepin
-sudo pacman -S --noconfirm deepin
-
 # i3
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
@@ -82,7 +80,7 @@ yaourt i3pystatus
 sudo pacman -S --noconfirm python-netifaces
 sudo pacman -S --noconfirm python-colour
 sudo pacman -S --noconfirm python-psutil
-sudo pip install basiciw
+yaourt python-basiciw
 sudo pip install pyalsaaudio
 sudo pip install i3ipc
 
