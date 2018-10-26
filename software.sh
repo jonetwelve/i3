@@ -85,6 +85,7 @@ sudo pip install pyalsaaudio
 sudo pip install i3ipc
 
 
+mv config/zshrc /home/$(whoami)/.zshrc
 if [ ! -d /home/$(whoami)/.config ]
 then
 	mkdir -p /home/$(whoami)/.config
@@ -98,6 +99,11 @@ mv /home/$(whoami)/.config/pip /home/$(whoami)/.pip
 
 mv /home/$(whoami)/.config/Xresources /home/$(whoami)/.Xresources
 
+
+# custom
+cp ./scripts/update-hosts /usr/local/bin/
+chmod a+x /usr/local/bin/update-hosts
+/usr/local/bin/update-hosts
 
 sudo pacman -Syu --noconfirm
 

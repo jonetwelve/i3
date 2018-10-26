@@ -118,9 +118,9 @@ function jconfig(){
   systemctl enable lightdm
 
   rm -rf /etc/skel/*
-  echo 'export GTK_IM_MODULE=fcitx' >> /etc/skel/.zprofile
-  echo 'export QT_IM_MODULE=fcitx' >> /etc/skel/.zprofile
-  echo 'export XMODIFIERS=@im=fcitx' >> /etc/skel/.zprofile
+  echo 'export GTK_IM_MODULE=fcitx' >> /etc/skel/.xprofile
+  echo 'export QT_IM_MODULE=fcitx' >> /etc/skel/.xprofile
+  echo 'export XMODIFIERS=@im=fcitx' >> /etc/skel/.xprofile
 
   #init
   clear
