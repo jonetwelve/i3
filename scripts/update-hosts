@@ -1,19 +1,20 @@
 #!/bin/bash
 
+# 更新hosts文件：
+#		屏蔽广告网站
+#		访问国内被屏蔽网站
+
 host="/etc/hosts"
 
+urls=(\
+	"https://hosts.nfz.moe/127.0.0.1/full/hosts" \
+	"https://raw.githubusercontent.com/googlehosts/hosts/master/hosts-files/hosts" \
+	)
+
+
 echo "127.0.0.1		localhost" > $host
-echo "" >> $host
-curl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts >> $host
-echo "" >> $host
-curl https://mirror1.malwaredomains.com/files/justdomains >> $host
-echo "" >> $host
-curl http://sysctl.org/cameleon/hosts >> $host
-echo "" >> $host
-curl https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist >> $host
-echo "" >> $host
-curl https://hosts-file.net/ad_servers.txt >> $host
-echo "" >> $host
-curl https://hosts.nfz.moe/127.0.0.1/full/hosts >> $host
-echo "" >> $host
-curl https://raw.githubusercontent.com/googlehosts/hosts/master/hosts-files/hosts >> $host
+
+for url in ${urls[@]}; do
+	echo "" >> $host
+	curl $url >> $host;
+done
