@@ -1,0 +1,15 @@
+export ZSH="/home/`whoami`/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+DISABLE_AUTO_UPDATE="true"
+DISABLE_LS_COLORS="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(
+  git archlinux cp docker docker-compose git
+  go golang npm pip python sudo yarn
+)
+
+source $ZSH/oh-my-zsh.sh
