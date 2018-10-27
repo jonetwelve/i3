@@ -9,6 +9,7 @@ status.register("alsa",
 status.register("battery",
     format="{status} {percentage:.0f}%",
     alert=True,
+    full_color="#ffffff",
     alert_percentage=15,
     status={
         "DIS": "↯",
