@@ -69,30 +69,6 @@ let g:airline#extensions#virtualenv#enabled      = 0
 let g:airline#extensions#whitespace#enabled      = 0
 
 "--------->
-" YouCompleteMe
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0  "打开vim时不再询问是否加载ycm_extra_conf.py配置
-set completeopt=longest,menu
-let g:ycm_seed_identifiers_with_syntax = 1 "自动开启语义补全
-let g:ycm_complete_in_comments = 1  "在注释中也开启补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_complete_in_strings = 1 "字符串中也开启补全
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_collect_identifiers_from_tags_files = 1 "开启基于tag的补全，可以在这之后添加需要的标签路径  
-let g:ycm_min_num_of_chars_for_completion = 2 "开始补全的字符数
-let g:ycm_autoclose_preview_window_after_completion = 1 "补全后自动关闭预览窗口
-let g:ycm_cache_omnifunc=0 "禁止缓存匹配项,每次都重新生成匹配项
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
-let g:ycm_seed_identifiers_with_syntax = 1   "语法关键字补全
-let g:ycm_use_ultisnips_completer = 1  "整合UltiSnips的提示
-let g:ycm_goto_buffer_command = 'horizontal-split' "在实现和声明之间跳转,并分屏打开
-nnoremap <Leader>g :YcmCompleter GoTo<CR>
-let g:ycm_show_diagnostics_ui = 0 "与syntastic有冲突，建议关闭
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_echo_current_diagnostic = 0
-
-"--------->
 " nerdtree
 let NERDTreeIgnore=['.*\.pyc', '__pycache__']
 let g:nerdtree_tabs_open_on_console_startup=0
