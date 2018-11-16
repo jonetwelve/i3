@@ -1,70 +1,57 @@
+# global
 set $mod Mod4
 
-# 界面所用颜色
-set_from_resource $bg      background  #19043C
-set_from_resource $fg      foreground  #F1F1F1
-set_from_resource $black   color0      #19043C
-set_from_resource $red     color1      #EE79A9
-set_from_resource $green   color2      #8C9440
-set_from_resource $yellow  color3      #DE935F
-set_from_resource $blue    color4      #05C6F1
-set_from_resource $purple  color5      #85678F
-set_from_resource $cyan    color6      #5E8D87
-set_from_resource $grey    color7      #969CD3
-
-# 界面颜色设置
-# class                 bd    bg  txt    ind   child_bd
-client.focused          $grey $bg $fg    $blue $grey
-client.unfocused        $grey $bg $black $bg   $bg
-client.focused_inactive $grey $bg $black $bg   $bg
-client.urgent           $red  $bg $red   $red  $red
-client.placeholder      $grey $bg $bg    $bg   $bg
-client.background       $bg
-
-# border & title.. Must be set to border pixel for gaps to work
-for_window [class="^.*"] border pixel 2, title_format "<b> %class >> %title </b>"
-
-# font
-font pango:DejaVu Sans Mono 10
-
-set $Mon1 HDMI1
-set $Mon2 HDMI2
-
 new_float normal
-new_window normal
-hide_edge_borders both
+hide_edge_borders none
+font pango:DejaVu Sans Mono 0
+floating_modifier $mod
+workspace_auto_back_and_forth yes
 
-# 切换设置
+# Theme colors
+client.focused #444444 #2ecc71 #000000 #FFFFFF
+client.unfocused #222222 #222222 #444444 #222222
+client.urgent #444444 #900000 #FFFFFF #900001
+
+# Open specific applications in floating mode
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Electronic WeChat"] floating enable sticky enable border normal
+for_window [class="netease-cloud-music"] floating enable sticky
+
+# 窗口切换
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Left	focus left
-bindsym $mod+Down	focus down
-bindsym $mod+Up		focus up
-bindsym $mod+Right	focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-bindsym $mod+Shift+h move left  10px
-bindsym $mod+Shift+j move down  10px
-bindsym $mod+Shift+k move up    10px
-bindsym $mod+Shift+l move right 10px
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+odiaeresis move right
 
-bindsym $mod+Shift+Left		move left
-bindsym $mod+Shift+Down		move down
-bindsym $mod+Shift+Up		move up
-bindsym $mod+Shift+Right	move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 bindsym $mod+v split toggle
-
 bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-
+bindsym $mod+Shift+s sticky toggle
 bindsym $mod+a focus parent
-
-floating_modifier $mod
 
 # 显示器
 set $screen1 LVDS1
@@ -109,7 +96,8 @@ workspace $WS17 output $screen2
 workspace $WS18 output $screen2
 workspace $WS19 output $screen2
 
-workspace_auto_back_and_forth yes
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
 
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
@@ -151,27 +139,6 @@ bindsym $mod+Shift+F7 move container to workspace $WS17; workspace $WS17
 bindsym $mod+Shift+F8 move container to workspace $WS18; workspace $WS18
 bindsym $mod+Shift+F9 move container to workspace $WS19; workspace $WS19
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
-mode "resize" {
-        bindsym j resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym odiaeresis resize grow width 5 px or 5 ppt
-
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
     i3bar_command i3bar -t
     #tray_output none
@@ -192,18 +159,15 @@ bar {
     }
 }
 
-#for_window [class="^.*"] border pixel 3
-#assign [class="VirtualBox*"] workspace 3
-
 ## 自动启动
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec fcitx
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
+exec --no-startup-id /usr/lib/polkit-1-dde/dde-polkit-agent
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
-exec --no-startup-id /usr/lib/polkit-1-dde/dde-polkit-agent
 
 # 快捷键绑定
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
@@ -221,7 +185,7 @@ bindsym $mod+Return exec sakura
 bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
 bindsym $mod+Shift+q kill
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
-#bindsym $mod+Escape exec --no-startup-id ~/.local/bin/rofr.sh -l
+bindsym $mod+Shift+r restart
 
 set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
 mode $powerlist {
@@ -235,16 +199,18 @@ mode $powerlist {
 bindsym $mod+Escape mode $powerlist
 
 
-for_window [class="(?i)(?:qt5ct|pinentry)"] floating enable, focus
-for_window [class="(?i)(?:termite|thunar)"] focus
-for_window [class="(?i)(?:geany|firefox)"] focus
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Electronic WeChat"] floating enable sticky enable border normal
-for_window [class="netease-cloud-music"] floating enable sticky
-#for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
-#for_window [window_role="(?i)(?:pop-up|setup)"] floating enable
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym odiaeresis resize grow width 5 px or 5 ppt
 
-# Assign Applications to specific workspace
-# get class with xprop
-#assign [class="(?i)(?:firefox)"] → $WS2
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Up resize grow height 10 px or 10 ppt
+        bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
