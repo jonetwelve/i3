@@ -24,10 +24,6 @@ client.background       $bg
 # border & title.. Must be set to border pixel for gaps to work
 for_window [class="^.*"] border pixel 2, title_format "<b> %class >> %title </b>"
 
-# gaps
-gaps inner 4
-gaps outer 2
-
 # font
 font pango:DejaVu Sans Mono 10
 
@@ -155,10 +151,6 @@ bindsym $mod+Shift+F7 move container to workspace $WS17; workspace $WS17
 bindsym $mod+Shift+F8 move container to workspace $WS18; workspace $WS18
 bindsym $mod+Shift+F9 move container to workspace $WS19; workspace $WS19
 
-# switch to workspace with urgent window
-for_window [urgent="latest"] focus
-focus_on_window_activation   focus
-
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
@@ -249,8 +241,8 @@ for_window [class="(?i)(?:geany|firefox)"] focus
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Electronic WeChat"] floating enable sticky enable border normal
 for_window [class="netease-cloud-music"] floating enable sticky
-for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
-for_window [window_role="(?i)(?:pop-up|setup)"] floating enable
+#for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
+#for_window [window_role="(?i)(?:pop-up|setup)"] floating enable
 
 # Assign Applications to specific workspace
 # get class with xprop
