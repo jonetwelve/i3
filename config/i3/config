@@ -155,7 +155,7 @@ bindsym Mod1+Tab workspace next_on_output
 bindsym Mod1+ctrl+a --release exec scrot '%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots' -s
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
 bindsym $mod+Return exec sakura
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart
 
