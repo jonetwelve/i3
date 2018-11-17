@@ -1,61 +1,46 @@
-# global
+# 全局配置
 set $mod Mod4
-
 new_float normal
 hide_edge_borders none
 font pango:DejaVu Sans Mono 0
 floating_modifier $mod
-workspace_auto_back_and_forth yes
 
-# Theme colors
-client.focused #444444 #2ecc71 #000000 #FFFFFF
-client.unfocused #222222 #222222 #444444 #222222
-client.urgent #444444 #900000 #FFFFFF #900001
 
-# Open specific applications in floating mode
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Electronic WeChat"] floating enable sticky enable border normal
-for_window [class="netease-cloud-music"] floating enable sticky
-
-# 窗口切换
+# 窗口导航
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+odiaeresis move right
-
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-
+workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
-
 bindsym $mod+v split toggle
 bindsym $mod+f fullscreen toggle
-
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+s sticky toggle
 bindsym $mod+a focus parent
 
+
 # 显示器
 set $screen1 LVDS1
 set $screen2 VGA1
+
 
 # 工作空间
 set $WS1 "1"
@@ -95,10 +80,6 @@ workspace $WS16 output $screen2
 workspace $WS17 output $screen2
 workspace $WS18 output $screen2
 workspace $WS19 output $screen2
-
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
-
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
 bindsym $mod+3 workspace $WS3
@@ -108,7 +89,15 @@ bindsym $mod+6 workspace $WS6
 bindsym $mod+7 workspace $WS7
 bindsym $mod+8 workspace $WS8
 bindsym $mod+9 workspace $WS9
-
+bindsym $mod+Shift+1 move container to workspace number $WS1; workspace $WS1
+bindsym $mod+Shift+2 move container to workspace number $WS2; workspace $WS2
+bindsym $mod+Shift+3 move container to workspace number $WS3; workspace $WS3
+bindsym $mod+Shift+4 move container to workspace number $WS4; workspace $WS4
+bindsym $mod+Shift+5 move container to workspace number $WS5; workspace $WS5
+bindsym $mod+Shift+6 move container to workspace number $WS6; workspace $WS6
+bindsym $mod+Shift+7 move container to workspace number $WS7; workspace $WS7
+bindsym $mod+Shift+8 move container to workspace number $WS8; workspace $WS8
+bindsym $mod+Shift+9 move container to workspace number $WS9; workspace $WS9
 bindsym $mod+F1 workspace $WS11
 bindsym $mod+F2 workspace $WS12
 bindsym $mod+F3 workspace $WS13
@@ -118,17 +107,6 @@ bindsym $mod+F6 workspace $WS16
 bindsym $mod+F7 workspace $WS17
 bindsym $mod+F8 workspace $WS18
 bindsym $mod+F9 workspace $WS19
-
-bindsym $mod+Shift+1 move container to workspace $WS1; workspace $WS1
-bindsym $mod+Shift+2 move container to workspace $WS2; workspace $WS2
-bindsym $mod+Shift+3 move container to workspace $WS3; workspace $WS3
-bindsym $mod+Shift+4 move container to workspace $WS4; workspace $WS4
-bindsym $mod+Shift+5 move container to workspace $WS5; workspace $WS5
-bindsym $mod+Shift+6 move container to workspace $WS6; workspace $WS6
-bindsym $mod+Shift+7 move container to workspace $WS7; workspace $WS7
-bindsym $mod+Shift+8 move container to workspace $WS8; workspace $WS8
-bindsym $mod+Shift+9 move container to workspace $WS9; workspace $WS9
-
 bindsym $mod+Shift+F1 move container to workspace $WS11; workspace $WS11
 bindsym $mod+Shift+F2 move container to workspace $WS12; workspace $WS12
 bindsym $mod+Shift+F3 move container to workspace $WS13; workspace $WS13
@@ -139,25 +117,18 @@ bindsym $mod+Shift+F7 move container to workspace $WS17; workspace $WS17
 bindsym $mod+Shift+F8 move container to workspace $WS18; workspace $WS18
 bindsym $mod+Shift+F9 move container to workspace $WS19; workspace $WS19
 
+
 bar {
     i3bar_command i3bar -t
-    #tray_output none
-    tray_output primary
-    separator_symbol " | "
+    tray_output none
+    #tray_output primary
+    separator_symbol " -ღღ⇢ "
     workspace_buttons yes
     status_command i3pystatus --config ~/.config/i3/i3pystatus.py
     position top
     font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
-    colors {
-        separator #05c6f1
-        background #10101000
-        statusline #DDDDDD
-        focused_workspace #FFFFFF #2ECC71 #000000
-        active_workspace #000000 #A4A28D #FFFFFF
-        inactive_workspace #A4A28D #000000 #DDDDDD
-        urgent_workspace #2ECC71 #900000 #FFFFFF
-    }
 }
+
 
 ## 自动启动
 exec --no-startup-id compton --config ~/.config/compton.conf -b
@@ -169,7 +140,8 @@ exec --no-startup-id /usr/lib/polkit-1-dde/dde-polkit-agent
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
 
-# 快捷键绑定
+
+## 快捷键
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
@@ -181,12 +153,14 @@ bindsym $mod+t exec ~/.local/bin/touchpad
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Mod1+Tab workspace next_on_output
 bindsym Mod1+ctrl+a --release exec scrot '%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots' -s
-bindsym $mod+Return exec sakura
-bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
-bindsym $mod+Shift+q kill
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
+bindsym $mod+Return exec sakura
+bindsym $mod+d exec rofi -show run
+bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart
 
+
+## 电源管理
 set $powerlist "power: 1:poweroff 2:reboot 3:logout 4:lock"
 mode $powerlist {
     bindsym 1 exec sudo shutdown -h now
@@ -199,6 +173,7 @@ mode $powerlist {
 bindsym $mod+Escape mode $powerlist
 
 
+## 更改窗口大小
 bindsym $mod+r mode "resize"
 mode "resize" {
         bindsym j resize shrink width 5 px or 5 ppt
@@ -214,3 +189,9 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+
+## 特殊窗口设置
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Electronic WeChat"] floating enable sticky enable border normal
+for_window [class="netease-cloud-music"] floating enable sticky
