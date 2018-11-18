@@ -127,6 +127,15 @@ bar {
     status_command i3pystatus --config ~/.config/i3/i3pystatus.py
     position top
     font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
+	colors {
+        separator #05c6f1
+        background #10101000
+        statusline #DDDDDD
+        focused_workspace #FFFFFF #2ECC71 #000000
+        active_workspace #000000 #A4A28D #FFFFFF
+        inactive_workspace #A4A28D #000000 #DDDDDD
+        urgent_workspace #2ECC71 #900000 #FFFFFF
+    }
 }
 
 
