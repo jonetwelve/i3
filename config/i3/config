@@ -161,7 +161,7 @@ bindsym $mod+m scratchpad show
 bindsym $mod+t exec ~/.local/bin/touchpad
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Mod1+Tab workspace next_on_output
-bindsym Mod1+ctrl+a --release exec scrot '%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots' -s
+bindsym Mod1+ctrl+a --release exec flameshot gui
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
 bindsym $mod+Return exec sakura
 bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons

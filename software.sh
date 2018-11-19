@@ -45,6 +45,7 @@ sudo pacman -S --noconfirm eslint
 
 # software
 sudo pacman -S --noconfirm wine
+sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm gparted
 yaourt gitkraken
 sudo pacman -S --noconfirm mariadb
