@@ -24,9 +24,8 @@ let g:deoplete#enable_at_startup = 1
 Plug 'liuchengxu/vim-which-key'                                     " 底部现实快捷命令提示
 Plug 'yggdroot/indentline'                                          " 缩进线显示
 Plug 'jiangmiao/auto-pairs'                                         " 自动不全成对括号
+Plug 'thinca/vim-quickrun'
 " python"
-Plug 'davidhalter/jedi-vim'
-Plug 'jmcantrell/vim-virtualenv',  { 'for' : 'python'}              " python 虚拟环境
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
 Plug 'heavenshell/vim-pydocstring'                                  " 自动生成代码文档
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
@@ -46,7 +45,8 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               插件配置
 "--------->
-" fzf
+" quickrun
+let g:quickrun_no_default_key_mappings=1
 
 "--------->
 " airline
@@ -212,17 +212,33 @@ let g:which_key_map.t = {
             \ }
 nnoremap <Leader>tc :g/^\s*$/d<CR>
 map <Leader>ti :call AutoImport()<CR>
-map <Leader>tr :call RunScript()<CR>
+map <Leader>tr :QuickRun<CR>
 nmap <Leader>tf :call Jformater()<CR>
 nmap <Leader>td :call InsertDoc()<CR>
-
-nmap <F7> :TODOToggle<CR>
-nmap <F8> :TagbarToggle<CR>
+let g:which_key_map.m = {
+            \ "name":"标签",
+            \ "t":"toggle标签",
+            \ "l":"list标签"
+            \ }
+nmap <leader>mt m
+nmap <leader>ml :SignatureListBufferMarks<cr>
+let g:which_key_map.x = {
+            \ "name":"tools",
+            \ "w":"workers need todo",
+            \ "t":"tagbar"
+            \ }
+nmap <leader>xw :TODOToggle<CR>
+nmap <leader>xt :TagbarToggle<CR>
 call which_key#register('<Space>', "g:which_key_map")
 
 "--------->
 " deoplete
 let g:deoplete#enable_at_startup = 1
+
+"--------->
+" pymode
+let g:pymode_run = 0
+let g:pymode_breakpoint = 0
 
 "--------->
 " jedi"
@@ -263,21 +279,6 @@ func! AutoImport()
         exec "ImportName"
     elseif &filetype == 'php'
         call PhpExpandClass()
-    endif
-endfunc
-
-"--------->
-" 按F5编译运行
-func! RunScript()
-    exec "w"
-    if &filetype == 'python'
-        exec "!time python3 %"
-    elseif &filetype == 'html'
-        exec "!firefox % &"
-    elseif &filetype == 'php'
-        exec "!php %"
-    elseif &filetype == 'go'
-        exec "!time go run %"
     endif
 endfunc
 
