@@ -44,6 +44,7 @@ sudo pacman -S --noconfirm eslint
 
 
 # software
+sudo pacman -S --noconfirm the_silver_searcher
 sudo pacman -S --noconfirm wine
 sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm gparted

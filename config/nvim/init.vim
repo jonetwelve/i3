@@ -4,10 +4,8 @@ au BufNewFile,BufRead *.wxss    setf css
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               插件
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree',                                         " 文件树
 Plug 'majutsushi/tagbar',          { 'on': 'TagbarToggle'}          " tagbar
 Plug 'bling/vim-airline'                                            " airline
-Plug 'junegunn/vim-easy-align'										" 代码对其
 Plug 'sbdchd/neoformat'                                             " 自动格式化,js:pip install jsbeautifier,
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
 Plug 'dyng/ctrlsf.vim'												" 文件夹下查找字符
@@ -18,14 +16,21 @@ Plug 'scrooloose/nerdcommenter'										" 注释快捷键
 Plug 'kshenoy/vim-signature'										" 标记跳转点
 Plug 'mhinz/vim-startify'											" 启动界面修改
 Plug 'vim-scripts/todo-vim'										    " todo
-Plug 'kien/ctrlp.vim'												" 查找并打开文件
+Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/tools', 
+            \ 'do': './install --all' }                             " 多功能查找工具
+Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }		" 黑魔法补全
 let g:deoplete#enable_at_startup = 1
+Plug 'liuchengxu/vim-which-key'                                     " 底部现实快捷命令提示
+Plug 'yggdroot/indentline'                                          " 缩进线显示
+Plug 'jiangmiao/auto-pairs'                                         " 自动不全成对括号
 " python"
 Plug 'davidhalter/jedi-vim'
 Plug 'jmcantrell/vim-virtualenv',  { 'for' : 'python'}              " python 虚拟环境
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
 Plug 'heavenshell/vim-pydocstring'                                  " 自动生成代码文档
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
+let g:pymode_python = 'python3'
 " php
 " format php file, need command:php-cs-fixer
 Plug 'vim-scripts/PDV--phpDocumentor-for-Vim'                       " 自动生成代码文档
@@ -34,13 +39,14 @@ Plug 'mxw/vim-jsx'
 Plug 'chemzqm/vim-jsx-improve'
 " html"
 Plug 'othree/html5.vim'                                             " h5支持n
-Plug 'mattn/emmet-vim'
 " golang"
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               插件配置
+"--------->
+" fzf
 
 "--------->
 " airline
@@ -67,12 +73,6 @@ let g:airline#extensions#taboo#enabled           = 0
 let g:airline#extensions#tagbar#enabled          = 0
 let g:airline#extensions#virtualenv#enabled      = 0
 let g:airline#extensions#whitespace#enabled      = 0
-
-"--------->
-" nerdtree
-let NERDTreeIgnore=['.*\.pyc', '__pycache__']
-let g:nerdtree_tabs_open_on_console_startup=0
-let NERDTreeShowBookmarks=1
 
 "--------->
 " ale
@@ -157,13 +157,13 @@ let g:startify_session_autoload = 1
 let g:startify_padding_left = 11
 "自定义Header和Footer
 let g:startify_custom_header = ['    *-------------------------------------------------------------------*',
-\'    |  F2:去除空行                             +/-:选取模块             |',
-\'    |  F4:自动import                           mx:当前位置打标签x       |',
-\"    |  F7:TODOToggle                           'x:跳转到标签x           |",
-\'    |  F8:Tagbar                               m<Space>:删除所有标签    |',
-\'    |  F9:插入注释文档                         \c<space>:取消注释       |',
-\'    |  <leader>ss:文件夹里查找                 \cc:单行注释             |',
-\'    |  <c-y>,:emmet补全                        \cs:块注释               |',
+\'    |  +/-:选取模块                                                     |',
+\'    |  mx:当前位置打标签x                                               |',
+\"    |  'x:跳转到标签x                                                   |",
+\'    |  m<Space>:删除所有标签                                            |',
+\'    |  \c<space>:取消注释                                               |',
+\'    |  \cc:单行注释                                                     |',
+\'    |                                                                   |',
 \'    *-------------------------------------------------------------------*',
 \'       o',
 \'        o   ^__^',
@@ -171,6 +171,54 @@ let g:startify_custom_header = ['    *------------------------------------------
 \'            (__)\       )\/\',
 \'                ||----w |',
 \'                ||     ||']
+
+"--------->
+" vim-which-key
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ","
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+set timeoutlen=10
+let g:which_key_map =  {}
+" vim-which-key基本配置完毕
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+let g:which_key_map.b = { 'name':"buffer" }
+let g:which_key_map.b.s = "switch buffer"
+" fzf 搜索buffer
+nnoremap <leader>bs :Buffers <cr>
+let g:which_key_map.b.d = "Delete buffer"
+nmap <leader>bd :bd<cr>
+let g:which_key_map.s = {
+            \ "name":"搜索",
+            \ "f":"搜索files",
+            \ "t":"搜索text",
+            \ 's':"Ctrlsf搜索"
+            \ }
+nnoremap <Leader>ss :CtrlSF 
+" fzf搜索文件
+nnoremap <leader>sf :Files<cr>      
+" fzf 搜索文字
+nnoremap <leader>st :Ag 
+let g:which_key_map.c = {"name":"注释"}
+let g:which_key_map.t = {
+            \ "name":"代码",
+            \ "c":"clean 空格",
+            \ "i":"自动import",
+            \ "r":"run",
+            \ "f":"format",
+            \ "d":"插入doc"
+            \ }
+nnoremap <Leader>tc :g/^\s*$/d<CR>
+map <Leader>ti :call AutoImport()<CR>
+map <Leader>tr :call RunScript()<CR>
+nmap <Leader>tf :call Jformater()<CR>
+nmap <Leader>td :call InsertDoc()<CR>
+
+nmap <F7> :TODOToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+call which_key#register('<Space>', "g:which_key_map")
 
 "--------->
 " deoplete
@@ -183,12 +231,13 @@ let g:jedi#auto_initialization    = 1
 let g:jedi#auto_vim_configuration = 1
 let g:jedi#use_tabs_not_buffers   = 1
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               自定义方法
 "--------->
 "新建.py文件，自动插入文件头
-autocmd bufnewfile *.py call HeaderPython()
-function HeaderPython()
+autocmd bufnewfile *.py call HeaderOfPython()
+func! HeaderOfPython()
     call setline(1, "#!/usr/bin/env python")
     call append(1, "# -*- coding: utf-8 -*-")
     call append(2, "")
@@ -199,8 +248,8 @@ function HeaderPython()
 endf
 "--------->
 "新建.php文件，自动插入文件头
-autocmd bufnewfile *.php call HeaderPHP()
-function HeaderPHP()
+autocmd bufnewfile *.php call HeaderOfPHP()
+func! HeaderOfPHP()
     call setline(1, "<?php")
     normal G
     normal o
@@ -208,7 +257,7 @@ function HeaderPHP()
 endf
 
 "--------->
-" 按F4自动impor
+" 按F4自动import
 func! AutoImport()
     if &filetype == 'python'
         exec "ImportName"
@@ -252,7 +301,6 @@ func! InsertDoc()
     elseif &filetype == 'php'
         call PhpDocSingle()
     endif
-
 endfunc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -272,6 +320,14 @@ set shiftwidth=4
 autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
+au BufNewFile,BufRead *.py
+\ set tabstop=4   "tab宽度
+\ set softtabstop=4
+\ set shiftwidth=4
+\ set textwidth=79  "行最大宽度
+\ set expandtab       "tab替换为空格键
+\ set autoindent      "自动缩进
+\ set fileformat=unix   "保存文件格式
 autocmd BufRead *.* setlocal ts=4 sts=4 sw=4 expandtab
 filetype indent on
 set fileformat=unix
@@ -333,62 +389,6 @@ set sessionoptions-=options
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               快捷键
-nnoremap <Leader>w :w<cr>
-nnoremap <Leader>q :q<cr>
-
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {}<Esc>i
-inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
-
-"--------->
-"去空行
-nnoremap <F2> :g/^\s*$/d<CR>
-
-"--------->
-" NERDT
-map <F3> <ESC>:NERDTreeMirror<CR>
-map <F3> <ESC>:NERDTreeToggle<CR>
-
-"--------->
-" 自动import
-map <F4> :call AutoImport()<CR>
-
-"--------->
-" 运行代码
-map <F5> :call RunScript()<CR>
-
-"--------->
-"--------->
-" neoformat,格式化代码
-nmap <F6> :call Jformater()<CR>
-""nmap <F6> :Neoformat<CR>
-
-"--------->
-"todo
-nmap <F7> :TODOToggle<CR>
-
-"--------->
-" tagbar"
-nmap <F8> :TagbarToggle<CR>
-
-"--------->
-" insert doc"
-nmap <F9> :call InsertDoc()<CR>
-
-"--------->
-" airline
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-
 "--------->
 " 切换打开的窗口"
 nnoremap <C-J> <C-W><C-J>
@@ -397,22 +397,5 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "--------->
-" tab"
-imap <silent><C-n> <ESC><ESC>:tabnew<cr>
-nmap <silent><C-n> <ESC><ESC>:tabnew<cr>
-imap <silent><C-w> <ESC><ESC>:tabc!<cr>
-nmap <silent><C-w> <ESC><ESC>:tabc!<cr>
-""nmap <silent><tab> <ESC><ESC>:bn<CR>
-
-"--------->
 " copy to system clipboard
 vnoremap <C-y> "+y
-
-"--------->
-" 查找插件
-nnoremap <Leader>ss :CtrlSF
-
-"--------->
-" vim-easy-align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
