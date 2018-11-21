@@ -1,10 +1,12 @@
 # 全局配置
 set $mod Mod4
 new_float normal
-hide_edge_borders none
+hide_edge_borders smart
 font pango:DejaVu Sans Mono 0
 floating_modifier $mod
-
+workspace_auto_back_and_forth yes
+focus_follows_mouse no
+force_focus_wrapping yes
 
 # 窗口导航
 bindsym $mod+h focus left
@@ -23,7 +25,6 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 bindsym $mod+v split toggle
@@ -119,9 +120,14 @@ bindsym $mod+Shift+F9 move container to workspace $WS19; workspace $WS19
 
 
 bar {
+	#mode dock|hide|invisible
     i3bar_command i3bar -t
-    tray_output none
-    #tray_output primary
+	bindsym button1 nop
+	tray_padding 0
+	output $screen1
+    #tray_output none
+    tray_output $screen1
+	tray_padding 0
     separator_symbol " -ღღ⇢ "
     workspace_buttons yes
     status_command i3pystatus --config ~/.config/i3/i3pystatus.py
@@ -141,11 +147,11 @@ bar {
 
 ## 自动启动
 exec --no-startup-id compton --config ~/.config/compton.conf -b
-exec --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
+exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec fcitx
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id nm-applet
-exec --no-startup-id /usr/lib/polkit-1-dde/dde-polkit-agent
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id /usr/lib/polkit-1-dde/dde-polkit-agent
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
 
@@ -158,15 +164,13 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+m scratchpad show
-bindsym $mod+t exec ~/.local/bin/touchpad
-bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Mod1+Tab workspace next_on_output
-bindsym Mod1+ctrl+a --release exec flameshot gui
+bindsym --release Mod1+ctrl+a exec flameshot gui
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
 bindsym $mod+Return exec sakura
 bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
 bindsym $mod+Shift+q kill
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r reload
 
 
 ## 电源管理

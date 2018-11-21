@@ -194,9 +194,11 @@ let g:which_key_map.s = {
             \ "name":"搜索",
             \ "f":"搜索files",
             \ "t":"搜索text",
-            \ 's':"Ctrlsf搜索"
+            \ 's':"Ctrlsf搜索",
+            \ 'n':"no搜索高亮"
             \ }
 nnoremap <Leader>ss :CtrlSF 
+nnoremap <leader>sn :nohl<cr>
 " fzf搜索文件
 nnoremap <leader>sf :Files<cr>      
 " fzf 搜索文字
