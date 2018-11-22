@@ -64,6 +64,7 @@ sudo pacman -S --noconfirm pkgfile
 sudo pkgfile --update
 yaourt global
 yaourt idutils
+yaourt php-cs-fixer
 sudo pacman -S --noconfirm medit
 sudo pacman -S --noconfirm sakura
 sudo pacman -S --noconfirm scrot
@@ -72,7 +73,7 @@ sudo pacman -S --noconfirm ttf-ionicons
 sudo pacman -S --noconfirm arc-icon-theme
 sudo pacman -S --noconfirm arc-gtk-theme
 yaourt electronic-wechat
-yaourt command-not-found 
+yaourt command-not-found
 
 # i3
 sudo pacman -S --noconfirm i3-gaps

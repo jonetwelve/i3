@@ -1,58 +1,176 @@
-au BufNewFile,BufRead *.wxml    setf xml
-au BufNewFile,BufRead *.wxss    setf css
+"*****************************************************************************
+"" Vim-PLug 安装
+"*****************************************************************************
+let vimplug_exists=expand('~/.local/share/nvim/site/autoload/plug.vim')
+if !filereadable(vimplug_exists)
+  if !executable("curl")
+    echoerr "You have to install curl or first install vim-plug yourself!"
+    execute "q!"
+  endif
+  echo "Installing Vim-Plug..."
+  echo ""
+  silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim
+  \ --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               插件
+
+"*****************************************************************************
+"" 插件列表
+"*****************************************************************************
 call plug#begin('~/.config/nvim/plugged')
+
+Plug 'duff/vim-trailing-whitespace'
 Plug 'majutsushi/tagbar',          { 'on': 'TagbarToggle'}          " tagbar
 Plug 'bling/vim-airline'                                            " airline
 Plug 'sbdchd/neoformat'                                             " 自动格式化,js:pip install jsbeautifier,
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
-Plug 'dyng/ctrlsf.vim'												" 文件夹下查找字符
+Plug 'dyng/ctrlsf.vim'                                              " 文件夹下查找字符
 Plug 'joshdick/onedark.vim'                                         " 黑色主题
 Plug 'terryma/vim-expand-region'                                    " +,_快捷键选择区域块
 Plug 'w0rp/ale'                                                     " 语法检查,在左边栏显示警告和错误
-Plug 'scrooloose/nerdcommenter'										" 注释快捷键
-Plug 'kshenoy/vim-signature'										" 标记跳转点
-Plug 'mhinz/vim-startify'											" 启动界面修改
-Plug 'vim-scripts/todo-vim'										    " todo
-Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/tools', 
+Plug 'scrooloose/nerdcommenter'                                     " 注释快捷键
+Plug 'kshenoy/vim-signature'	                                    " 标记跳转点
+Plug 'mhinz/vim-startify'                                           " 启动界面修改
+Plug 'vim-scripts/todo-vim'	                                        " todo
+Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/tools',
             \ 'do': './install --all' }                             " 多功能查找工具
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }		" 黑魔法补全
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }       " 黑魔法补全
 let g:deoplete#enable_at_startup = 1
 Plug 'liuchengxu/vim-which-key'                                     " 底部现实快捷命令提示
 Plug 'yggdroot/indentline'                                          " 缩进线显示
 Plug 'jiangmiao/auto-pairs'                                         " 自动不全成对括号
 Plug 'thinca/vim-quickrun'
+
 " python"
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
 Plug 'heavenshell/vim-pydocstring'                                  " 自动生成代码文档
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 let g:pymode_python = 'python3'
+
 " php
 " format php file, need command:php-cs-fixer
 Plug 'vim-scripts/PDV--phpDocumentor-for-Vim'                       " 自动生成代码文档
+
 " js"
 Plug 'mxw/vim-jsx'
 Plug 'chemzqm/vim-jsx-improve'
+
 " html"
-Plug 'othree/html5.vim'                                             " h5支持n
+Plug 'othree/html5.vim'                                             " h5支持
+Plug 'gorodinskiy/vim-coloresque'                                   " 颜色显示
+
 " golang"
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'nsf/gocode', { 'rtp': 'nvim',                                 
-            \ 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' } 
+Plug 'nsf/gocode', { 'rtp': 'nvim',
+            \ 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+
 call plug#end()
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               插件配置
+
+"*****************************************************************************
+"" 基础设置
+"*****************************************************************************"
+syntax on
+syntax enable
+filetype indent on
+filetype plugin on
+au BufNewFile,BufRead *.wxml    setf xml
+au BufNewFile,BufRead *.wxss    setf css
+"自动、智能缩进
+autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
+autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
+autocmd BufNewFile,BufRead *.py
+\ set tabstop=4   "tab宽度
+\ set softtabstop=4
+\ set shiftwidth=4
+\ set textwidth=79  "行最大宽度
+\ set expandtab       "tab替换为空格键
+\ set autoindent      "自动缩进
+\ set fileformat=unix   "保存文件格式
+autocmd BufRead *.* setlocal ts=4 sts=4 sw=4 expandtab
+hi SignColumn guibg=grey guifg=red
+let mapleader="\<space>"
+set backspace=indent,eol,start
+set number                            " 显示行号
+set hls                               " 搜索高亮
+set ic                                " 搜索忽略大小写"
+set autoindent                        " 设置自动缩进"
+set tabstop=4                         " tag长度"
+set softtabstop=4                     " 用空格代替tab"
+set shiftwidth=4
+set fileformat=unix
+set smarttab
+set smartindent
+set bsdir=buffer                      " 文件浏览目录为当前目录"
+set autoread                          " 文件被修改后自动加载"
+set nowrap                            " 关闭自动换行"
+set encoding=utf-8
+set clipboard=unnamed                 " 支持系统剪切板"
+set mouse=a                           " 设置可以使用鼠标变化窗口大小"
+set scrolloff=3                       " 光标移动到buffer的顶部和底部时保持3行距离
+set completeopt=preview,menu          " 代码补全
+set autowrite                         " 自动保存
+set termguicolors
+set showcmd                           " display incomplete commands
+set cursorline                        " cursorcolumn
+set cc=140
+set foldmethod=indent                 " 默认展开所有代码
+set foldlevelstart=99
+set fileencodings=utf-8,chinese       " 中文乱码
+set hid                               " buffer cecomes hidden when abandoned
+
 "--------->
+"记录光标位置
+augroup resCur
+  autocmd!
+  autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
+
+"--------->
+"备份相关
+set undodir=~/.config/nvim/undodir
+set undofile
+set undolevels=100
+set undoreload=1000
+
+set backupdir=~/.config/nvim/backup
+set directory=~/.config/nvim/backup
+
+set so=5                " scroll lines above/below cursor
+set sidescrolloff=5
+set lazyredraw
+
+set magic               " for regular expressions
+
+if &history < 1000
+  set history=1000
+endif
+if &tabpagemax < 50
+  set tabpagemax=50
+endif
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+set sessionoptions-=options
+
+
+
+"*****************************************************************************
+"" 插件配置
+"*****************************************************************************"
 " quickrun
 let g:quickrun_no_default_key_mappings=1
 
 "--------->
 " vim-go
+let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
+let g:syntastic_go_checkers = ['golint', 'govet']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 "--------->
 " airline
@@ -77,7 +195,7 @@ let g:airline#extensions#nrrwrgn#enabled         = 0
 let g:airline#extensions#promptline#enabled      = 0
 let g:airline#extensions#taboo#enabled           = 0
 let g:airline#extensions#tagbar#enabled          = 0
-let g:airline#extensions#virtualenv#enabled      = 0
+let g:airline#extensions#virtualenv#enabled      = 1
 let g:airline#extensions#whitespace#enabled      = 0
 
 "--------->
@@ -162,7 +280,8 @@ let g:startify_files_number = 5
 let g:startify_session_autoload = 1
 let g:startify_padding_left = 11
 "自定义Header和Footer
-let g:startify_custom_header = ['    *-------------------------------------------------------------------*',
+let g:startify_custom_header = [
+\'    *-------------------------------------------------------------------*',
 \'    |  +/-:选取模块                                                     |',
 \'    |  mx:当前位置打标签x                                               |',
 \"    |  'x:跳转到标签x                                                   |",
@@ -203,12 +322,12 @@ let g:which_key_map.s = {
             \ 's':"Ctrlsf搜索",
             \ 'n':"no搜索高亮"
             \ }
-nnoremap <Leader>ss :CtrlSF 
+nnoremap <Leader>ss :CtrlSF
 nnoremap <leader>sn :nohl<cr>
 " fzf搜索文件
-nnoremap <leader>sf :Files<cr>      
+nnoremap <leader>sf :Files<cr>
 " fzf 搜索文字
-nnoremap <leader>st :Ag 
+nnoremap <leader>st :Ag
 let g:which_key_map.c = {"name":"注释"}
 let g:which_key_map.t = {
             \ "name":"代码",
@@ -241,7 +360,7 @@ call which_key#register('<Space>', "g:which_key_map")
 
 "--------->
 " tagbar
-let g:tagbar_type_go = { 
+let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
         \ 'p:package',
@@ -284,12 +403,14 @@ let g:jedi#completions_enabled    = 1
 let g:jedi#auto_initialization    = 1
 let g:jedi#auto_vim_configuration = 1
 let g:jedi#use_tabs_not_buffers   = 1
+let g:jedi#popup_on_dot = 0
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               自定义方法
+"*****************************************************************************
+"" 自定义方法
+"*****************************************************************************
 "--------->
-"新建.py文件，自动插入文件头
+" 新建.py文件，自动插入文件头
 autocmd bufnewfile *.py call HeaderOfPython()
 func! HeaderOfPython()
     call setline(1, "#!/usr/bin/env python")
@@ -300,8 +421,9 @@ func! HeaderOfPython()
     normal o
     normal o
 endf
+
 "--------->
-"新建.php文件，自动插入文件头
+" 新建.php文件，自动插入文件头
 autocmd bufnewfile *.php call HeaderOfPHP()
 func! HeaderOfPHP()
     call setline(1, "<?php")
@@ -311,7 +433,7 @@ func! HeaderOfPHP()
 endf
 
 "--------->
-" 按F4自动import
+" 自动import
 func! AutoImport()
     if &filetype == 'python'
         exec "ImportName"
@@ -321,7 +443,7 @@ func! AutoImport()
 endfunc
 
 "--------->
-" 按F6格式化代码
+" 格式化代码
 func! Jformater()
     if &filetype == 'html'
         exec "Neoformat! html js-beautify"
@@ -333,7 +455,7 @@ func! Jformater()
 endfunc
 
 "--------->
-" 按F9插入方法注释
+" 插入方法注释
 func! InsertDoc()
     if &filetype == 'python'
         exec "Pydocstring"
@@ -342,92 +464,10 @@ func! InsertDoc()
     endif
 endfunc
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               通用配置
-syntax on
-syntax enable
-filetype plugin on
-let mapleader="\<space>"
-set number                            " 显示行号
-set hls                               " 搜索高亮
-set ic                                " 搜索忽略大小写"
-set autoindent                        " 设置自动缩进"
-set tabstop=4                         " tag长度"
-set softtabstop=4                     " 用空格代替tab"
-set shiftwidth=4
-"自动、智能缩进
-autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
-autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
-autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
-au BufNewFile,BufRead *.py
-\ set tabstop=4   "tab宽度
-\ set softtabstop=4
-\ set shiftwidth=4
-\ set textwidth=79  "行最大宽度
-\ set expandtab       "tab替换为空格键
-\ set autoindent      "自动缩进
-\ set fileformat=unix   "保存文件格式
-autocmd BufRead *.* setlocal ts=4 sts=4 sw=4 expandtab
-filetype indent on
-set fileformat=unix
-set smarttab
-set smartindent
-set bsdir=buffer                      " 文件浏览目录为当前目录"
-set autoread                          " 文件被修改后自动加载"
-set nowrap                            " 关闭自动换行"
-set encoding=utf-8
-set clipboard=unnamed                 " 支持系统剪切板"
-set mouse=a                           " 设置可以使用鼠标变化窗口大小"
-set scrolloff=3                       " 光标移动到buffer的顶部和底部时保持3行距离
-set completeopt=preview,menu          " 代码补全
-set autowrite                         " 自动保存
-set termguicolors
-set showcmd                           " display incomplete commands
-set cursorline                        " cursorcolumn
-set cc=140
-set foldmethod=indent                 " 默认展开所有代码
-set foldlevelstart=99
-set fileencodings=utf-8,chinese       " 中文乱码
-hi SignColumn guibg=grey guifg=red
-set hid                               " buffer cecomes hidden when abandoned
 
-"--------->
-"记录光标位置
-augroup resCur
-  autocmd!
-  autocmd BufReadPost * call setpos(".", getpos("'\""))
-augroup END
-
-"--------->
-"备份相关
-set undodir=~/.config/nvim/undodir
-set undofile
-set undolevels=100
-set undoreload=1000
-
-set backupdir=~/.config/nvim/backup
-set directory=~/.config/nvim/backup
-
-set so=5                " scroll lines above/below cursor
-set sidescrolloff=5
-set lazyredraw
-
-set magic               " for regular expressions
-
-if &history < 1000
-  set history=1000
-endif
-if &tabpagemax < 50
-  set tabpagemax=50
-endif
-if !empty(&viminfo)
-  set viminfo^=!
-endif
-set sessionoptions-=options
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               快捷键
+"*****************************************************************************
+"" 快捷键
+"*****************************************************************************
 "--------->
 " 切换打开的窗口"
 nnoremap <C-J> <C-W><C-J>

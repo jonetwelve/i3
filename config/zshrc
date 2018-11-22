@@ -1,8 +1,6 @@
 export ZSH="/home/`whoami`/.oh-my-zsh"
 export MODE=DEV
 export PATH="$PATH:/home/`whoami`/go/bin"
-export GOPATH="/home/`whoami`/go"
-export GOROOT="/usr/lib/go"
 
 ZSH_THEME="robbyrussell"
 
