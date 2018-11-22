@@ -40,6 +40,8 @@ Plug 'chemzqm/vim-jsx-improve'
 Plug 'othree/html5.vim'                                             " h5支持n
 " golang"
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'nsf/gocode', { 'rtp': 'nvim',                                 
+            \ 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' } 
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -47,6 +49,10 @@ call plug#end()
 "--------->
 " quickrun
 let g:quickrun_no_default_key_mappings=1
+
+"--------->
+" vim-go
+let g:go_fmt_command = "goimports"
 
 "--------->
 " airline
@@ -232,6 +238,36 @@ let g:which_key_map.x = {
 nmap <leader>xw :TODOToggle<CR>
 nmap <leader>xt :TagbarToggle<CR>
 call which_key#register('<Space>', "g:which_key_map")
+
+"--------->
+" tagbar
+let g:tagbar_type_go = { 
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }
 
 "--------->
 " deoplete
