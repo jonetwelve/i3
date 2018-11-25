@@ -36,26 +36,30 @@ Plug 'vim-scripts/todo-vim'	                                        " todo
 Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/tools',
             \ 'do': './install --all' }                             " 多功能查找工具
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }       " 黑魔法补全
-let g:deoplete#enable_at_startup = 1
+Plug 'shougo/echodoc'
 Plug 'liuchengxu/vim-which-key'                                     " 底部现实快捷命令提示
 Plug 'yggdroot/indentline'                                          " 缩进线显示
 Plug 'jiangmiao/auto-pairs'                                         " 自动不全成对括号
-Plug 'thinca/vim-quickrun'
+Plug 'thinca/vim-quickrun'                                          " 运行代码
+Plug 'valloric/youcompleteme'
+Plug 'sirver/ultisnips'                                             " 代码块补全
+Plug 'honza/vim-snippets'                                           " 代码块补全
 
 " python"
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
 Plug 'heavenshell/vim-pydocstring'                                  " 自动生成代码文档
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
-let g:pymode_python = 'python3'
+Plug 'davidhalter/jedi-vim'                                         " python 支持
 
 " php
 " format php file, need command:php-cs-fixer
 Plug 'vim-scripts/PDV--phpDocumentor-for-Vim'                       " 自动生成代码文档
+Plug 'shawncplus/phpcomplete.vim'
 
 " js"
-Plug 'mxw/vim-jsx'
-Plug 'chemzqm/vim-jsx-improve'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/yajs.vim'
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 
 " html"
 Plug 'othree/html5.vim'                                             " h5支持
@@ -63,8 +67,6 @@ Plug 'gorodinskiy/vim-coloresque'                                   " 颜色显�
 
 " golang"
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'nsf/gocode', { 'rtp': 'nvim',
-            \ 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 call plug#end()
 
@@ -157,12 +159,30 @@ endif
 set sessionoptions-=options
 
 
-
 "*****************************************************************************
 "" 插件配置
 "*****************************************************************************"
+"--------->
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"--------->
+" youcompleteme
+let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_confi.py'
+let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+
+"--------->
 " quickrun
 let g:quickrun_no_default_key_mappings=1
+
+"--------->
+" javascript-libraries-syntax
+autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_vue = 1
 
 "--------->
 " vim-go
@@ -261,7 +281,7 @@ let g:indentLine_char='┆'
 let g:indentLine_enabled = 1
 
 "--------->
-" gruvbox
+" theme
 colorscheme onedark
 set background=dark
 
@@ -309,12 +329,42 @@ let g:which_key_map =  {}
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
 let g:which_key_map.b = { 'name':"buffer" }
 let g:which_key_map.b.s = "switch buffer"
 " fzf 搜索buffer
 nnoremap <leader>bs :Buffers <cr>
 let g:which_key_map.b.d = "Delete buffer"
 nmap <leader>bd :bd<cr>
+
+let g:which_key_map.c = {"name":"注释"}
+
+let g:which_key_map.g = {
+            \ "name":"golang",
+            \ "d":"def",
+            \ "t":"text of doc"
+            \ }
+au FileType go nmap <leader>gd <Plug>(go-def-vertical)
+au FileType go nmap <leader>gt <Plug>(go-doc-vertical)
+
+let g:which_key_map.m = {
+            \ "name":"标签",
+            \ "t":"toggle标签",
+            \ "l":"list标签"
+            \ }
+nmap <leader>mt m
+nmap <leader>ml :SignatureListBufferMarks<cr>
+
+let g:which_key_map.p = {
+            \ "name":"plugin",
+            \ "i":"install",
+            \ "c":"clean",
+            \ "u":"update",
+            \ }
+nmap <leader>pi :PlugInstall<cr>
+nmap <leader>pc :PlugClean<cr>
+nmap <leader>pu :PlugUpdate<cr>
+
 let g:which_key_map.s = {
             \ "name":"搜索",
             \ "f":"搜索files",
@@ -328,7 +378,7 @@ nnoremap <leader>sn :nohl<cr>
 nnoremap <leader>sf :Files<cr>
 " fzf 搜索文字
 nnoremap <leader>st :Ag
-let g:which_key_map.c = {"name":"注释"}
+
 let g:which_key_map.t = {
             \ "name":"代码",
             \ "c":"clean 空格",
@@ -342,13 +392,7 @@ map <Leader>ti :call AutoImport()<CR>
 map <Leader>tr :QuickRun<CR>
 nmap <Leader>tf :call Jformater()<CR>
 nmap <Leader>td :call InsertDoc()<CR>
-let g:which_key_map.m = {
-            \ "name":"标签",
-            \ "t":"toggle标签",
-            \ "l":"list标签"
-            \ }
-nmap <leader>mt m
-nmap <leader>ml :SignatureListBufferMarks<cr>
+
 let g:which_key_map.x = {
             \ "name":"tools",
             \ "w":"workers need todo",
@@ -356,8 +400,10 @@ let g:which_key_map.x = {
             \ }
 nmap <leader>xw :TODOToggle<CR>
 nmap <leader>xt :TagbarToggle<CR>
+
 call which_key#register('<Space>', "g:which_key_map")
 
+let g:go_def_reuse_buffer = 0
 "--------->
 " tagbar
 let g:tagbar_type_go = {
@@ -389,21 +435,10 @@ let g:tagbar_type_go = {
     \ }
 
 "--------->
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
-"--------->
 " pymode
 let g:pymode_run = 0
 let g:pymode_breakpoint = 0
-
-"--------->
-" jedi"
-let g:jedi#completions_enabled    = 1
-let g:jedi#auto_initialization    = 1
-let g:jedi#auto_vim_configuration = 1
-let g:jedi#use_tabs_not_buffers   = 1
-let g:jedi#popup_on_dot = 0
+let g:pymode_python = 'python3'
 
 
 "*****************************************************************************
