@@ -60,7 +60,6 @@ function jconfig(){
   pacman -Syy
 	pacman -S --noconfirm libreoffice
 	pacman -S --noconfirm chromium
-  pacman -S --noconfirm lightdm
   pacman -S --noconfirm network-manager-applet
 	pacman -S --noconfirm gimp
 	pacman -S --noconfirm git
@@ -73,7 +72,6 @@ function jconfig(){
 	pacman -S --noconfirm epdfview
 	pacman -S --noconfirm dosfstools
 	pacman -S --noconfirm volumeicon
-	pacman -S --noconfirm lightdm-gtk-greeter
 	pacman -S --noconfirm networkmanager-openconnect
 	pacman -S --noconfirm networkmanager-openvpn
 	pacman -S --noconfirm networkmanager-pptp
@@ -113,9 +111,6 @@ function jconfig(){
   pacman --noconfirm -S powerline-fonts
   pacman -S --noconfirm wget
   pacman --noconfirm -S ntfs-3g
-  pacman --noconfirm -S deepin
-  pacman --noconfirm -S deepin-screen-recorder
-  systemctl enable lightdm
 
   rm -rf /etc/skel/*
   echo 'export GTK_IM_MODULE=fcitx' >> /etc/skel/.xprofile
@@ -162,8 +157,6 @@ function jconfig(){
 
   echo "jone ALL=(ALL) ALL" >> /etc/sudoers
   echo "Defaults:jone      !authenticate" >> /etc/sudoers
-
-  systemctl enable lightdm
 
   clear
   echo "Install over . "

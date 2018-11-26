@@ -8,13 +8,12 @@ sudo pip install autoflake
 sudo pip install yapf
 sudo pip install isort
 
+
 # neovim
 sudo pacman -S --noconfirm go yaourt powerpill
 yaourt ttf-font-icons
 
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # docker
 sudo pacman -S --noconfirm docker
@@ -66,14 +65,26 @@ yaourt global
 yaourt idutils
 yaourt php-cs-fixer
 sudo pacman -S --noconfirm medit
+sudo pacman -S --noconfirm gpicview
+sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm sakura
-sudo pacman -S --noconfirm scrot
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
 sudo pacman -S --noconfirm arc-icon-theme
 sudo pacman -S --noconfirm arc-gtk-theme
+sudo pacman -S --noconfirm vlc
 yaourt electronic-wechat
 yaourt command-not-found
+yaourt franz
+# display manager
+sudo pacman -S --noconfirm lightdm
+sudo pacman -S --noconfirm lightdm-webkit2-greeter
+yaourt lightdm-webkit2-theme-material2
+sudo systemctl enable lightdm
+sudo sed -i 's/#greeter-session=example-gtk-gnome/#greeter-session=example-gtk-gnome\ngreeter-session=lightdm-webkit2-greeter/' /etc/lightdm/lightdm.conf
+sudo sed -i 's/webkit_theme/#webkit_theme/' /etc/lightdm/lightdm-webkit2-greeter.conf
+sudo sed -i 's/antergos/antergos\nwebkit_theme = material2/' /etc/lightdm/lightdm-webkit2-greeter.conf
+
 
 # i3
 sudo pacman -S --noconfirm i3-gaps
@@ -105,9 +116,9 @@ mv /home/$(whoami)/.config/Xresources /home/$(whoami)/.Xresources
 
 
 # custom
-cp ./scripts/update-hosts /usr/local/bin/
-chmod a+x /usr/local/bin/update-hosts
-/usr/local/bin/update-hosts
+sudo cp ./scripts/update-hosts /usr/local/bin/
+sudo chmod a+x /usr/local/bin/update-hosts
+sudo /usr/local/bin/update-hosts
 
 sudo pacman -Syu --noconfirm
 
