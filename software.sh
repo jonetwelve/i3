@@ -75,7 +75,8 @@ sudo pacman -S --noconfirm arc-gtk-theme
 sudo pacman -S --noconfirm vlc
 yaourt electronic-wechat
 yaourt command-not-found
-yaourt franz
+yaourt franz4-bin
+yaourt netease-cloud-music
 # display manager
 sudo pacman -S --noconfirm lightdm
 sudo pacman -S --noconfirm lightdm-webkit2-greeter

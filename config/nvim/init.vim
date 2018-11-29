@@ -60,6 +60,7 @@ Plug 'shawncplus/phpcomplete.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/yajs.vim'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+Plug 'posva/vim-vue'
 
 " html"
 Plug 'othree/html5.vim'                                             " h5支持
@@ -163,6 +164,9 @@ set sessionoptions-=options
 "" 插件配置
 "*****************************************************************************"
 "--------->
+" vim-vue
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+"--------->
 " ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -174,6 +178,10 @@ let g:ycm_server_python_interpreter='/usr/bin/python'
 let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_confi.py'
 let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+let g:ycm_complete_in_comments = 1 " 在注释输入中也能补全
+let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
+let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
+let g:ycm_show_diagnostics_ui = 0 " 关闭youcompleteme左边栏错误，警告提示
 
 "--------->
 " quickrun
