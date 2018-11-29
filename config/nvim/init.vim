@@ -60,10 +60,9 @@ Plug 'shawncplus/phpcomplete.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/yajs.vim'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
-Plug 'posva/vim-vue'
 
 " html"
-Plug 'othree/html5.vim'                                             " h5支持
+Plug 'othree/html3.vim'                                             " h5支持
 Plug 'gorodinskiy/vim-coloresque'                                   " 颜色显示
 
 " golang"
@@ -82,28 +81,17 @@ filetype plugin on
 au BufNewFile,BufRead *.wxml    setf xml
 au BufNewFile,BufRead *.wxss    setf css
 "自动、智能缩进
-autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
-autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
-autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
-autocmd BufNewFile,BufRead *.py
-\ set tabstop=4   "tab宽度
-\ set softtabstop=4
-\ set shiftwidth=4
-\ set textwidth=79  "行最大宽度
-\ set expandtab       "tab替换为空格键
-\ set autoindent      "自动缩进
-\ set fileformat=unix   "保存文件格式
-autocmd BufRead *.* setlocal ts=4 sts=4 sw=4 expandtab
+autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 autoindent expandtab
+autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2 autoindent expandtab
+autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2 autoindent expandtab
+autocmd BufNewFile,BufRead *.vue setlocal tabstop=2 softtabstop=2 shiftwidth=2 autoindent expandtab
+autocmd BufNewFile,BufRead *.* setlocal tabstop=4 softtabstop=4 shiftwidth=4 autoindent
 hi SignColumn guibg=grey guifg=red
 let mapleader="\<space>"
 set backspace=indent,eol,start
 set number                            " 显示行号
 set hls                               " 搜索高亮
 set ic                                " 搜索忽略大小写"
-set autoindent                        " 设置自动缩进"
-set tabstop=4                         " tag长度"
-set softtabstop=4                     " 用空格代替tab"
-set shiftwidth=4
 set fileformat=unix
 set smarttab
 set smartindent
