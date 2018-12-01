@@ -101,7 +101,6 @@ sudo pip install pyalsaaudio
 sudo pip install i3ipc
 
 
-mv config/zshrc /home/$(whoami)/.zshrc
 if [ ! -d /home/$(whoami)/.config ]
 then
 	mkdir -p /home/$(whoami)/.config
@@ -122,8 +121,6 @@ sudo chmod a+x /usr/local/bin/update-hosts
 sudo /usr/local/bin/update-hosts
 
 sudo pacman -Syu --noconfirm
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 clear
 echo "Need init:\nyaourt\nmariadb\n"
