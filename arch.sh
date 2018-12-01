@@ -106,7 +106,7 @@ function jconfig(){
   pacman -S --noconfirm xorg-server
   pacman -S --noconfirm alsa-utils
   pacman -S --noconfirm ntfs-3g
-  pacman -S --noconfirm fish
+  pacman -S --noconfirm zsh
   pacman --noconfirm -S curl
   pacman --noconfirm -S powerline-fonts
   pacman -S --noconfirm wget
@@ -152,7 +152,7 @@ function jconfig(){
 
   #new user
 	clear
-  useradd -m -s /bin/bash jone
+  useradd -m -s /usr/bin/zsh jone
   (echo $jonepwd;sleep 1;echo $jonepwd) | passwd jone > /dev/null
 
   echo "jone ALL=(ALL) ALL" >> /etc/sudoers

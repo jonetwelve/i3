@@ -114,6 +114,8 @@ mv /home/$(whoami)/.config/pip /home/$(whoami)/.pip
 
 mv /home/$(whoami)/.config/Xresources /home/$(whoami)/.Xresources
 
+mv /home/$(whoami)/.config/zshrc /home/$(whoami)/.zshrc
+
 
 # custom
 sudo cp ./scripts/update-hosts /usr/local/bin/
@@ -121,6 +123,9 @@ sudo chmod a+x /usr/local/bin/update-hosts
 sudo /usr/local/bin/update-hosts
 
 sudo pacman -Syu --noconfirm
+
+# antigen for zsh
+curl -L git.io/antigen > ~/.config/antigen.zsh
 
 clear
 echo "Need init:\nyaourt\nmariadb\n"
