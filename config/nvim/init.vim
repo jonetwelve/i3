@@ -62,7 +62,7 @@ Plug 'othree/yajs.vim'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 
 " html"
-Plug 'othree/html3.vim'                                             " h5支持
+Plug 'othree/html5.vim'                                             " h5支持
 Plug 'gorodinskiy/vim-coloresque'                                   " 颜色显示
 
 " golang"
