@@ -260,19 +260,6 @@ let g:autoformat_remove_trailing_spaces = 1
 " indentline 缩进指示线
 let g:indentLine_char='┆'
 let g:indentLine_enabled = 1
-" Vim
-let g:indentLine_color_term = 239
-
-" GVim
-let g:indentLine_color_gui = '#A4E57E'
-
-" none X terminal
-let g:indentLine_color_tty_light = 7 " (default: 4)
-let g:indentLine_color_dark = 1 " (default: 2)
-
-" Background (Vim, GVim)
-let g:indentLine_bgcolor_term = 202
-let g:indentLine_bgcolor_gui = '#FF5F00'
 
 "--------->
 " theme
@@ -433,6 +420,7 @@ let g:tagbar_type_go = {
 let g:pymode_run = 0
 let g:pymode_breakpoint = 0
 let g:pymode_python = 'python3'
+let g:pymode_virtualenv = 1
 
 
 "*****************************************************************************
