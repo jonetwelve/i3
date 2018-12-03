@@ -23,7 +23,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'duff/vim-trailing-whitespace'
 Plug 'majutsushi/tagbar',          { 'on': 'TagbarToggle'}          " tagbar
 Plug 'bling/vim-airline'                                            " airline
-Plug 'sbdchd/neoformat'                                             " 自动格式化,js:pip install jsbeautifier,
+Plug 'chiel92/vim-autoformat'
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
 Plug 'dyng/ctrlsf.vim'                                              " 文件夹下查找字符
 Plug 'joshdick/onedark.vim'                                         " 黑色主题
@@ -44,6 +44,7 @@ Plug 'thinca/vim-quickrun'                                          " 运行代�
 Plug 'valloric/youcompleteme'
 Plug 'sirver/ultisnips'                                             " 代码块补全
 Plug 'honza/vim-snippets'                                           " 代码块补全
+Plug 'junegunn/vim-easy-align'
 
 " python"
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
@@ -52,7 +53,6 @@ Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'davidhalter/jedi-vim'                                         " python 支持
 
 " php
-" format php file, need command:php-cs-fixer
 Plug 'vim-scripts/PDV--phpDocumentor-for-Vim'                       " 自动生成代码文档
 Plug 'shawncplus/phpcomplete.vim'
 
@@ -251,30 +251,28 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 "--------->
-" neoformat
-let g:neoformat_basic_format_align = 1
-let g:neoformat_basic_format_retab = 1
-let g:neoformat_basic_format_trim = 1
-let g:neoformat_enabled_python = ['yapf']
-let g:neoformat_python_yapf= {'exe': 'yapf',
-            \'args':
-                \["--style '{
-                    \column_limit:140,
-                    \based_on_style:pep8,
-                    \spaces_before_comment:4,
-                    \split_before_logical_operator: True,
-                    \align_closing_bracket_with_visual_indent: False,
-                    \blank_line_before_class_docstring:False,
-                    \dedent_closing_brackets: True,
-                    \indent_dictionary_value: True
-                \}'"],
-            \'stdin': 1
-            \}
+" autoformat 
+let g:autoformat_autoindent = 1
+let g:autoformat_retab = 1
+let g:autoformat_remove_trailing_spaces = 1 
 
 "--------->
 " indentline 缩进指示线
 let g:indentLine_char='┆'
 let g:indentLine_enabled = 1
+" Vim
+let g:indentLine_color_term = 239
+
+" GVim
+let g:indentLine_color_gui = '#A4E57E'
+
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+
+" Background (Vim, GVim)
+let g:indentLine_bgcolor_term = 202
+let g:indentLine_bgcolor_gui = '#FF5F00'
 
 "--------->
 " theme
@@ -386,7 +384,7 @@ let g:which_key_map.t = {
 nnoremap <Leader>tc :g/^\s*$/d<CR>
 map <Leader>ti :call AutoImport()<CR>
 map <Leader>tr :QuickRun<CR>
-nmap <Leader>tf :call Jformater()<CR>
+nmap <Leader>tf :Autoformat<CR>
 nmap <Leader>td :call InsertDoc()<CR>
 
 let g:which_key_map.x = {
@@ -471,18 +469,6 @@ func! AutoImport()
     elseif &filetype == 'php'
         call PhpExpandClass()
     endif
-endfunc
-
-"--------->
-" 格式化代码
-func! Jformater()
-    if &filetype == 'html'
-        exec "Neoformat! html js-beautify"
-    else
-        exec "Neoformat"
-    endif
-
-	exec "w"
 endfunc
 
 "--------->

@@ -33,13 +33,16 @@ yaourt visual-studio-code-bin
 
 
 yaourt the_platinum_searcher-bin
-sudo pip install jsbeautifier
 
 # node
 sudo pacman -S --noconfirm nodejs npm
 sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
 sudo npm install -g vue
 sudo pacman -S --noconfirm eslint
+sudo pacman -S --noconfirm yarn
+yarn config set registry https://registry.npm.taobao.org --global
+yarn config set disturl https://npm.taobao.org/dist --global
+
 
 
 # software
@@ -85,6 +88,11 @@ sudo systemctl enable lightdm
 sudo sed -i 's/#greeter-session=example-gtk-gnome/#greeter-session=example-gtk-gnome\ngreeter-session=lightdm-webkit2-greeter/' /etc/lightdm/lightdm.conf
 sudo sed -i 's/webkit_theme/#webkit_theme/' /etc/lightdm/lightdm-webkit2-greeter.conf
 sudo sed -i 's/antergos/antergos\nwebkit_theme = material2/' /etc/lightdm/lightdm-webkit2-greeter.conf
+yarn global add prettier
+yarn global add html-beautify
+yarn global add js-beautify
+sudo cnpm install -g css-beautify
+yarn global add eslint
 
 
 # i3

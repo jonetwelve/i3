@@ -11,6 +11,6 @@
 	email = jonetwelve@hotmail.com
 	name = jone
 [core]
-	editor = vi
+	editor = nvim
 	fileMode = false
     excludesfile = ~/.gitignore_global
