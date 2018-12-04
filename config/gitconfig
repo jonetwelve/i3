@@ -1,5 +1,6 @@
 [alias]
-    st = status 
+    st = status
+    df = diff --cached
     ci = commit
     co = checkout
     br = branch -a
@@ -8,9 +9,9 @@
     remotes = remote -v
     logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 [user]
-	email = jonetwelve@hotmail.com
-	name = jone
+    email = jonetwelve@hotmail.com
+    name = jone
 [core]
-	editor = nvim
-	fileMode = false
+    editor = nvim
+    fileMode = false
     excludesfile = ~/.gitignore_global
