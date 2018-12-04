@@ -44,7 +44,7 @@ Plug 'thinca/vim-quickrun'                                          " 运行代�
 Plug 'valloric/youcompleteme'
 Plug 'sirver/ultisnips'                                             " 代码块补全
 Plug 'honza/vim-snippets'                                           " 代码块补全
-Plug 'junegunn/vim-easy-align'
+Plug 'Shougo/denite.nvim'                                           " 额外命令
 
 " python"
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
@@ -170,6 +170,7 @@ let g:ycm_complete_in_comments = 1 " 在注释输入中也能补全
 let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
 let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
 let g:ycm_show_diagnostics_ui = 0 " 关闭youcompleteme左边栏错误，警告提示
+let g:ycm_key_detailed_diagnostics = '' " 关闭快捷键，用which_key_map代替
 
 "--------->
 " quickrun
@@ -254,7 +255,6 @@ au Syntax * RainbowParenthesesLoadBraces
 " autoformat 
 let g:autoformat_autoindent = 1
 let g:autoformat_retab = 1
-let g:autoformat_remove_trailing_spaces = 1 
 
 "--------->
 " indentline 缩进指示线
@@ -284,12 +284,7 @@ let g:startify_padding_left = 11
 let g:startify_custom_header = [
 \'    *-------------------------------------------------------------------*',
 \'    |  +/-:选取模块                                                     |',
-\'    |  mx:当前位置打标签x                                               |',
 \"    |  'x:跳转到标签x                                                   |",
-\'    |  m<Space>:删除所有标签                                            |',
-\'    |  \c<space>:取消注释                                               |',
-\'    |  \cc:单行注释                                                     |',
-\'    |                                                                   |',
 \'    *-------------------------------------------------------------------*',
 \'       o',
 \'        o   ^__^',
@@ -316,9 +311,33 @@ let g:which_key_map.b.s = "switch buffer"
 " fzf 搜索buffer
 nnoremap <leader>bs :Buffers <cr>
 let g:which_key_map.b.d = "Delete buffer"
-nmap <leader>bd :bd<cr>
+nmap <leader>bd :bd!<cr>
 
 let g:which_key_map.c = {"name":"注释"}
+
+let g:which_key_map.d = { 
+			\ "name":"Denite",
+			\ "c":"change",
+			\ "d":"direcotry",
+			\ "m":"map"
+			\ }
+nmap <leader>dc :Denite change<cr>
+nmap <leader>dd :Denite directory_rec<cr>
+nmap <leader>dm :Denite mapping<cr>
+
+let g:which_key_map.d.f = { 
+			\ "name":"file",
+			\ "l":"list",
+			\ "n":"new"
+			\ }
+nmap <leader>dfl :Denite file buffer<cr>
+nmap <leader>dfn :Denite file:new<cr>
+
+let g:which_key_map.f = {
+			\ "name":"文件",
+			\ "l":"list"
+			\ }
+nnoremap <leader>fl :Denite file buffer<cr>
 
 let g:which_key_map.g = {
             \ "name":"golang",
@@ -330,21 +349,29 @@ au FileType go nmap <leader>gt <Plug>(go-doc-vertical)
 
 let g:which_key_map.m = {
             \ "name":"标签",
-            \ "t":"toggle标签",
-            \ "l":"list标签"
+            \ "c":"clean标签",
+            \ "l":"list标签",
+            \ "t":"toggle标签"
             \ }
-nmap <leader>mt m
+nmap <leader>mc :call signature#mark#Purge("all")<cr>
 nmap <leader>ml :SignatureListBufferMarks<cr>
+nmap <leader>mt m
 
 let g:which_key_map.p = {
             \ "name":"plugin",
-            \ "i":"install",
+			\ "a":"python#goto assign",
             \ "c":"clean",
+            \ "i":"install",
+            \ "s":"source %",
             \ "u":"update",
+			\ "g":"python#goto"
             \ }
-nmap <leader>pi :PlugInstall<cr>
+nmap <leader>pa :call jedi#goto_assignments()<cr>
 nmap <leader>pc :PlugClean<cr>
+nmap <leader>pi :PlugInstall<cr>
+nmap <leader>ps :source %<cr>
 nmap <leader>pu :PlugUpdate<cr>
+nmap <leader>pg :call jedi#goto()<cr>
 
 let g:which_key_map.s = {
             \ "name":"搜索",
@@ -358,7 +385,7 @@ nnoremap <leader>sn :nohl<cr>
 " fzf搜索文件
 nnoremap <leader>sf :Files<cr>
 " fzf 搜索文字
-nnoremap <leader>st :Ag
+nnoremap <leader>st :Ag 
 
 let g:which_key_map.t = {
             \ "name":"代码",
@@ -384,7 +411,6 @@ nmap <leader>xt :TagbarToggle<CR>
 
 call which_key#register('<Space>', "g:which_key_map")
 
-let g:go_def_reuse_buffer = 0
 "--------->
 " tagbar
 let g:tagbar_type_go = {
@@ -421,6 +447,15 @@ let g:pymode_run = 0
 let g:pymode_breakpoint = 0
 let g:pymode_python = 'python3'
 let g:pymode_virtualenv = 1
+
+"--------->
+" jedi
+let g:jedi#use_splits_not_buffers="left"
+" 取消快捷键，用whick_key_map代替
+let g:jedi#goto_command=""
+let g:jedi#rename_command=""
+let g:jedi#usages_command=""
+let g:jedi#goto_assignments_command=""
 
 
 "*****************************************************************************
