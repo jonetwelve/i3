@@ -39,12 +39,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'shougo/echodoc'
 Plug 'liuchengxu/vim-which-key'                                     " 底部现实快捷命令提示
 Plug 'yggdroot/indentline'                                          " 缩进线显示
-Plug 'jiangmiao/auto-pairs'                                         " 自动不全成对括号
 Plug 'thinca/vim-quickrun'                                          " 运行代码
 Plug 'valloric/youcompleteme'
+Plug 'tenfyzhong/CompleteParameter.vim'
 Plug 'sirver/ultisnips'                                             " 代码块补全
 Plug 'honza/vim-snippets'                                           " 代码块补全
 Plug 'Shougo/denite.nvim'                                           " 额外命令
+Plug 'scrooloose/nerdtree'
 
 " python"
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
@@ -171,6 +172,15 @@ let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
 let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
 let g:ycm_show_diagnostics_ui = 0 " 关闭youcompleteme左边栏错误，警告提示
 let g:ycm_key_detailed_diagnostics = '' " 关闭快捷键，用which_key_map代替
+
+"--------->
+" completeParam
+inoremap <silent><expr> ( complete_parameter#pre_complete("()")
+smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+
 
 "--------->
 " quickrun
@@ -400,6 +410,16 @@ map <Leader>ti :call AutoImport()<CR>
 map <Leader>tr :QuickRun<CR>
 nmap <Leader>tf :Autoformat<CR>
 nmap <Leader>td :call InsertDoc()<CR>
+
+let g:which_key_map.w = {
+            \ "name":"windows",
+            \ "n":"nerdtree",
+			\ "v":"左右分割窗口",
+			\ "h":"上下分割窗口"
+            \ }
+nmap <leader>wn :NERDTreeToggle<CR>
+nmap <leader>wv :vs<CR>
+nmap <leader>wh :sp<CR>
 
 let g:which_key_map.x = {
             \ "name":"tools",
