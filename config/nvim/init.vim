@@ -49,7 +49,6 @@ Plug 'scrooloose/nerdtree'
 
 " python"
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
-Plug 'heavenshell/vim-pydocstring'                                  " 自动生成代码文档
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'davidhalter/jedi-vim'                                         " python 支持
 
@@ -409,7 +408,6 @@ nnoremap <Leader>tc :g/^\s*$/d<CR>
 map <Leader>ti :call AutoImport()<CR>
 map <Leader>tr :QuickRun<CR>
 nmap <Leader>tf :Autoformat<CR>
-nmap <Leader>td :call InsertDoc()<CR>
 
 let g:which_key_map.w = {
             \ "name":"windows",
@@ -511,16 +509,6 @@ func! AutoImport()
         exec "ImportName"
     elseif &filetype == 'php'
         call PhpExpandClass()
-    endif
-endfunc
-
-"--------->
-" 插入方法注释
-func! InsertDoc()
-    if &filetype == 'python'
-        exec "Pydocstring"
-    elseif &filetype == 'php'
-        call PhpDocSingle()
     endif
 endfunc
 
