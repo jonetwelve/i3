@@ -53,7 +53,6 @@ Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'davidhalter/jedi-vim'                                         " python 支持
 
 " php
-Plug 'vim-scripts/PDV--phpDocumentor-for-Vim'                       " 自动生成代码文档
 Plug 'shawncplus/phpcomplete.vim'
 
 " js"
