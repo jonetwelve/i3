@@ -23,7 +23,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'duff/vim-trailing-whitespace'
 Plug 'majutsushi/tagbar',          { 'on': 'TagbarToggle'}          " tagbar
 Plug 'bling/vim-airline'                                            " airline
-Plug 'chiel92/vim-autoformat'
+Plug 'chiel92/vim-autoformat'                                       " 自动格式化
 Plug 'kien/rainbow_parentheses.vim'                                 " 不同颜色区分括号匹配
 Plug 'dyng/ctrlsf.vim'                                              " 文件夹下查找字符
 Plug 'joshdick/onedark.vim'                                         " 黑色主题
@@ -35,30 +35,33 @@ Plug 'mhinz/vim-startify'                                           " 启动界�
 Plug 'vim-scripts/todo-vim'	                                        " todo
 Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/tools',
             \ 'do': './install --all' }                             " 多功能查找工具
-Plug 'junegunn/fzf.vim'
-Plug 'shougo/echodoc'
+Plug 'junegunn/fzf.vim'                                             " 全能查找工具
 Plug 'liuchengxu/vim-which-key'                                     " 底部现实快捷命令提示
 Plug 'yggdroot/indentline'                                          " 缩进线显示
 Plug 'thinca/vim-quickrun'                                          " 运行代码
-Plug 'valloric/youcompleteme'
-Plug 'tenfyzhong/CompleteParameter.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }       " 只能补全工具
 Plug 'sirver/ultisnips'                                             " 代码块补全
 Plug 'honza/vim-snippets'                                           " 代码块补全
 Plug 'Shougo/denite.nvim'                                           " 额外命令
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'                                          " 文件树
 
 " python"
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'davidhalter/jedi-vim'                                         " python 支持
+Plug 'zchee/deoplete-jedi'
 
 " php
 Plug 'shawncplus/phpcomplete.vim'
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+Plug 'kristijanhusak/deoplete-phpactor'
 
 " js"
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/yajs.vim'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+Plug 'posva/vim-vue'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 " html"
 Plug 'othree/html5.vim'                                             " h5支持
@@ -66,6 +69,7 @@ Plug 'gorodinskiy/vim-coloresque'                                   " 颜色显�
 
 " golang"
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 call plug#end()
 
@@ -151,6 +155,20 @@ set sessionoptions-=options
 "" 插件配置
 "*****************************************************************************"
 "--------->
+" deoplete-jedi
+let g:deoplete#sources#jedi#show_docstring = 1
+
+"--------->
+" deoplete-ternjs
+let g:deoplete#sources#ternjs#tern_bin = '/usr/bin/tern'
+let g:deoplete#sources#ternjs#timeout = 1
+let g:deoplete#sources#ternjs#include_keywords = 1
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue'
+                \ ]
+"--------->
 " vim-vue
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 "--------->
@@ -160,25 +178,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "--------->
-" youcompleteme
-let g:ycm_server_python_interpreter='/usr/bin/python'
-let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_confi.py'
-let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
-let g:ycm_complete_in_comments = 1 " 在注释输入中也能补全
-let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
-let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
-let g:ycm_show_diagnostics_ui = 0 " 关闭youcompleteme左边栏错误，警告提示
-let g:ycm_key_detailed_diagnostics = '' " 关闭快捷键，用which_key_map代替
-
-"--------->
-" completeParam
-inoremap <silent><expr> ( complete_parameter#pre_complete("()")
-smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
-imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
-smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
-imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
-
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 "--------->
 " quickrun
@@ -206,32 +207,15 @@ let g:airline#extensions#tabline#left_alt_sep    = '|'
 let g:airline#extensions#tabline#tab_nr_type     = 1
 set laststatus                                   =2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#syntastic#enabled       = 1
-let g:airline#extensions#quickfix#quickfix_text  = 'QF'
-let g:airline#extensions#quickfix#location_text  = 'LL'
-" disable unused extensions (performance)
-let g:airline#extensions#bufferline#enabled      = 0
-let g:airline#extensions#capslock#enabled        = 0
-let g:airline#extensions#csv#enabled             = 0
-let g:airline#extensions#ctrlspace#enabled       = 0
-let g:airline#extensions#eclim#enabled           = 0
-let g:airline#extensions#hunks#enabled           = 0
-let g:airline#extensions#nrrwrgn#enabled         = 0
-let g:airline#extensions#promptline#enabled      = 0
-let g:airline#extensions#taboo#enabled           = 0
-let g:airline#extensions#tagbar#enabled          = 0
-let g:airline#extensions#virtualenv#enabled      = 1
-let g:airline#extensions#whitespace#enabled      = 0
 
 "--------->
 " ale
-let g:ale_sign_column_always = 1
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '◐'
-hi clear ALEErrorSign
-hi clear ALEWarningSign
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_linters = {'vue': ['eslint', 'vls']}
 
 "--------->
 " rainbow_parentheses
@@ -311,7 +295,7 @@ set timeoutlen=10
 let g:which_key_map =  {}
 " vim-which-key基本配置完毕
 autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
+autocmd  FileType which_key set laststatus=0 noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 let g:which_key_map.b = { 'name':"buffer" }
@@ -366,20 +350,14 @@ nmap <leader>ml :SignatureListBufferMarks<cr>
 nmap <leader>mt m
 
 let g:which_key_map.p = {
-            \ "name":"plugin",
-			\ "a":"python#goto assign",
-            \ "c":"clean",
-            \ "i":"install",
-            \ "s":"source %",
-            \ "u":"update",
-			\ "g":"python#goto"
+            \ "name":"python",
+			\ "a":"assign",
+			\ "g":"goto",
+			\ "i":"import"
             \ }
 nmap <leader>pa :call jedi#goto_assignments()<cr>
-nmap <leader>pc :PlugClean<cr>
-nmap <leader>pi :PlugInstall<cr>
-nmap <leader>ps :source %<cr>
-nmap <leader>pu :PlugUpdate<cr>
 nmap <leader>pg :call jedi#goto()<cr>
+nmap <leader>pi :ImportName<cr>
 
 let g:which_key_map.s = {
             \ "name":"搜索",
@@ -420,11 +398,19 @@ nmap <leader>wh :sp<CR>
 
 let g:which_key_map.x = {
             \ "name":"tools",
+            \ "c":"clean plugin",
+            \ "i":"install plugin",
+            \ "s":"source %",
+            \ "u":"update plugin",
             \ "w":"workers need todo",
             \ "t":"tagbar"
             \ }
 nmap <leader>xw :TODOToggle<CR>
 nmap <leader>xt :TagbarToggle<CR>
+nmap <leader>xc :PlugClean<cr>
+nmap <leader>xi :PlugInstall<cr>
+nmap <leader>xs :source %<cr>
+nmap <leader>xu :PlugUpdate<cr>
 
 call which_key#register('<Space>', "g:which_key_map")
 
@@ -459,15 +445,18 @@ let g:tagbar_type_go = {
     \ }
 
 "--------->
-" pymode
+" python-mode
 let g:pymode_run = 0
 let g:pymode_breakpoint = 0
 let g:pymode_python = 'python3'
 let g:pymode_virtualenv = 1
+let g:pymode_lint = 0
+
 
 "--------->
 " jedi
 let g:jedi#use_splits_not_buffers="left"
+let g:jedi#auto_initialization = 1
 " 取消快捷键，用whick_key_map代替
 let g:jedi#goto_command=""
 let g:jedi#rename_command=""

@@ -1,3 +1,7 @@
+# php
+sudo pacman -S --noconfirm php composer
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
 # python
 sudo ln -s /usr/bin/python3 /usr/local/bin/python
 sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
@@ -38,12 +42,11 @@ yaourt the_platinum_searcher-bin
 sudo pacman -S --noconfirm nodejs npm
 sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
 sudo npm install -g vue
+sudo npm install -g tern
 sudo pacman -S --noconfirm eslint
 sudo pacman -S --noconfirm yarn
 yarn config set registry https://registry.npm.taobao.org --global
 yarn config set disturl https://npm.taobao.org/dist --global
-
-
 
 # software
 sudo pacman -S --noconfirm the_silver_searcher
@@ -58,7 +61,6 @@ yaourt virtualbox-ext-oracle
 sudo pacman -S --noconfirm mongodb
 yaourt mongodb-compass
 sudo pacman -S --noconfirm ctags
-sudo pacman -S --noconfirm php composer
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm nginx
 sudo pacman -S --noconfirm otf-fira-code
