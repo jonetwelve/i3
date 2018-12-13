@@ -32,7 +32,6 @@ Plug 'w0rp/ale'                                                     " 语法检�
 Plug 'scrooloose/nerdcommenter'                                     " 注释快捷键
 Plug 'kshenoy/vim-signature'										" 标记跳转点
 Plug 'mhinz/vim-startify'                                           " 启动界面修改
-Plug 'vim-scripts/todo-vim'											" todo
 Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/tools',
 			\ 'do': './install --all' }                             " 多功能查找工具
 Plug 'junegunn/fzf.vim'                                             " 全能查找工具
@@ -375,7 +374,7 @@ nnoremap <leader>sn :nohl<cr>
 " fzf搜索文件
 nnoremap <leader>sf :Files<cr>
 " fzf 搜索文字
-nnoremap <leader>st :Ag
+nnoremap <leader>st :Ag 
 
 let g:which_key_map.t = {
 			\ "name":"代码",
@@ -406,10 +405,8 @@ let g:which_key_map.x = {
 			\ "i":"install plugin",
 			\ "s":"source %",
 			\ "u":"update plugin",
-			\ "w":"workers need todo",
 			\ "t":"tagbar"
 			\ }
-nmap <leader>xw :TODOToggle<CR>
 nmap <leader>xt :TagbarToggle<CR>
 nmap <leader>xc :PlugClean<cr>
 nmap <leader>xi :PlugInstall<cr>
