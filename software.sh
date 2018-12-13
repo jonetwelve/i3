@@ -51,6 +51,7 @@ yarn config set disturl https://npm.taobao.org/dist --global
 # software
 sudo pacman -S --noconfirm the_silver_searcher
 sudo pacman -S --noconfirm wine
+sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm gparted
 yaourt gitkraken
