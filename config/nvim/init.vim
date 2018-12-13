@@ -3,15 +3,15 @@
 "*****************************************************************************
 let vimplug_exists=expand('~/.local/share/nvim/site/autoload/plug.vim')
 if !filereadable(vimplug_exists)
-  if !executable("curl")
-    echoerr "You have to install curl or first install vim-plug yourself!"
-    execute "q!"
-  endif
-  echo "Installing Vim-Plug..."
-  echo ""
-  silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim
-  \ --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
+	if !executable("curl")
+		echoerr "You have to install curl or first install vim-plug yourself!"
+		execute "q!"
+	endif
+	echo "Installing Vim-Plug..."
+	echo ""
+	silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim
+				\ --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall
 endif
 
 
@@ -30,11 +30,11 @@ Plug 'joshdick/onedark.vim'                                         " 黑色主�
 Plug 'terryma/vim-expand-region'                                    " +,_快捷键选择区域块
 Plug 'w0rp/ale'                                                     " 语法检查,在左边栏显示警告和错误
 Plug 'scrooloose/nerdcommenter'                                     " 注释快捷键
-Plug 'kshenoy/vim-signature'	                                    " 标记跳转点
+Plug 'kshenoy/vim-signature'										" 标记跳转点
 Plug 'mhinz/vim-startify'                                           " 启动界面修改
-Plug 'vim-scripts/todo-vim'	                                        " todo
+Plug 'vim-scripts/todo-vim'											" todo
 Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/tools',
-            \ 'do': './install --all' }                             " 多功能查找工具
+			\ 'do': './install --all' }                             " 多功能查找工具
 Plug 'junegunn/fzf.vim'                                             " 全能查找工具
 Plug 'liuchengxu/vim-which-key'                                     " 底部现实快捷命令提示
 Plug 'yggdroot/indentline'                                          " 缩进线显示
@@ -119,8 +119,8 @@ set hid                               " buffer cecomes hidden when abandoned
 "--------->
 "记录光标位置
 augroup resCur
-  autocmd!
-  autocmd BufReadPost * call setpos(".", getpos("'\""))
+	autocmd!
+	autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
 "--------->
@@ -140,13 +140,13 @@ set lazyredraw
 set magic               " for regular expressions
 
 if &history < 1000
-  set history=1000
+	set history=1000
 endif
 if &tabpagemax < 50
-  set tabpagemax=50
+	set tabpagemax=50
 endif
 if !empty(&viminfo)
-  set viminfo^=!
+	set viminfo^=!
 endif
 set sessionoptions-=options
 
@@ -164,10 +164,10 @@ let g:deoplete#sources#ternjs#tern_bin = '/usr/bin/tern'
 let g:deoplete#sources#ternjs#timeout = 1
 let g:deoplete#sources#ternjs#include_keywords = 1
 let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue'
-                \ ]
+			\ 'jsx',
+			\ 'javascript.jsx',
+			\ 'vue'
+			\ ]
 "--------->
 " vim-vue
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
@@ -220,22 +220,22 @@ let g:ale_linters = {'vue': ['eslint', 'vls']}
 "--------->
 " rainbow_parentheses
 let g:rbpt_colorpairs = [
-            \ ['brown',       'RoyalBlue3'],
-            \ ['Darkblue',    'SeaGreen3'],
-            \ ['darkgray',    'DarkOrchid3'],
-            \ ['darkgreen',   'firebrick3'],
-            \ ['darkcyan',    'RoyalBlue3'],
-            \ ['darkred',     'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['brown',       'firebrick3'],
-            \ ['gray',        'RoyalBlue3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['Darkblue',    'firebrick3'],
-            \ ['darkgreen',   'RoyalBlue3'],
-            \ ['darkcyan',    'SeaGreen3'],
-            \ ['darkred',     'DarkOrchid3'],
-            \ ['red',         'firebrick3'],
-            \ ]
+			\ ['brown',       'RoyalBlue3'],
+			\ ['Darkblue',    'SeaGreen3'],
+			\ ['darkgray',    'DarkOrchid3'],
+			\ ['darkgreen',   'firebrick3'],
+			\ ['darkcyan',    'RoyalBlue3'],
+			\ ['darkred',     'SeaGreen3'],
+			\ ['darkmagenta', 'DarkOrchid3'],
+			\ ['brown',       'firebrick3'],
+			\ ['gray',        'RoyalBlue3'],
+			\ ['darkmagenta', 'DarkOrchid3'],
+			\ ['Darkblue',    'firebrick3'],
+			\ ['darkgreen',   'RoyalBlue3'],
+			\ ['darkcyan',    'SeaGreen3'],
+			\ ['darkred',     'DarkOrchid3'],
+			\ ['red',         'firebrick3'],
+			\ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 au VimEnter * RainbowParenthesesToggle
@@ -244,7 +244,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 "--------->
-" autoformat 
+" autoformat
 let g:autoformat_autoindent = 1
 let g:autoformat_retab = 1
 
@@ -274,16 +274,16 @@ let g:startify_session_autoload = 1
 let g:startify_padding_left = 11
 "自定义Header和Footer
 let g:startify_custom_header = [
-\'    *-------------------------------------------------------------------*',
-\'    |  +/-:选取模块                                                     |',
-\"    |  'x:跳转到标签x                                                   |",
-\'    *-------------------------------------------------------------------*',
-\'       o',
-\'        o   ^__^',
-\'         o  (oo)\_______',
-\'            (__)\       )\/\',
-\'                ||----w |',
-\'                ||     ||']
+			\'    *-------------------------------------------------------------------*',
+			\'    |  +/-:选取模块                                                     |',
+			\"    |  'x:跳转到标签x                                                   |",
+			\'    *-------------------------------------------------------------------*',
+			\'       o',
+			\'        o   ^__^',
+			\'         o  (oo)\_______',
+			\'            (__)\       )\/\',
+			\'                ||----w |',
+			\'                ||     ||']
 
 "--------->
 " vim-which-key
@@ -296,18 +296,22 @@ let g:which_key_map =  {}
 " vim-which-key基本配置完毕
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+			\| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
-let g:which_key_map.b = { 'name':"buffer" }
-let g:which_key_map.b.s = "switch buffer"
+let g:which_key_map.b = {
+			\ 'name':"buffer",
+			\ "d":"delte 当前buffer",
+			\ "o":"关闭other",
+			\ "s":"switch buffer"
+			\ }
 " fzf 搜索buffer
+nnoremap <leader>bd :bd!<cr>
+nnoremap <leader>bo :.+1,$bw<cr>:1,.-1bw<cr><cr>
 nnoremap <leader>bs :Buffers <cr>
-let g:which_key_map.b.d = "Delete buffer"
-nmap <leader>bd :bd!<cr>
 
 let g:which_key_map.c = {"name":"注释"}
 
-let g:which_key_map.d = { 
+let g:which_key_map.d = {
 			\ "name":"Denite",
 			\ "c":"change",
 			\ "d":"direcotry",
@@ -317,7 +321,7 @@ nmap <leader>dc :Denite change<cr>
 nmap <leader>dd :Denite directory_rec<cr>
 nmap <leader>dm :Denite mapping<cr>
 
-let g:which_key_map.d.f = { 
+let g:which_key_map.d.f = {
 			\ "name":"file",
 			\ "l":"list",
 			\ "n":"new"
@@ -332,79 +336,79 @@ let g:which_key_map.f = {
 nnoremap <leader>fl :Denite file buffer<cr>
 
 let g:which_key_map.g = {
-            \ "name":"golang",
-            \ "d":"def",
-            \ "t":"text of doc"
-            \ }
+			\ "name":"golang",
+			\ "d":"def",
+			\ "t":"text of doc"
+			\ }
 au FileType go nmap <leader>gd <Plug>(go-def-vertical)
 au FileType go nmap <leader>gt <Plug>(go-doc-vertical)
 
 let g:which_key_map.m = {
-            \ "name":"标签",
-            \ "c":"clean标签",
-            \ "l":"list标签",
-            \ "t":"toggle标签"
-            \ }
+			\ "name":"标签",
+			\ "c":"clean标签",
+			\ "l":"list标签",
+			\ "t":"toggle标签"
+			\ }
 nmap <leader>mc :call signature#mark#Purge("all")<cr>
 nmap <leader>ml :SignatureListBufferMarks<cr>
 nmap <leader>mt m
 
 let g:which_key_map.p = {
-            \ "name":"python",
+			\ "name":"python",
 			\ "a":"assign",
 			\ "g":"goto",
 			\ "i":"import"
-            \ }
+			\ }
 nmap <leader>pa :call jedi#goto_assignments()<cr>
 nmap <leader>pg :call jedi#goto()<cr>
 nmap <leader>pi :ImportName<cr>
 
 let g:which_key_map.s = {
-            \ "name":"搜索",
-            \ "f":"搜索files",
-            \ "t":"搜索text",
-            \ 's':"Ctrlsf搜索",
-            \ 'n':"no搜索高亮"
-            \ }
+			\ "name":"搜索",
+			\ "f":"搜索files",
+			\ "t":"搜索text",
+			\ 's':"Ctrlsf搜索",
+			\ 'n':"no搜索高亮"
+			\ }
 nnoremap <Leader>ss :CtrlSF
 nnoremap <leader>sn :nohl<cr>
 " fzf搜索文件
 nnoremap <leader>sf :Files<cr>
 " fzf 搜索文字
-nnoremap <leader>st :Ag 
+nnoremap <leader>st :Ag
 
 let g:which_key_map.t = {
-            \ "name":"代码",
-            \ "c":"clean 空格",
-            \ "i":"自动import",
-            \ "r":"run",
-            \ "f":"format",
-            \ "d":"插入doc"
-            \ }
+			\ "name":"代码",
+			\ "c":"clean 空格",
+			\ "i":"自动import",
+			\ "r":"run",
+			\ "f":"format",
+			\ "d":"插入doc"
+			\ }
 nnoremap <Leader>tc :g/^\s*$/d<CR>
 map <Leader>ti :call AutoImport()<CR>
 map <Leader>tr :QuickRun<CR>
 nmap <Leader>tf :Autoformat<CR>
 
 let g:which_key_map.w = {
-            \ "name":"windows",
-            \ "n":"nerdtree",
+			\ "name":"windows",
+			\ "n":"nerdtree",
 			\ "v":"左右分割窗口",
 			\ "h":"上下分割窗口"
-            \ }
+			\ }
 nmap <leader>wn :NERDTreeToggle<CR>
 nmap <leader>wv :vs<CR>
 nmap <leader>wh :sp<CR>
 
 let g:which_key_map.x = {
-            \ "name":"tools",
-            \ "c":"clean plugin",
-            \ "i":"install plugin",
-            \ "s":"source %",
-            \ "u":"update plugin",
-            \ "w":"workers need todo",
-            \ "t":"tagbar"
-            \ }
+			\ "name":"tools",
+			\ "c":"clean plugin",
+			\ "i":"install plugin",
+			\ "s":"source %",
+			\ "u":"update plugin",
+			\ "w":"workers need todo",
+			\ "t":"tagbar"
+			\ }
 nmap <leader>xw :TODOToggle<CR>
 nmap <leader>xt :TagbarToggle<CR>
 nmap <leader>xc :PlugClean<cr>
@@ -417,32 +421,32 @@ call which_key#register('<Space>', "g:which_key_map")
 "--------->
 " tagbar
 let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-    \ }
+			\ 'ctagstype' : 'go',
+			\ 'kinds'     : [
+			\ 'p:package',
+			\ 'i:imports:1',
+			\ 'c:constants',
+			\ 'v:variables',
+			\ 't:types',
+			\ 'n:interfaces',
+			\ 'w:fields',
+			\ 'e:embedded',
+			\ 'm:methods',
+			\ 'r:constructor',
+			\ 'f:functions'
+			\ ],
+			\ 'sro' : '.',
+			\ 'kind2scope' : {
+			\ 't' : 'ctype',
+			\ 'n' : 'ntype'
+			\ },
+			\ 'scope2kind' : {
+			\ 'ctype' : 't',
+			\ 'ntype' : 'n'
+			\ },
+			\ 'ctagsbin'  : 'gotags',
+			\ 'ctagsargs' : '-sort -silent'
+			\ }
 
 "--------->
 " python-mode
@@ -471,33 +475,33 @@ let g:jedi#goto_assignments_command=""
 " 新建.py文件，自动插入文件头
 autocmd bufnewfile *.py call HeaderOfPython()
 func! HeaderOfPython()
-    call setline(1, "#!/usr/bin/env python")
-    call append(1, "# -*- coding: utf-8 -*-")
-    call append(2, "")
+	call setline(1, "#!/usr/bin/env python")
+	call append(1, "# -*- coding: utf-8 -*-")
+	call append(2, "")
 	call append(3,"# File Name: ".expand("%"))
-    normal G
-    normal o
-    normal o
+	normal G
+	normal o
+	normal o
 endf
 
 "--------->
 " 新建.php文件，自动插入文件头
 autocmd bufnewfile *.php call HeaderOfPHP()
 func! HeaderOfPHP()
-    call setline(1, "<?php")
-    normal G
-    normal o
-    normal o
+	call setline(1, "<?php")
+	normal G
+	normal o
+	normal o
 endf
 
 "--------->
 " 自动import
 func! AutoImport()
-    if &filetype == 'python'
-        exec "ImportName"
-    elseif &filetype == 'php'
-        call PhpExpandClass()
-    endif
+	if &filetype == 'python'
+		exec "ImportName"
+	elseif &filetype == 'php'
+		call PhpExpandClass()
+	endif
 endfunc
 
 
