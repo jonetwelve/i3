@@ -20,7 +20,6 @@ endif
 "*****************************************************************************
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'duff/vim-trailing-whitespace'
 Plug 'majutsushi/tagbar',          { 'on': 'TagbarToggle'}          " tagbar
 Plug 'bling/vim-airline'                                            " airline
 Plug 'chiel92/vim-autoformat'                                       " 自动格式化
@@ -43,6 +42,10 @@ Plug 'sirver/ultisnips'                                             " 代码块�
 Plug 'honza/vim-snippets'                                           " 代码块补全
 Plug 'Shougo/denite.nvim'                                           " 额外命令
 Plug 'scrooloose/nerdtree'                                          " 文件树
+Plug 'vim-scripts/mru.vim'
+Plug 'simnalamburt/vim-mundo'
+Plug 'vim-scripts/AutoClose'
+Plug 'ervandew/supertab'
 
 " python"
 Plug 'mgedmin/python-imports.vim', { 'do': './install.sh'}          " pytohn自动import
@@ -129,8 +132,11 @@ set undofile
 set undolevels=100
 set undoreload=1000
 
-set backupdir=~/.config/nvim/backup
-set directory=~/.config/nvim/backup
+"--------->
+" backup
+set nobackup
+set nowritebackup
+set noswapfile
 
 set so=5                " scroll lines above/below cursor
 set sidescrolloff=5
@@ -316,7 +322,7 @@ let g:which_key_map.d = {
 			\ "d":"direcotry",
 			\ "m":"map"
 			\ }
-nmap <leader>dc :Denite change<cr>
+nmap <leader>dc :MundoToggle<cr>
 nmap <leader>dd :Denite directory_rec<cr>
 nmap <leader>dm :Denite mapping<cr>
 
@@ -401,16 +407,22 @@ nmap <leader>wh :sp<CR>
 
 let g:which_key_map.x = {
 			\ "name":"tools",
+			\ "a":"auto close toggle",
 			\ "c":"clean plugin",
+			\ "h":"help",
 			\ "i":"install plugin",
+			\ "m":"mru",
 			\ "s":"source %",
 			\ "u":"update plugin",
 			\ "t":"tagbar"
 			\ }
-nmap <leader>xt :TagbarToggle<CR>
+nmap <leader>xa <Plug>ToggleAutoCloseMappings<cr>
 nmap <leader>xc :PlugClean<cr>
+nmap <leader>xh :help 
 nmap <leader>xi :PlugInstall<cr>
+nmap <leader>xm :MRU<cr>
 nmap <leader>xs :source %<cr>
+nmap <leader>xt :TagbarToggle<CR>
 nmap <leader>xu :PlugUpdate<cr>
 
 call which_key#register('<Space>', "g:which_key_map")
