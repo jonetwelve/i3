@@ -13,6 +13,7 @@ hi SignColumn guibg=grey guifg=red
 let mapleader="\<space>"
 set backspace=indent,eol,start
 set number                            " 显示行号
+set rnu                               " 相对行号
 set hls                               " 搜索高亮
 set ic                                " 搜索忽略大小写"
 set fileformat=unix
