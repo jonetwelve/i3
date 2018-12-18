@@ -8,8 +8,8 @@ sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
 sudo pip install pipenv -i https://mirrors.aliyun.com/pypi/simple
 sudo pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple
 sudo pip install flake8
-sudo pip install autoflake
 sudo pip install yapf
+sudo pip install black
 sudo pip install isort
 
 
@@ -35,15 +35,12 @@ sudo gpasswd -a `whoami` docker
 # editor
 yaourt visual-studio-code-bin
 
-
-yaourt the_platinum_searcher-bin
-
 # node
 sudo pacman -S --noconfirm nodejs npm
 sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
 sudo npm install -g vue
 sudo npm install -g tern
-sudo pacman -S --noconfirm eslint
+sudo npm i -g eslint eslint-plugin-vue
 sudo pacman -S --noconfirm yarn
 yarn config set registry https://registry.npm.taobao.org --global
 yarn config set disturl https://npm.taobao.org/dist --global
