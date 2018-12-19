@@ -1,7 +1,7 @@
 "*****************************************************************************
 "" 插件管理
 "*****************************************************************************
-call plug#begin('~/.cache/nvim_plugged')
+call plug#begin('~/.cache/nvim/plugged')
   for f in split(glob('~/.config/nvim/plugins/*'), '\n')
     exe 'source' f
   endfor

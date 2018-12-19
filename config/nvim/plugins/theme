@@ -1,0 +1,5 @@
+Plug 'joshdick/onedark.vim'
+
+"colorscheme onedark
+"set background=dark
+Plug 'liuchengxu/space-vim-dark'

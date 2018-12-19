@@ -109,11 +109,13 @@ let g:which_key_map.w = {
 			\ "name":"windows",
 			\ "n":"nerdtree",
 			\ "v":"左右分割窗口",
-			\ "h":"上下分割窗口"
+			\ "h":"上下分割窗口",
+            \ "t":"tagbar"
 			\ }
-nmap <leader>wn :NERDTreeToggle<CR>
-nmap <leader>wv :vs<CR>
 nmap <leader>wh :sp<CR>
+nmap <leader>wn :NERDTreeToggle<CR>
+nmap <leader>wt :TagbarToggle<CR>
+nmap <leader>wv :vs<CR>
 
 let g:which_key_map.x = {
 			\ "name":"tools",
