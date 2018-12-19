@@ -1,7 +1,7 @@
 {
     "coc.preferences.autoTrigger": "always",
     "coc.preferences.triggerAfterInsertEnter": true,
-    "coc.preferences.timeout": 500,
+    "coc.preferences.timeout": 5000,
     "coc.preferences.formatOnType": true,
     "coc.preferences.diagnostic.signOffset": 1000,
     "coc.preferences.diagnostic.errorSign": "✖",
