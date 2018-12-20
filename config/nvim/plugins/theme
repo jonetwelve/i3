@@ -1,5 +1,25 @@
 Plug 'joshdick/onedark.vim'
-
-"colorscheme onedark
-"set background=dark
 Plug 'liuchengxu/space-vim-dark'
+Plug 'henrynewcomer/vim-theme-papaya'
+Plug 'crusoexia/vim-monokai'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'romainl/Apprentice'
+Plug 'tyrannicaltoucan/vim-deep-space'
+
+
+
+if has("python3")
+function PickRandomTheme()
+py3 << EOF
+
+import random
+import vim
+
+themes = ['onedark', 'space-vim-dark', 'neodark', 'papaya', 'monokai',
+        'apprentice', 'deep-space']
+_cmd = 'colorscheme {}'.format(random.choice(themes))
+vim.command(_cmd)
+
+EOF
+endfunction
+endif

@@ -3,13 +3,10 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 " if hidden not set, TextEdit might fail.
 set hidden
-
 " Better display for messages
 set cmdheight=2
-
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
-
 " always show signcolumns
 set signcolumn=yes
 

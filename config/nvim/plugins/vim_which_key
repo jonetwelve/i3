@@ -25,9 +25,9 @@ let g:which_key_map.c = {
     \ "c":"comment",
     \ "e":"extension"
     \ }
-nmap <leader>cc <plug>NERDCommenterToggle<cr>
-nmap <leader>ce :Denite coc-extension<cr>
-nmap <leader>cs <plug>NERDCommenterSexy<cr>
+nnoremap <leader>cc <plug>NERDCommenterToggle<cr>
+nnoremap <leader>ce :Denite coc-extension<cr>
+nnoremap <leader>cs <plug>NERDCommenterSexy<cr>
 
 let g:which_key_map.d = {
 			\ "name":"Denite",

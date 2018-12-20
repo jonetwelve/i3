@@ -2,5 +2,5 @@ Plug 'sirver/ultisnips'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpBackwardTrigger="<c-f>"
 let g:UltiSnipsEditSplit = 'vertical'

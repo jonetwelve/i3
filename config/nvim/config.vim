@@ -1,9 +1,3 @@
-"-------------->
-"theme
-colorscheme onedark
-hi SignColumn ctermbg=NONE guibg=NONE       " sign bar不显示背景
-
-
 let mapleader="\<space>"
 
 " 空格缩进
@@ -13,6 +7,11 @@ set shiftwidth=4
 set expandtab
 set smarttab
 set smartindent
+
+syntax on
+syntax enable
+filetype indent on
+filetype plugin on
 
 set backspace=indent,eol,start
 set number                            " 显示行号
@@ -35,6 +34,18 @@ set cursorline                        " cursorcolumn
 set foldmethod=indent                 " 默认展开所有代码
 set foldlevelstart=99
 set fileencodings=utf-8,chinese       " 中文乱码
+
+let g:python3_host_prog = '/usr/bin/python3'
+
+"-------------->
+"theme
+if has('python3')
+    call PickRandomTheme()
+else
+    colorscheme onedark
+endif
+
+hi SignColumn ctermbg=NONE guibg=NONE       " sign bar不显示背景
 
 "--------->
 "记录光标位置
