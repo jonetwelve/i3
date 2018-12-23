@@ -1,25 +1,39 @@
-Plug 'joshdick/onedark.vim'
-Plug 'liuchengxu/space-vim-dark'
-Plug 'henrynewcomer/vim-theme-papaya'
-Plug 'crusoexia/vim-monokai'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'romainl/Apprentice'
-Plug 'tyrannicaltoucan/vim-deep-space'
-
-
-
 if has("python3")
-function PickRandomTheme()
-py3 << EOF
 
+function LoadRandomTheme()
+py3 << EOF
 import random
 import vim
 
-themes = ['onedark', 'space-vim-dark', 'neodark', 'papaya', 'monokai',
-        'apprentice', 'deep-space']
-_cmd = 'colorscheme {}'.format(random.choice(themes))
+themes = {'onedark':"Plug 'joshdick/onedark.vim'",
+        'space-vim-dark':"Plug 'liuchengxu/space-vim-dark'",
+        'neodark':"Plug 'KeitaNakamura/neodark.vim'",
+        'papaya':"Plug 'henrynewcomer/vim-theme-papaya'",
+        'monokai':"Plug 'crusoexia/vim-monokai'",
+        'apprentice':"Plug 'romainl/Apprentice'",
+        'deep-space':"Plug 'tyrannicaltoucan/vim-deep-space'"}
+themes_keys = list(themes.keys())
+theme = random.choice(themes_keys)
+# set theme
+_cmd = 'let g:load_rand_theme = "{}"'.format(theme)
 vim.command(_cmd)
-
+# load theme
+_cmd = themes[theme]
+vim.command(_cmd)
 EOF
 endfunction
+
+
+
+
+function SetRandomTheme()
+py3 << EOF
+import vim
+
+theme = vim.eval("g:load_rand_theme")
+_cmd = 'colorscheme {}'.format(theme)
+vim.command(_cmd)
+EOF
+endfunction
+
 endif

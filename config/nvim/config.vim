@@ -37,14 +37,6 @@ set fileencodings=utf-8,chinese       " 中文乱码
 
 let g:python3_host_prog = '/usr/bin/python3'
 
-"-------------->
-"theme
-if has('python3')
-    call PickRandomTheme()
-else
-    colorscheme onedark
-endif
-
 hi SignColumn ctermbg=NONE guibg=NONE       " sign bar不显示背景
 
 "--------->
