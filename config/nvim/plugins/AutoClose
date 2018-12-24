@@ -1,1 +1,6 @@
-Plug 'vim-scripts/AutoClose'
+Plug 'vim-scripts/AutoClose', { 'on': [] }
+
+augroup load_autoclose
+    autocmd!
+    autocmd InsertEnter * call plug#load('AutoClose') 
+augroup END

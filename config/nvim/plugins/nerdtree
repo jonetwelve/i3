@@ -1,6 +1,6 @@
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree' , { 'on':  'NERDTreeToggle' }
 
 let g:NERDTreeWinPos="right"
 let g:NERDTreeWinSize = 31
 let g:NERDTreeChDirMode = 2
-let g:NERDTreeQuitOnOpen = 1
+""let g:NERDTreeQuitOnOpen = 1

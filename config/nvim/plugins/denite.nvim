@@ -1,4 +1,4 @@
-Plug 'shougo/denite.nvim'
+Plug 'shougo/denite.nvim' 
 
 let g:denite_options = {
       \ 'default' : {

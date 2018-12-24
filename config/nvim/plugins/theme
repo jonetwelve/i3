@@ -8,7 +8,6 @@ import vim
 themes = {'onedark':"Plug 'joshdick/onedark.vim'",
         'space-vim-dark':"Plug 'liuchengxu/space-vim-dark'",
         'neodark':"Plug 'KeitaNakamura/neodark.vim'",
-        'papaya':"Plug 'henrynewcomer/vim-theme-papaya'",
         'monokai':"Plug 'crusoexia/vim-monokai'",
         'apprentice':"Plug 'romainl/Apprentice'",
         'deep-space':"Plug 'tyrannicaltoucan/vim-deep-space'"}

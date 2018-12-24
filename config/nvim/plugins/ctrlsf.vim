@@ -1,1 +1,1 @@
-Plug 'dyng/ctrlsf.vim'
+Plug 'dyng/ctrlsf.vim' , { 'on': 'CtrlSf' }

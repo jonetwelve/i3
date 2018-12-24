@@ -1,1 +1,6 @@
-Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region', { 'on': [] }
+
+augroup load_expandregion
+    autocmd!
+    autocmd InsertEnter * call plug#load('vim-expand-region') 
+augroup END

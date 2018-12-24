@@ -15,7 +15,6 @@ let g:which_key_map.b = {
 			\ "o":"关闭other",
 			\ "s":"switch buffer"
 			\ }
-" fzf 搜索buffer
 nnoremap <leader>bd :bd!<cr>
 nnoremap <leader>bo :.+1,$bw<cr>:1,.-1bw<cr><cr>
 nnoremap <leader>bs :Buffers <cr>

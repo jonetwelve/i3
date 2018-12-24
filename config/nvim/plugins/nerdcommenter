@@ -1,4 +1,9 @@
-Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter', { 'on': [] }
+
+augroup load_ultisnips
+    autocmd!
+    autocmd InsertEnter * call plug#load('nerdcommenter') 
+augroup END
 
 " Add extra space around delimiters when commenting, remove them when
 " uncommenting

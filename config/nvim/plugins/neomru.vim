@@ -1,1 +1,1 @@
-Plug 'shougo/neomru.vim'
+Plug 'shougo/neomru.vim' , { 'on': 'MRU' }

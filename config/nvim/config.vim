@@ -35,7 +35,7 @@ set foldmethod=indent                 " 默认展开所有代码
 set foldlevelstart=99
 set fileencodings=utf-8,chinese       " 中文乱码
 
-let g:python3_host_prog = '/usr/bin/python3'
+""let g:python3_host_prog = '/usr/bin/python3'
 
 hi SignColumn ctermbg=NONE guibg=NONE       " sign bar不显示背景
 

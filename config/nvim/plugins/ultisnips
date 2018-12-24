@@ -1,4 +1,9 @@
-Plug 'sirver/ultisnips'
+Plug 'sirver/ultisnips', { 'on': [] }
+
+augroup load_ultisnips
+    autocmd!
+    autocmd InsertEnter * call plug#load('ultisnips') 
+augroup END
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
