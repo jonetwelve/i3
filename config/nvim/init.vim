@@ -6,8 +6,6 @@ call plug#begin('~/.cache/nvim/plugged')
     exe 'source' f
   endfor
 
-" 加载主题
-call LoadRandomTheme()
 call plug#end()
 
 "*****************************************************************************
@@ -16,11 +14,3 @@ call plug#end()
 source ~/.config/nvim/functions.vim
 source ~/.config/nvim/keys.vim
 source ~/.config/nvim/config.vim
-
-"-------------->
-" 设置主题
-if has('python3')
-    call SetRandomTheme()
-else
-    colorscheme onedark
-endif

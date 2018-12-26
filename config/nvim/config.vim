@@ -76,3 +76,5 @@ if !empty(&viminfo)
 endif
 set sessionoptions-=options
 
+
+color space-vim-dark
