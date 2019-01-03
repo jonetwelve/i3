@@ -4,7 +4,7 @@ let g:NERDTreeWinPos="right"
 let g:NERDTreeWinSize = 31
 let g:NERDTreeChDirMode = 1
 let NERDTreeAutoCenter=1
-"let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 1
 "当NERDTree为剩下的唯一窗口时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " 在终端启动vim时，共享NERDTree
@@ -23,5 +23,3 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
-"打开vim时自动打开NERDTree
-autocmd vimenter * NERDTree 

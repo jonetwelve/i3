@@ -65,7 +65,7 @@ let g:which_key_map.l = {
     \ "r":"rename"
     \ }
 nnoremap <leader>ld :call CocAction('doHover')<CR>
-nmap <leader>lf <Plug>(coc-format)<cr>
+nmap <leader>lf :Autoformat<cr>
 nmap <leader>lgd <Plug>(coc-definition)<cr>
 nmap <leader>lgi <Plug>(coc-implementation)
 nmap <leader>lgr <Plug>(coc-references)
@@ -124,7 +124,9 @@ let g:which_key_map.x = {
 			\ "i":"install plugin",
 			\ "m":"mru",
 			\ "s":"source %",
-			\ "u":"update plugin"
+			\ "u":"update plugin",
+            \ "w":"save",
+            \ "q":"quite"
 			\ }
 nmap <leader>xa <Plug>ToggleAutoCloseMappings<cr>
 nmap <leader>xc :PlugClean<cr>
