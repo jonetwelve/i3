@@ -67,6 +67,7 @@ sudo pacman -S --noconfirm ttf-ionicons
 sudo pacman -S --noconfirm virtualbox
 sudo pacman -S --noconfirm vlc
 sudo pacman -S --noconfirm wine
+sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
