@@ -120,20 +120,19 @@ bindsym $mod+Shift+F9 move container to workspace $WS19; workspace $WS19
 
 
 bar {
-	#mode dock|hide|invisible
+    #mode dock|hide|invisible
     i3bar_command i3bar -t
-	bindsym button1 nop
-	tray_padding 0
-	output $screen1
+    tray_padding 0
+    output $screen1
     #tray_output none
     tray_output $screen1
-	tray_padding 0
+    tray_padding 0
     separator_symbol " -ღღ⇢ "
     workspace_buttons yes
     status_command i3pystatus --config ~/.config/i3/status_i3py.py
     position top
     font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
-	colors {
+        colors {
         separator #05c6f1
         background #10101000
         statusline #DDDDDD
@@ -149,9 +148,11 @@ bar {
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec fcitx
-exec --no-startup-id nitrogen --restore
+#exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id nm-applet
-exec_always --no-startup-id /usr/lib/polkit-1-dde/dde-polkit-agent
+exec_always --no-startup-id vattery
+exec_always --no-startup-id ~/.local/bin/wallpaper.sh
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
 
@@ -167,7 +168,7 @@ bindsym $mod+m scratchpad show
 bindsym Mod1+Tab workspace next_on_output
 bindsym --release Mod1+ctrl+a exec flameshot gui
 bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
-bindsym $mod+Return exec sakura
+bindsym $mod+Return exec terminator
 bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart

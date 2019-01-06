@@ -16,7 +16,6 @@ sudo pip install isort
 # neovim
 sudo pacman -S --noconfirm go yaourt powerpill
 yaourt ttf-font-icons
-
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
 
 # docker
@@ -46,40 +45,44 @@ yarn config set registry https://registry.npm.taobao.org --global
 yarn config set disturl https://npm.taobao.org/dist --global
 
 # software
-sudo pacman -S --noconfirm the_silver_searcher
-sudo pacman -S --noconfirm wine
+sudo pacman -S --noconfirm arc-gtk-theme
+sudo pacman -S --noconfirm arc-icon-theme
+sudo pacman -S --noconfirm ctags
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm gparted
-yaourt gitkraken
+sudo pacman -S --noconfirm gpicview
 sudo pacman -S --noconfirm mariadb
-yaourt wechat-devtools
-sudo pacman -S --noconfirm virtualbox
-yaourt virtualbox-ext-oracle
+sudo pacman -S --noconfirm medit
 sudo pacman -S --noconfirm mongodb
-yaourt mongodb-compass
-sudo pacman -S --noconfirm ctags
-sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm nginx
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
-sudo pkgfile --update
-yaourt global
-yaourt idutils
-yaourt php-cs-fixer
-sudo pacman -S --noconfirm medit
-sudo pacman -S --noconfirm gpicview
+sudo pacman -S --noconfirm polkit-gnome
+sudo pacman -S --noconfirm terminator
+sudo pacman -S --noconfirm the_silver_searcher
 sudo pacman -S --noconfirm ttf-dejavu
-sudo pacman -S --noconfirm sakura
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
-sudo pacman -S --noconfirm arc-icon-theme
-sudo pacman -S --noconfirm arc-gtk-theme
+sudo pacman -S --noconfirm virtualbox
 sudo pacman -S --noconfirm vlc
+sudo pacman -S --noconfirm wine
+sudo pacman -S --noconfirm xorg-xbacklight
+sudo pacman -S --noconfirm xorg-xmessage
+sudo pkgfile --update
+yaourt mongodb-compass
+yaourt gitkraken
+yaourt wechat-devtools
+yaourt global
+yaourt virtualbox-ext-oracle
+yaourt idutils
+yaourt php-cs-fixer
+yaourt vattery
 yaourt electronic-wechat
 yaourt command-not-found
 yaourt franz4-bin
 yaourt netease-cloud-music
+
 # display manager
 sudo pacman -S --noconfirm lightdm
 sudo pacman -S --noconfirm lightdm-webkit2-greeter
@@ -108,6 +111,9 @@ yaourt python-basiciw
 sudo pip install pyalsaaudio
 sudo pip install i3ipc
 
+# gnome
+sudo pacman -S --noconfirm gnome
+
 
 if [ ! -d /home/$(whoami)/.config ]
 then
@@ -129,6 +135,13 @@ mv /home/$(whoami)/.config/zshrc /home/$(whoami)/.zshrc
 sudo cp ./scripts/update-hosts /usr/local/bin/
 sudo chmod a+x /usr/local/bin/update-hosts
 sudo /usr/local/bin/update-hosts
+
+
+if [ ! -d /home/$(whoami)/.local/bin ]
+then
+	mkdir -p /home/$(whoami)/.local/bin
+fi
+cp ./scripts/wallpaper.sh /home/$(whoami)/.local/bin/
 
 sudo pacman -Syu --noconfirm
 

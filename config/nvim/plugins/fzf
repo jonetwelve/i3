@@ -1,2 +1,0 @@
-Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/tools','do': './install --all' } 
-Plug 'junegunn/fzf.vim', { 'on': ['FZF', 'Buffers', 'Files'] }
