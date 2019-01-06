@@ -59,7 +59,7 @@ sudo pacman -S --noconfirm nginx
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome
-sudo pacman -S --noconfirm terminator
+sudo pacman -S --noconfirm sakura
 sudo pacman -S --noconfirm the_silver_searcher
 sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm ttf-font-awesome
