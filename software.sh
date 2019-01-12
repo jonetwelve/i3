@@ -18,6 +18,10 @@ sudo pacman -S --noconfirm go yaourt powerpill
 yaourt ttf-font-icons
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
 
+# dart 
+sudo pacman -S --noconfirm dart
+pub global activate dart_language_server
+
 # docker
 sudo pacman -S --noconfirm docker
 sudo pacman -S --nocnofirm docker-compose

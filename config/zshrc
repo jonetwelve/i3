@@ -2,12 +2,14 @@
 # export
 ##################################
 export MODE=DEV
+export GOPAGH="/home/`whoami`/Storage/Workspace/go"
 export PATH="$PATH:/home/`whoami`/go/bin:/opt/flutter/bin"
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export ANDROID_HOME=/opt/android-sdk
 export PATH={$PATH}:{$ANDROID_HOME}/tools
 export PATH={$PATH}:{$ANDROID_HOME}/platform-tools
+[ -d ~/.pub-cache/bin ] && export PATH="$PATH":"$HOME/.pub-cache/bin"
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,__pycache__,.vscode,node_modules,venv} --type f"
 
@@ -31,3 +33,4 @@ antigen apply
 ##################################
 alias vi="nvim"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
