@@ -1,7 +1,3 @@
-# php
-sudo pacman -S --noconfirm php composer
-composer config -g repo.packagist composer https://packagist.phpcomposer.com
-
 # python
 sudo ln -s /usr/bin/python3 /usr/local/bin/python
 sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
@@ -14,7 +10,8 @@ sudo pip install isort
 
 
 # neovim
-sudo pacman -S --noconfirm go yaourt powerpill
+sudo pacman -S --noconfirm go
+sudo pacman -S --noconfirm yaourt powerpill
 yaourt ttf-font-icons
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
 
@@ -51,15 +48,11 @@ yarn config set disturl https://npm.taobao.org/dist --global
 # software
 sudo pacman -S --noconfirm arc-gtk-theme
 sudo pacman -S --noconfirm arc-icon-theme
-sudo pacman -S --noconfirm ctags
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm gparted
 sudo pacman -S --noconfirm gpicview
-sudo pacman -S --noconfirm mariadb
-sudo pacman -S --noconfirm medit
-sudo pacman -S --noconfirm mongodb
-sudo pacman -S --noconfirm nginx
+sudo pacman -S --noconfirm lxappearance
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome
@@ -75,15 +68,12 @@ sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
-yaourt mongodb-compass
 yaourt gitkraken
 yaourt wechat-devtools
 yaourt global
 yaourt virtualbox-ext-oracle
 yaourt idutils
-yaourt php-cs-fixer
 yaourt vattery
-yaourt electronic-wechat
 yaourt command-not-found
 yaourt franz4-bin
 yaourt netease-cloud-music
@@ -118,6 +108,7 @@ sudo pip install i3ipc
 
 # gnome
 sudo pacman -S --noconfirm gnome
+sudo pacman -S --noconfirm gnome-tweaks
 
 
 if [ ! -d /home/$(whoami)/.config ]
