@@ -15,10 +15,6 @@ sudo pacman -S --noconfirm yaourt powerpill
 yaourt ttf-font-icons
 sudo ln -s /usr/bin/nvim /usr/local/bin/vi
 
-# dart 
-sudo pacman -S --noconfirm dart
-pub global activate dart_language_server
-
 # docker
 sudo pacman -S --noconfirm docker
 sudo pacman -S --nocnofirm docker-compose
@@ -68,15 +64,16 @@ sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
-yaourt gitkraken
-yaourt wechat-devtools
-yaourt global
-yaourt virtualbox-ext-oracle
-yaourt idutils
-yaourt vattery
 yaourt command-not-found
 yaourt franz4-bin
+yaourt gitkraken
+yaourt global
+yaourt idutils
 yaourt netease-cloud-music
+yaourt sublime-text-3-imfix
+yaourt vattery
+yaourt virtualbox-ext-oracle
+yaourt wechat-devtools
 
 # display manager
 sudo pacman -S --noconfirm lightdm
@@ -145,4 +142,4 @@ sudo pacman -Syu --noconfirm
 curl -L git.io/antigen > ~/.config/antigen.zsh
 
 clear
-echo "Need init:\nyaourt\nmariadb\n"
+echo "Need init:\nyaourt\n"
