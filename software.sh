@@ -13,7 +13,6 @@ sudo pip install isort
 sudo pacman -S --noconfirm go
 sudo pacman -S --noconfirm yaourt powerpill
 yaourt ttf-font-icons
-sudo ln -s /usr/bin/nvim /usr/local/bin/vi
 
 # docker
 sudo pacman -S --noconfirm docker
@@ -58,6 +57,7 @@ sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
 sudo pacman -S --noconfirm virtualbox
+sudo pacman -S --noconfirm virtualbox-host-modules-arch
 sudo pacman -S --noconfirm vlc
 sudo pacman -S --noconfirm wine
 sudo pacman -S --noconfirm xautolock
@@ -138,8 +138,8 @@ cp ./scripts/wallpaper.sh /home/$(whoami)/.local/bin/
 
 sudo pacman -Syu --noconfirm
 
-# antigen for zsh
-curl -L git.io/antigen > ~/.config/antigen.zsh
+# oh-my-zsh
+curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 
 clear
 echo "Need init:\nyaourt\n"
