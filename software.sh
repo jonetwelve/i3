@@ -1,6 +1,4 @@
 # python
-sudo ln -s /usr/bin/python3 /usr/local/bin/python
-sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
 sudo pip install pipenv -i https://mirrors.aliyun.com/pypi/simple
 sudo pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple
 sudo pip install flake8
@@ -24,7 +22,6 @@ fi
 sudo touch /etc/docker/daemon.json
 sudo chmod a+w /etc/docker/daemon.json
 echo '{"registry-mirrors": ["https://registry.docker-cn.com"]}' > /etc/docker/daemon.json
-sudo systemctl enable docker
 sudo gpasswd -a `whoami` docker
 
 # editor
@@ -32,8 +29,6 @@ yaourt visual-studio-code-bin
 
 # node
 sudo pacman -S --noconfirm nodejs npm
-sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
-sudo npm install -g vue
 sudo npm install -g tern
 sudo npm i -g eslint eslint-plugin-vue
 sudo pacman -S --noconfirm yarn
@@ -42,7 +37,7 @@ yarn config set disturl https://npm.taobao.org/dist --global
 
 # software
 sudo pacman -S --noconfirm arc-gtk-theme
-sudo pacman -S --noconfirm arc-icon-theme
+sudo pacman -S --noconfirm elementary-icon-theme
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm gparted
@@ -70,23 +65,16 @@ yaourt gitkraken
 yaourt global
 yaourt idutils
 yaourt netease-cloud-music
+yaourt rcm
 yaourt sublime-text-3-imfix
 yaourt vattery
 yaourt virtualbox-ext-oracle
 yaourt wechat-devtools
 
-# display manager
-sudo pacman -S --noconfirm lightdm
-sudo pacman -S --noconfirm lightdm-webkit2-greeter
-yaourt lightdm-webkit2-theme-material2
-sudo systemctl enable lightdm
-sudo sed -i 's/#greeter-session=example-gtk-gnome/#greeter-session=example-gtk-gnome\ngreeter-session=lightdm-webkit2-greeter/' /etc/lightdm/lightdm.conf
-sudo sed -i 's/webkit_theme/#webkit_theme/' /etc/lightdm/lightdm-webkit2-greeter.conf
-sudo sed -i 's/antergos/antergos\nwebkit_theme = material2/' /etc/lightdm/lightdm-webkit2-greeter.conf
 yarn global add prettier
 yarn global add html-beautify
 yarn global add js-beautify
-sudo cnpm install -g css-beautify
+sudo npm install -g css-beautify
 yarn global add eslint
 
 
@@ -129,12 +117,6 @@ sudo cp ./scripts/update-hosts /usr/local/bin/
 sudo chmod a+x /usr/local/bin/update-hosts
 sudo /usr/local/bin/update-hosts
 
-
-if [ ! -d /home/$(whoami)/.local/bin ]
-then
-	mkdir -p /home/$(whoami)/.local/bin
-fi
-cp ./scripts/wallpaper.sh /home/$(whoami)/.local/bin/
 
 sudo pacman -Syu --noconfirm
 
