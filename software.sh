@@ -113,6 +113,9 @@ mv /home/$(whoami)/.config/zshrc /home/$(whoami)/.zshrc
 
 
 # custom
+sudo cp ./scripts/jstart /usr/local/bin/
+sudo chmod a+x /usr/local/bin/jstart
+
 sudo cp ./scripts/update-hosts /usr/local/bin/
 sudo chmod a+x /usr/local/bin/update-hosts
 sudo /usr/local/bin/update-hosts

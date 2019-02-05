@@ -1,0 +1,31 @@
+#!/bin/sh
+
+jbase (){
+    echo '' > ~/.xinitrc
+}
+
+ji3 () {
+    echo 'exec i3' >> ~/.xinitrc
+}
+
+jgnome () {
+    echo "export GDK_BACKEND=x11" >> ~/.xinitrc
+    echo "exec gnome-session" >> ~/.xinitrc
+}
+
+
+
+jmain() {
+    jbase
+
+    case $1 in
+        "i"|"i3")          ji3;;
+        "g"|"gnome")       jgnome;;
+        *)                 ji3;;
+    esac
+
+    startx
+}
+
+
+jmain $@
