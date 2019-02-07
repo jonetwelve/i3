@@ -1,7 +1,9 @@
 #!/bin/sh
 
 jbase (){
-    echo '' > ~/.xinitrc
+    echo 'export GTK_IM_MODULE=fcitx' > ~/.xinitrc
+    echo 'export QT_IM_MODULE=fcitx' >> ~/.xinitrc
+    echo 'export XMODIFIERS=fcitx' >> ~/.xinitrc
 }
 
 ji3 () {
