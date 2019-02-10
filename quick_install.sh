@@ -6,6 +6,7 @@ function install_powerpill(){
     echo "Server = http://repo.archlinuxcn.org/\$arch" >> /etc/pacman.conf
 
     pacman -Syy
+    pacman -S --noconfirm archlinux-keyring
     pacman -S --noconfirm archlinuxcn-keyring
     pacman -S --noconfirm yaourt
     pacman -S --noconfirm powerpill
@@ -93,11 +94,9 @@ function install_software(){
     powerpill -S --noconfirm alsa-utils compton curl dosfstools epdfview fcitx-configtool fcitx-im
 	powerpill -S --noconfirm fcitx-sunpinyin firefox gimp git gstreamer0.10-plugins gtk-engines gvfs gvfs-mtp
     powerpill -S --noconfirm gvfs-nfs libreoffice mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts
-	powerpill -S --noconfirm python-pip python-neovim rofi sudo udisks2 unrar unzip volumeicon wget wqy-microhei
+	powerpill -S --noconfirm python-pip python-neovim rofi udisks2 unrar unzip volumeicon wget wqy-microhei
 	powerpill -S --noconfirm xarchiver xf86-input-evdev xf86-video-intel xf86-video-vesa xorg-server xorg-xinit
 	powerpill -S --noconfirm zip zsh 
-    powerpill -S --noconfirm networkmanager networkmanager-openconnect networkmanager-vpnc
-    powerpill -S --noconfirm networkmanager-openvpn networkmanager-pptp network-manager-applet
 }
 function jconfig(){
 #add packages source
@@ -155,10 +154,14 @@ ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "make time"
 hwclock --systohc --utc
 
+pacman -S --noconfirm grub os-prober
+
 
 #network
 clear
 echo "auto start network"
+pacman -S --noconfirm networkmanager networkmanager-openconnect networkmanager-vpnc
+pacman -S --noconfirm networkmanager-openvpn networkmanager-pptp network-manager-applet
 systemctl enable NetworkManager
 
 #start graphical
@@ -177,6 +180,7 @@ read -p "Enter root password: " rootpwd
 
 clear
 # new user
+pacman -S --noconfirm sudo
 read -p "Enter new user: " newuser
 echo "${newuser} ALL=(ALL) ALL" >> /etc/sudoers
 echo "Defaults:${newuser} !authenticate " >> /etc/sudoers
@@ -189,3 +193,5 @@ clear
 echo -e "Install over,\nPlease generate grub config yourself \nAnd then\nInput exit and click enter to reboot"
 exit 0
 }
+
+$@
