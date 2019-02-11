@@ -46,7 +46,7 @@ sudo pacman -S --noconfirm lxappearance
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome
-sudo pacman -S --noconfirm sakura
+sudo pacman -S --noconfirm termite 
 sudo pacman -S --noconfirm the_silver_searcher
 sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm ttf-font-awesome
@@ -100,16 +100,15 @@ if [ ! -d /home/$(whoami)/.config ]
 then
 	mkdir -p /home/$(whoami)/.config
 fi
-cp -a config/* /home/$(whoami)/.config/
-
-mv /home/$(whoami)/.config/gitconfig /home/$(whoami)/.gitconfig
-mv /home/$(whoami)/.config/gitignore_global /home/$(whoami)/.gitignore_global
-
-mv /home/$(whoami)/.config/pip /home/$(whoami)/.pip
-
-mv /home/$(whoami)/.config/Xresources /home/$(whoami)/.Xresources
-
-mv /home/$(whoami)/.config/zshrc /home/$(whoami)/.zshrc
+ln -s `pwd`/dotfiles/gitconfig /home/`whoami`/.gitconfig
+ln -s `pwd`/dotfiles/gitignore_global /home/`whoami`/.gitignore_global
+ln -s `pwd`/dotfiles/xprofile /home/`whoami`/.xprofile
+ln -s `pwd`/dotfiles/Xresources /home/`whoami`/.Xresources
+ln -s `pwd`/dotfiles/yarnrc /home/`whoami`/.yarnrc
+ln -s `pwd`/dotfiles/zshrc /home/`whoami`/.zshrc
+ln -s `pwd`/dotfiles/config/i3 /home/`whoami`/.config/i3
+ln -s `pwd`/dotfiles/config/termite /home/`whoami`/.config/termite
+ln -s `pwd`/dotfiles/config/compton.conf /home/`whoami`/.config/compoton.conf
 
 
 # custom

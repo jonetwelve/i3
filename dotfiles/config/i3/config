@@ -145,13 +145,11 @@ bar {
 
 
 ## 自动启动
-exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec_always --no-startup-id compton
 exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
-exec fcitx
-#exec --no-startup-id nitrogen --restore
+exec_always fcitx
+exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id nm-applet
-exec_always --no-startup-id vattery
-exec_always --no-startup-id ~/.local/bin/wallpaper.sh
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
@@ -167,8 +165,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+m scratchpad show
 bindsym Mod1+Tab workspace next_on_output
 bindsym --release Mod1+ctrl+a exec flameshot gui
-bindsym $mod+Ctrl+m exec sakura -e 'alsamixer'
-bindsym $mod+Return exec sakura
+bindsym $mod+Ctrl+m exec termite -e 'alsamixer'
+bindsym $mod+Return exec termite
 bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart
