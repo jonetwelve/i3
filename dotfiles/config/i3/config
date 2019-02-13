@@ -120,29 +120,29 @@ bindsym $mod+Shift+F8 move container to workspace $WS18; workspace $WS18
 bindsym $mod+Shift+F9 move container to workspace $WS19; workspace $WS19
 
 
-bar {
-    #mode dock|hide|invisible
-    i3bar_command i3bar -t
-    tray_padding 0
-    output $screen1
-    #tray_output none
-    tray_output $screen1
-    tray_padding 0
-    separator_symbol " -ღღ⇢ "
-    workspace_buttons yes
-    status_command i3pystatus --config ~/.config/i3/status_i3py.py
-    position top
-    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
-        colors {
-        separator #05c6f1
-        background #10101000
-        statusline #DDDDDD
-        focused_workspace #FFFFFF #2ECC71 #000000
-        active_workspace #000000 #A4A28D #FFFFFF
-        inactive_workspace #A4A28D #000000 #DDDDDD
-        urgent_workspace #2ECC71 #900000 #FFFFFF
-    }
-}
+#bar {
+#    #mode dock|hide|invisible
+#    i3bar_command i3bar -t
+#    tray_padding 0
+#    output $screen1
+#    #tray_output none
+#    tray_output $screen1
+#    tray_padding 0
+#    separator_symbol " -ღღ⇢ "
+#    workspace_buttons yes
+#    status_command i3pystatus --config ~/.config/i3/status_i3py.py
+#    position top
+#    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
+#        colors {
+#        separator #05c6f1
+#        background #10101000
+#        statusline #DDDDDD
+#        focused_workspace #FFFFFF #2ECC71 #000000
+#        active_workspace #000000 #A4A28D #FFFFFF
+#        inactive_workspace #A4A28D #000000 #DDDDDD
+#        urgent_workspace #2ECC71 #900000 #FFFFFF
+#    }
+#}
 
 
 ## 自动启动
@@ -150,10 +150,13 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec_always fcitx
 exec_always --no-startup-id nitrogen --restore
-exec_always --no-startup-id nm-applet
+#exec_always --no-startup-id nm-applet
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
+exec_always --no-startup-id conky 
+exec_always --no-startup-id conky -c ~/.config/conky/right_top
+exec_always --no-startup-id conky -c ~/.config/conky/right_bottom
 
 
 ## 快捷键

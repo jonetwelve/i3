@@ -63,6 +63,7 @@ yaourt command-not-found
 yaourt franz4-bin
 yaourt gitkraken
 yaourt global
+yaourt i3-battery-popup-git
 yaourt idutils
 yaourt netease-cloud-music
 yaourt rcm
@@ -82,14 +83,6 @@ yarn global add eslint
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm awesome-terminal-fonts
-# i3pystatus
-yaourt i3pystatus
-sudo pacman -S --noconfirm python-netifaces
-sudo pacman -S --noconfirm python-colour
-sudo pacman -S --noconfirm python-psutil
-yaourt python-basiciw
-sudo pip install pyalsaaudio
-sudo pip install i3ipc
 
 # gnome
 sudo pacman -S --noconfirm gnome
