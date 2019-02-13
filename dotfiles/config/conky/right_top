@@ -45,5 +45,5 @@ ${color FFFFFF}${goto 125}${voffset 25}${downspeed wlp2s0}
 ${color FFFFFF}${goto 125}${upspeed wlp2s0}
 ${voffset 26}${color FFFFFF}${goto 130}Battery
 ${voffset 8}${color FFFFFF}${goto 120}${battery BAT1}
-${execi 3 ~/.config/conky/battery.py}
+${execi 300 ~/.config/conky/battery.py}
 ]]
