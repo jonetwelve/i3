@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
 import os
+import psutil
 
-comm = "i3-battery-popup -m 'Battery is lower' -L 22 -N"
-os.system(comm)
+
+battery = psutil.sensors_battery()
+if battery.percent < 20:
+    comm = "i3-nagbar -m 'Battery is lower'"
+    os.system(comm)

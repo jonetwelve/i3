@@ -63,7 +63,6 @@ yaourt command-not-found
 yaourt franz4-bin
 yaourt gitkraken
 yaourt global
-yaourt i3-battery-popup-git
 yaourt idutils
 yaourt netease-cloud-music
 yaourt rcm

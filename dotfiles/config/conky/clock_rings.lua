@@ -172,7 +172,7 @@ rings_table = {
     },
         {
         name='downspeedf',
-        arg='enp0s25',
+        arg='wlp2s0',
         max=100,
         bg_colour=0xffffff,
         bg_alpha=0.2,
@@ -186,7 +186,7 @@ rings_table = {
     },
         {
         name='upspeedf',
-        arg='enp0s25',
+        arg='wlp2s0',
         max=100,
         bg_colour=0xffffff,
         bg_alpha=0.2,
