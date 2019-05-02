@@ -9,9 +9,14 @@
     remotes = remote -v
     logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 [user]
-    email = jonetwelve@hotmail.com
-    name = jone
+	email = jonetwelve@hotmail.com
+	name = jone
 [core]
     editor = nvim
     fileMode = false
     excludesfile = ~/.gitignore_global
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -8,6 +8,10 @@ sudo pip install isort
 
 
 # neovim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
 sudo pacman -S --noconfirm go
 sudo pacman -S --noconfirm yaourt powerpill
 yaourt ttf-font-icons
@@ -38,6 +42,7 @@ yarn config set disturl https://npm.taobao.org/dist --global
 # software
 sudo pacman -S --noconfirm arc-gtk-theme
 sudo pacman -S --noconfirm elementary-icon-theme
+sudo pacman -S --noconfirm fabrci
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm gparted
@@ -60,9 +65,11 @@ sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
 yaourt command-not-found
+yaourt conky-lua
 yaourt franz4-bin
 yaourt gitkraken
 yaourt global
+yaourt i3pystatus
 yaourt idutils
 yaourt netease-cloud-music
 yaourt rcm
@@ -82,10 +89,19 @@ yarn global add eslint
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm awesome-terminal-fonts
+yaourt python-pyalsaaudio
+yaourt python-psutil
+yaourt python-netifaces
+yaourt python-basiciw
+yaourt python-colour
+yaourt i3ipc-python
 
-# gnome
+# deepin
 sudo pacman -S --noconfirm gnome
 sudo pacman -S --noconfirm gnome-tweaks
+
+# oh-my-zsh
+curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 
 
 if [ ! -d /home/$(whoami)/.config ]
@@ -101,6 +117,7 @@ ln -s `pwd`/dotfiles/zshrc /home/`whoami`/.zshrc
 ln -s `pwd`/dotfiles/config/i3 /home/`whoami`/.config/i3
 ln -s `pwd`/dotfiles/config/termite /home/`whoami`/.config/termite
 ln -s `pwd`/dotfiles/config/compton.conf /home/`whoami`/.config/compoton.conf
+ln -s `pwd`/dotfiles/config/conky /home/`whoami`/.config/conky
 
 
 # custom
@@ -114,8 +131,6 @@ sudo /usr/local/bin/update-hosts
 
 sudo pacman -Syu --noconfirm
 
-# oh-my-zsh
-curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 
 clear
 echo "Need init:\nyaourt\n"

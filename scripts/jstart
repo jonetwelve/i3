@@ -15,6 +15,18 @@ jgnome () {
     echo "exec gnome-session" >> ~/.xinitrc
 }
 
+jdeepin () {
+    echo "exec startdde" >> ~/.xinitrc
+}
+
+jlxde () {
+    echo "exec startlxde" >> ~/.xinitrc
+}
+
+jkde() {
+    echo "exec startkde" >> ~/.xinitrc
+}
+
 
 
 jmain() {
@@ -22,7 +34,10 @@ jmain() {
 
     case $1 in
         "i"|"i3")          ji3;;
+        "l"|"lxde")        jlxde;;
+        "d"|"deepin")      jdeepin;;
         "g"|"gnome")       jgnome;;
+        "k"|"kde")         jkde;;
         *)                 ji3;;
     esac
 
