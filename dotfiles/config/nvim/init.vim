@@ -7,7 +7,7 @@ let g:CusVim.info = g:CusVim.cache_dir . '/info.vim'
 let g:CusVim.pkg_dir = g:CusVim.root . '/pkgs'
 
 
-let g:CusVim.excluded = ["python", "go", "tagbar"]
+let g:CusVim.excluded = ["python", "tagbar"]
 let g:CusVim.user_configs = []
 
 
