@@ -118,6 +118,7 @@ ln -s `pwd`/dotfiles/config/i3 /home/`whoami`/.config/i3
 ln -s `pwd`/dotfiles/config/termite /home/`whoami`/.config/termite
 ln -s `pwd`/dotfiles/config/compton.conf /home/`whoami`/.config/compoton.conf
 ln -s `pwd`/dotfiles/config/conky /home/`whoami`/.config/conky
+touch /home/$(whoami)/.custom_source
 
 
 # custom
