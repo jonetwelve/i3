@@ -32,8 +32,20 @@ function! s:check_plug_manager() abort
 endfunction
 
 
+function! s:cocinit() abort
+    call coc#util#build()
+    CocInstall coc-json coc-html coc-css coc-emmet
+	CocInstall coc-dictionary coc-tag coc-word
+	CocInstall coc-gocode
+	CocInstall coc-ultisnips coc-neosnippet coc-snippets
+	CocInstall coc-vetur coc-tsserver
+	CocInstall coc-pyls
+endfunction
+
+
 function! s:define_command() abort
     command! -nargs=0    Cusvim           call s:init()
+    command! -nargs=0    Cocinit          call s:cocinit()
     command! -nargs=+    MP               call s:my_plugin(<args>)
 endfunction
 

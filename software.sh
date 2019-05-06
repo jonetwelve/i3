@@ -72,7 +72,6 @@ yaourt global
 yaourt i3pystatus
 yaourt idutils
 yaourt netease-cloud-music
-yaourt rcm
 yaourt sublime-text-3-imfix
 yaourt vattery
 yaourt virtualbox-ext-oracle

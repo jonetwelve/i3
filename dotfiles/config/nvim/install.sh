@@ -118,22 +118,6 @@ echo_with_color () {
 }
 # }}}
 
-# fetch_repo {{{
-fetch_repo () {
-  if [[ -d "$HOME/.CusVim" ]]; then
-    info "正在更新 CusVim..."
-    cd "$HOME/.CusVim"
-    git pull
-    cd - > /dev/null 2>&1
-    success "CusVim 更新已完成"
-  else
-    info "正在安装 CusVim..."
-    git clone ssh://git@122.114.7.175:65433/jone/CusVim.git "$HOME/.CusVim"
-    success "CusVim 安装已完成"
-  fi
-}
-# }}}
-
 # install_package_manager {{{
 install_package_manager () {
   if [[ ! -e "/home/`whoami`/.local/share/nvim/site/autoload/plug.vim" ]]; then
@@ -147,22 +131,22 @@ install_package_manager () {
 
 # generate init.vim {{{
 generate_init () {
-  echo "scriptencoding utf-8"  > ~/.CusVim/init.vim
-  echo ""  >> ~/.CusVim/init.vim
-  echo "let g:CusVim = {}"  >> ~/.CusVim/init.vim
-  echo "let g:CusVim.root = '/home/jone/.CusVim'"  >> ~/.CusVim/init.vim
-  echo "let g:CusVim.cache_dir = '/home/jone/.cache/nvim'"  >> ~/.CusVim/init.vim
-  echo "let g:CusVim.info = g:CusVim.cache_dir . '/info.vim'"  >> ~/.CusVim/init.vim
-  echo "let g:CusVim.pkg_dir = g:CusVim.root . '/pkgs'"  >> ~/.CusVim/init.vim
-  echo ""  >> ~/.CusVim/init.vim
-  echo ""  >> ~/.CusVim/init.vim
-  echo "let g:CusVim.excluded = []"  >> ~/.CusVim/init.vim
-  echo "let g:CusVim.user_configs = []"  >> ~/.CusVim/init.vim
-  echo ""  >> ~/.CusVim/init.vim
-  echo ""  >> ~/.CusVim/init.vim
-  echo "set runtimepath+=/home/jone/.CusVim/core"  >> ~/.CusVim/init.vim
-  echo ""  >> ~/.CusVim/init.vim
-  echo "call CusVim#bootstrap()"  >> ~/.CusVim/init.vim
+  echo "scriptencoding utf-8"  > ~/.config/nvim/init.vim
+  echo ""  >> ~/.config/nvim/init.vim
+  echo "let g:CusVim = {}"  >> ~/.config/nvim/init.vim
+  echo "let g:CusVim.root = '/home/`whoami`/.config/nvim'"  >> ~/.config/nvim/init.vim
+  echo "let g:CusVim.cache_dir = '/home/`whoami`/.cache/nvim'"  >> ~/.config/nvim/init.vim
+  echo "let g:CusVim.info = g:CusVim.cache_dir . '/info.vim'"  >> ~/.config/nvim/init.vim
+  echo "let g:CusVim.pkg_dir = g:CusVim.root . '/pkgs'"  >> ~/.config/nvim/init.vim
+  echo ""  >> ~/.config/nvim/init.vim
+  echo ""  >> ~/.config/nvim/init.vim
+  echo "let g:CusVim.excluded = []"  >> ~/.config/nvim/init.vim
+  echo "let g:CusVim.user_configs = []"  >> ~/.config/nvim/init.vim
+  echo ""  >> ~/.config/nvim/init.vim
+  echo ""  >> ~/.config/nvim/init.vim
+  echo "set runtimepath+=/home/`whoami`/.config/nvim/core"  >> ~/.config/nvim/init.vim
+  echo ""  >> ~/.config/nvim/init.vim
+  echo "call CusVim#bootstrap()"  >> ~/.config/nvim/init.vim
 
 }
 # }}}
@@ -173,17 +157,18 @@ install_neovim () {
     mkdir "$HOME/.config/"
   fi
   if [[ -d "$HOME/.config/nvim" ]]; then
-    if [[ "$(readlink $HOME/.config/nvim)" =~ \.CusVim$ ]]; then
+    if [[ "$(readlink $HOME/.config/nvim)" = "$(pwd)" ]]; then
       success "已为 neovim 安装了 CusVim"
     else
       mv "$HOME/.config/nvim" "$HOME/.config/nvim_back"
       success "备份 $HOME/.config/nvim 至 $HOME/.config/nvim_back"
-      ln -s "$HOME/.CusVim" "$HOME/.config/nvim"
+      ln -s "$(pwd)" "$HOME/.config/nvim"
+      generate_init
       success "已为 neovim 安装了 CusVim"
-      
     fi
   else
-    ln -s "$HOME/.CusVim" "$HOME/.config/nvim"
+    ln -s "$(pwd)" "$HOME/.config/nvim"
+    generate_init
     success "已为 neovim 安装了 CusVim"
   fi
 }
@@ -192,7 +177,7 @@ install_neovim () {
 # uninstall_neovim {{{
 uninstall_neovim () {
   if [[ -d "$HOME/.config/nvim" ]]; then
-    if [[ "$(readlink $HOME/.config/nvim)" =~ \.CusVim$ ]]; then
+    if [[ "$(readlink $HOME/.config/nvim)" = "$(pwd)" ]]; then
       rm "$HOME/.config/nvim"
       success "已为 neovim 卸载了 CusVim"
       if [[ -d "$HOME/.config/nvim_back" ]]; then
@@ -350,10 +335,11 @@ main () {
         ;;
       --install|-i)
         need_cmd 'git'
-        fetch_repo
         install_neovim
-        install_done
+        install_package_manager
         check_requirements
+        install_fonts
+        install_done
         exit 0
         ;;
       --help|-h)
@@ -363,7 +349,6 @@ main () {
     esac
   else
     need_cmd 'git'
-    fetch_repo
     install_neovim
     install_package_manager
     check_requirements
