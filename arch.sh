@@ -40,14 +40,15 @@ function jconfig(){
 
     cp /etc/pacman.conf /etc/pacman.conf.default
 
+    echo "[multilib]" >> /etc/pacman.conf
+    echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
     echo "[archlinuxcn]" >> /etc/pacman.conf
     echo "Server = http://repo.archlinuxcn.org/\$arch" >> /etc/pacman.conf
 
     pacman -Syy
-    pacman -S --noconfirm yaourt
+    pacman -S --noconfirm archlinuxcn-keyring
+    pacman -S --noconfirm yaourt powerpill
 
-    rm -rf /etc/pacman.conf
-    mv /etc/pacman.conf.default /etc/pacman.conf
     echo "Server = http://mirrors.aliyun.com/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
     echo "Server = http://mirror.bit.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
     echo "Server = http://mirrors.163.com/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
@@ -58,7 +59,7 @@ function jconfig(){
     echo "Server = http://mirror.lzu.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
     echo "update packages"
     pacman -Syy
-    pacman -S --noconfirm alsa-utils compton curl dosfstools epdfview fcitx-configtool fcitx-im
+    pacman -S --noconfirm alsa-utils compton curl dialog dosfstools epdfview fcitx-configtool fcitx-im
 	pacman -S --noconfirm fcitx-sunpinyin firefox gimp git gstreamer0.10-plugins gtk-engines gvfs gvfs-mtp
     pacman -S --noconfirm gvfs-nfs libreoffice mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts
 	pacman -S --noconfirm python-pip python-neovim rofi sudo udisks2 unrar unzip volumeicon wget wqy-microhei
@@ -90,7 +91,7 @@ function jconfig(){
     #GRUB
     clear
     echo "install and config grub"
-    pacman -S --noconfirm grub os-prober
+    pacman -S --noconfirm grub os-prober efibootmgr
 
     #network
     clear

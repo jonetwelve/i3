@@ -7,26 +7,21 @@ sudo pip install black
 sudo pip install isort
 
 
-# neovim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-
 sudo pacman -S --noconfirm go
 sudo pacman -S --noconfirm yaourt powerpill
 yaourt ttf-font-icons
 
 # docker
-sudo pacman -S --noconfirm docker
-sudo pacman -S --nocnofirm docker-compose
-if [ ! -d /etc/docker ]
-then
-	sudo mkdir -p /etc/docker
-fi
-sudo touch /etc/docker/daemon.json
-sudo chmod a+w /etc/docker/daemon.json
-echo '{"registry-mirrors": ["https://registry.docker-cn.com"]}' > /etc/docker/daemon.json
-sudo gpasswd -a `whoami` docker
+#sudo pacman -S --noconfirm docker
+#sudo pacman -S --nocnofirm docker-compose
+#if [ ! -d /etc/docker ]
+#then
+#	sudo mkdir -p /etc/docker
+#fi
+#sudo touch /etc/docker/daemon.json
+#sudo chmod a+w /etc/docker/daemon.json
+#echo '{"registry-mirrors": ["https://registry.docker-cn.com"]}' > /etc/docker/daemon.json
+#sudo gpasswd -a `whoami` docker
 
 # editor
 yaourt visual-studio-code-bin
@@ -45,6 +40,7 @@ sudo pacman -S --noconfirm elementary-icon-theme
 sudo pacman -S --noconfirm fabrci
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm flameshot
+sudo pacman -S --noconfirm gimp 
 sudo pacman -S --noconfirm gparted
 sudo pacman -S --noconfirm gpicview
 sudo pacman -S --noconfirm lxappearance
@@ -65,9 +61,7 @@ sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
 yaourt command-not-found
-yaourt conky-lua
-yaourt franz4-bin
-yaourt gitkraken
+yaourt gitblade-bin
 yaourt global
 yaourt i3pystatus
 yaourt idutils
@@ -117,7 +111,19 @@ ln -s `pwd`/dotfiles/config/i3 /home/`whoami`/.config/i3
 ln -s `pwd`/dotfiles/config/termite /home/`whoami`/.config/termite
 ln -s `pwd`/dotfiles/config/compton.conf /home/`whoami`/.config/compoton.conf
 ln -s `pwd`/dotfiles/config/conky /home/`whoami`/.config/conky
+ln -s `pwd`/dotfiles/pam_environment /home/`whoami`/.pam_environment
 touch /home/$(whoami)/.custom_source
+
+storage=$(dirname $(dirname $(dirname $(pwd))))
+ln -s $storage/Desktop /home/`whoami`/Desktop
+ln -s $storage/Documents /home/`whoami`/Documents
+ln -s $storage/Downloads /home/`whoami`/Downloads
+ln -s $storage/Music /home/`whoami`/Music
+ln -s $storage/Pictures /home/`whoami`/Pictures
+ln -s $storage/Videos /home/`whoami`/Videos
+ln -s $storage/Workspace /home/`whoami`/Workspace
+ln -s $storage/Workspace/go /home/`whoami`/go
+
 
 
 # custom

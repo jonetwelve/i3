@@ -157,34 +157,14 @@ install_neovim () {
     mkdir "$HOME/.config/"
   fi
   if [[ -d "$HOME/.config/nvim" ]]; then
-    if [[ "$(readlink $HOME/.config/nvim)" = "$(pwd)" ]]; then
-      success "已为 neovim 安装了 CusVim"
-    else
-      mv "$HOME/.config/nvim" "$HOME/.config/nvim_back"
-      success "备份 $HOME/.config/nvim 至 $HOME/.config/nvim_back"
+      rm -f "$HOME/.config/nvim"
       ln -s "$(pwd)" "$HOME/.config/nvim"
       generate_init
       success "已为 neovim 安装了 CusVim"
-    fi
   else
     ln -s "$(pwd)" "$HOME/.config/nvim"
     generate_init
     success "已为 neovim 安装了 CusVim"
-  fi
-}
-# }}}
-
-# uninstall_neovim {{{
-uninstall_neovim () {
-  if [[ -d "$HOME/.config/nvim" ]]; then
-    if [[ "$(readlink $HOME/.config/nvim)" = "$(pwd)" ]]; then
-      rm "$HOME/.config/nvim"
-      success "已为 neovim 卸载了 CusVim"
-      if [[ -d "$HOME/.config/nvim_back" ]]; then
-        mv "$HOME/.config/nvim_back" "$HOME/.config/nvim"
-        success "从 $HOME/.config/nvim_back 恢复了原始配置"
-      fi
-    fi
   fi
 }
 # }}}
@@ -226,22 +206,7 @@ usage () {
   echo_with_color ""
   echo_with_color "使用"
   echo_with_color ""
-  echo_with_color "  sh ./install.sh -- [选项] [对象]"
-  echo_with_color ""
-  echo_with_color "所有选项"
-  echo_with_color ""
-  echo_with_color " -i, --install            为 neovim 安装 CusVim"
-  echo_with_color " -u, --uninstall          卸载 CusVim"
-  echo_with_color ""
-  echo_with_color "使用示例"
-  echo_with_color ""
-  echo_with_color "    默认为安装 CusVim"
-  echo_with_color ""
-  echo_with_color "        sh ./install.sh"
-  echo_with_color ""
-  echo_with_color "    卸载 CusVim"
-  echo_with_color ""
-  echo_with_color "        sh ./install.sh --uninstall"
+  echo_with_color "  sh ./install.sh"
 }
 # }}}
 
@@ -324,37 +289,12 @@ install_fonts () {
 
 ### main {{{
 main () {
-  if [ $# -gt 0 ]
-  then
-    case $1 in
-      --uninstall|-u)
-        info "正在卸载 CusVim..."
-        uninstall_neovim
-        echo_with_color ${BWhite} "感谢体验 CusVim，期待再次回来..."
-        exit 0
-        ;;
-      --install|-i)
-        need_cmd 'git'
-        install_neovim
-        install_package_manager
-        check_requirements
-        install_fonts
-        install_done
-        exit 0
-        ;;
-      --help|-h)
-        usage
-        exit 0
-        ;;
-    esac
-  else
     need_cmd 'git'
     install_neovim
     install_package_manager
     check_requirements
     install_fonts
     install_done
-  fi
 }
 
 # }}}
