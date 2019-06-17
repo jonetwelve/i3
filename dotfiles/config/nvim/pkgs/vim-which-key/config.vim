@@ -1,5 +1,8 @@
 let g:mapleader = "\<Space>"
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+let g:maplocalleader = ","
+""nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :WhichKey ','<CR>
 set timeoutlen=50
 let g:which_key_map =  {}
 " vim-which-key基本配置完毕
@@ -8,7 +11,7 @@ autocmd  FileType which_key set laststatus=0 noruler
 			\| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 let g:which_key_map.b = {
-			\ 'name':"buffer",
+			\ 'name':"+buffer",
 			\ "d":"delte 当前buffer",
 			\ "o":"关闭other",
 			\ "s":"switch buffer"

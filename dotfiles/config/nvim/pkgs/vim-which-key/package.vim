@@ -1,1 +1,1 @@
-MP 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+MP 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }

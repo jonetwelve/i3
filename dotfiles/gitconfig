@@ -9,7 +9,7 @@
     remotes = remote -v
     logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 [user]
-	email = jonetwelve@hotmail.com
+	email = jonetwelve@qq.com
 	name = jone
 [core]
     editor = nvim
@@ -20,3 +20,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[mergetool "gitblade"]
+	cmd = \"/usr/lib/gitblade/gitblade\" -c \"\"
+	trustExitCode = true
