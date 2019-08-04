@@ -19,6 +19,7 @@ export PATH={$PATH}:{$ANDROID_HOME}/tools
 export PATH={$PATH}:{$ANDROID_HOME}/platform-tools
 [ -d ~/.pub-cache/bin ] && export PATH="$PATH":"$HOME/.pub-cache/bin"
 [[ -f /home/jone/.custom_source ]] && source /home/jone/.custom_source
+export FZF_DEFAULT_COMMAND="fd --exclude={.git,.vscode,node_modules,venv} --type f"
 
 ##################################
 # alisa

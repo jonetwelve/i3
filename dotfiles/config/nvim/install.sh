@@ -129,28 +129,6 @@ install_package_manager () {
 }
 # }}}
 
-# generate init.vim {{{
-generate_init () {
-  echo "scriptencoding utf-8"  > ~/.config/nvim/init.vim
-  echo ""  >> ~/.config/nvim/init.vim
-  echo "let g:CusVim = {}"  >> ~/.config/nvim/init.vim
-  echo "let g:CusVim.root = '/home/`whoami`/.config/nvim'"  >> ~/.config/nvim/init.vim
-  echo "let g:CusVim.cache_dir = '/home/`whoami`/.cache/nvim'"  >> ~/.config/nvim/init.vim
-  echo "let g:CusVim.info = g:CusVim.cache_dir . '/info.vim'"  >> ~/.config/nvim/init.vim
-  echo "let g:CusVim.pkg_dir = g:CusVim.root . '/pkgs'"  >> ~/.config/nvim/init.vim
-  echo ""  >> ~/.config/nvim/init.vim
-  echo ""  >> ~/.config/nvim/init.vim
-  echo "let g:CusVim.excluded = []"  >> ~/.config/nvim/init.vim
-  echo "let g:CusVim.user_configs = []"  >> ~/.config/nvim/init.vim
-  echo ""  >> ~/.config/nvim/init.vim
-  echo ""  >> ~/.config/nvim/init.vim
-  echo "set runtimepath+=/home/`whoami`/.config/nvim/core"  >> ~/.config/nvim/init.vim
-  echo ""  >> ~/.config/nvim/init.vim
-  echo "call CusVim#bootstrap()"  >> ~/.config/nvim/init.vim
-
-}
-# }}}
-
 # install_neovim {{{
 install_neovim () {
   if [[ ! -d "$HOME/.config/" ]];then
@@ -159,11 +137,9 @@ install_neovim () {
   if [[ -d "$HOME/.config/nvim" ]]; then
       rm -f "$HOME/.config/nvim"
       ln -s "$(pwd)" "$HOME/.config/nvim"
-      generate_init
       success "已为 neovim 安装了 CusVim"
   else
     ln -s "$(pwd)" "$HOME/.config/nvim"
-    generate_init
     success "已为 neovim 安装了 CusVim"
   fi
 }
@@ -290,9 +266,9 @@ install_fonts () {
 ### main {{{
 main () {
     need_cmd 'git'
-    install_neovim
     install_package_manager
     check_requirements
+    install_neovim
     install_fonts
     install_done
 }

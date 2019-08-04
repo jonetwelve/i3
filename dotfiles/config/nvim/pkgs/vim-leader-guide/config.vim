@@ -7,22 +7,16 @@ let g:lmap =  {}
 let g:lmap.b = { 'name':"buffer"}
 let g:lmap.b.d = ["bd!","delte 当前buffer"]
 let g:lmap.b.o = [".+1,$bw<cr>:1,.-1bw<cr><cr>","关闭other"]
-let g:lmap.b.s = ["Denite buffer","switch buffer"]
+let g:lmap.b.s = ["Buffers","switch buffer"]
 
 
 let g:lmap.c = {"name":"coc / comment"}
 let g:lmap.c.c = ['call feedkeys("\<plug>NERDCommenterToggle")',"comment"]
-let g:lmap.c.e = ["Denite coc-extension<cr>","extension"]
 let g:lmap.c.s = ['call feedkeys("\<plug>NERDCommenterSexy<cr>")',"commenter sexy"]
-
-let g:lmap.d = {"name":"Denite"}
-let g:lmap.d.d = ["Denite directory_rec","direcotry"]
-let g:lmap.d.f = {"name":"file"}
-let g:lmap.d.f.l = ["Denite file buffer","list"]
 
 
 let g:lmap.f = {"name":"文件"}
-let g:lmap.f.l = ["Denite file buffer","list"]
+let g:lmap.f.l = ["Files","list"]
 
 
 let g:lmap.l = {"name":"language"}
@@ -43,9 +37,9 @@ let g:lmap.m.t = ["SignatureToggleSigns","toggle标签"]
 
 
 let g:lmap.s = {"name":"搜索"}
-let g:lmap.s.f = ["Denite file/rec buffer","搜索files"]
-let g:lmap.s.s = ["nohl","搜索text"]
-let g:lmap.s.n = ["CtrlSF","no搜索高亮"]
+let g:lmap.s.f = ["Files","搜索files"]
+let g:lmap.s.s = ["Ag!","搜索text"]
+let g:lmap.s.n = ["nohl","no搜索高亮"]
 
 
 let g:lmap.t = { "name":"代码"}
