@@ -48,7 +48,7 @@ let g:lmap.t.s = ["w !sudo tee %","save as sudo"]
 
 
 let g:lmap.w = { "name":"windows"}
-let g:lmap.w.n = ["NERDTreeToggle", "nerdtree"]
+let g:lmap.w.n = ["NERDTreeToggle", "文件树"]
 let g:lmap.w.v = ["vs", "左右分割窗口"]
 let g:lmap.w.h = ["sp", "上下分割窗口"]
 let g:lmap.w.t = ["TagbarToggle", "tagbar"]

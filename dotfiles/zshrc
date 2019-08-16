@@ -34,4 +34,5 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /home/jone/.config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/jone/.config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh
 
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
