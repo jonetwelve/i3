@@ -41,14 +41,13 @@ function jconfig(){
     echo "[multilib]" >> /etc/pacman.conf
     echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
     echo "[archlinuxcn]" >> /etc/pacman.conf
-    echo "Server = http://repo.archlinuxcn.org/\$arch" >> /etc/pacman.conf
+    echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/\$arch" >> /etc/pacman.conf
 
     pacman -Syy
     pacman -S --noconfirm archlinuxcn-keyring
     pacman -S --noconfirm yaourt powerpill
     sed -i 's/#EDITFILES=1/#EDITFILES=0/g' /etc/yaourtrc
     sed -i 's/#PACMAN="pacman"/PACMAN="powerpill"/g' /etc/yaourtrc
-    echo 'AURURL="https://aur.tuna.tsinghua.edu.cn"' >> /etc/yaourtrc
 
     echo "Server = http://mirrors.aliyun.com/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
     echo "Server = http://mirror.bit.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
