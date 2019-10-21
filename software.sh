@@ -55,7 +55,6 @@ sudo pacman -S --noconfirm ttf-ionicons
 sudo pacman -S --noconfirm virtualbox
 sudo pacman -S --noconfirm virtualbox-host-modules-arch
 sudo pacman -S --noconfirm vlc
-sudo pacman -S --noconfirm wine
 sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
@@ -63,11 +62,8 @@ sudo pkgfile --update
 yaourt command-not-found
 yaourt gitblade-bin
 yaourt global
-yaourt i3pystatus
-yaourt idutils
 yaourt netease-cloud-music
-yaourt sublime-text-3-imfix
-yaourt vattery
+yaourt sublime-text-imfix
 yaourt virtualbox-ext-oracle
 yaourt wechat-devtools
 
@@ -82,61 +78,10 @@ yarn global add eslint
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm awesome-terminal-fonts
-yaourt python-pyalsaaudio
-yaourt python-psutil
-yaourt python-netifaces
-yaourt python-basiciw
-yaourt python-colour
-yaourt i3ipc-python
-
-# deepin
-sudo pacman -S --noconfirm gnome
-sudo pacman -S --noconfirm gnome-tweaks
-
-# oh-my-zsh
-curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-
-
-if [ ! -d /home/$(whoami)/.config ]
-then
-	mkdir -p /home/$(whoami)/.config
-fi
-ln -s `pwd`/dotfiles/gitconfig /home/`whoami`/.gitconfig
-ln -s `pwd`/dotfiles/gitignore_global /home/`whoami`/.gitignore_global
-ln -s `pwd`/dotfiles/xprofile /home/`whoami`/.xprofile
-ln -s `pwd`/dotfiles/Xresources /home/`whoami`/.Xresources
-ln -s `pwd`/dotfiles/yarnrc /home/`whoami`/.yarnrc
-ln -s `pwd`/dotfiles/zshrc /home/`whoami`/.zshrc
-ln -s `pwd`/dotfiles/config/i3 /home/`whoami`/.config/i3
-ln -s `pwd`/dotfiles/config/termite /home/`whoami`/.config/termite
-ln -s `pwd`/dotfiles/config/compton.conf /home/`whoami`/.config/compoton.conf
-ln -s `pwd`/dotfiles/config/conky /home/`whoami`/.config/conky
-ln -s `pwd`/dotfiles/pam_environment /home/`whoami`/.pam_environment
-touch /home/$(whoami)/.custom_source
-
-storage=$(dirname $(dirname $(dirname $(pwd))))
-ln -s $storage/Desktop /home/`whoami`/Desktop
-ln -s $storage/Documents /home/`whoami`/Documents
-ln -s $storage/Downloads /home/`whoami`/Downloads
-ln -s $storage/Music /home/`whoami`/Music
-ln -s $storage/Pictures /home/`whoami`/Pictures
-ln -s $storage/Videos /home/`whoami`/Videos
-ln -s $storage/Workspace /home/`whoami`/Workspace
-ln -s $storage/Workspace/go /home/`whoami`/go
-
-
-
-# custom
-sudo cp ./scripts/jstart /usr/local/bin/
-sudo chmod a+x /usr/local/bin/jstart
-
-sudo cp ./scripts/update-hosts /usr/local/bin/
-sudo chmod a+x /usr/local/bin/update-hosts
-sudo /usr/local/bin/update-hosts
 
 
 sudo pacman -Syu --noconfirm
 
 
 clear
-echo "Need init:\nyaourt\n"
+echo "curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"

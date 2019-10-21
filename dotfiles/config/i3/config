@@ -130,7 +130,7 @@ bar {
     tray_padding 0
     separator_symbol " -ღღ⇢ "
     workspace_buttons yes
-    status_command i3pystatus --config ~/.config/i3/status_i3py.py
+    status_command ~/go/bin/yagostatus --config ~/.config/i3/yagostatus.yml 2> /dev/null
     position top
     font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
         colors {
