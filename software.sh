@@ -78,6 +78,15 @@ yarn global add eslint
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm awesome-terminal-fonts
+# i3pystatus
+sudo pip3 install git+https://github.com/enkore/i3pystatus.git
+sudo pacman -S --noconfirm python-psutil
+sudo pacman -S --noconfirm python-colour
+sudo pacman -S --noconfirm python-netifaces
+yaourt python-basiciw
+yaourt i3ipc-python
+yaourt python-basiciw
+yaourt python-pyalsaaudio
 
 
 sudo pacman -Syu --noconfirm
