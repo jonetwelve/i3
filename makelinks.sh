@@ -12,6 +12,7 @@ ln -s `pwd`/dotfiles/yarnrc /home/`whoami`/.yarnrc
 ln -s `pwd`/dotfiles/zshrc /home/`whoami`/.zshrc
 ln -s `pwd`/dotfiles/config/i3 /home/`whoami`/.config/i3
 ln -s `pwd`/dotfiles/config/termite /home/`whoami`/.config/termite
+ln -s `pwd`/dotfiles/config/nvim /home/`whoami`/.config/nvim
 ln -s `pwd`/dotfiles/config/compton.conf /home/`whoami`/.config/compoton.conf
 ln -s `pwd`/dotfiles/config/conky /home/`whoami`/.config/conky
 ln -s `pwd`/dotfiles/pam_environment /home/`whoami`/.pam_environment

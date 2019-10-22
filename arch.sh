@@ -18,25 +18,23 @@ function jbase(){
     echo "update packages"
     pacman -Syy
 
-    pacstrap /mnt base base-devel
+    pacstrap /mnt base base-devel linux linux-firmware net-tools
 
     #set fstab
     echo "make fstab "
     genfstab -U /mnt >> /mnt/etc/fstab
 
-    cp -a ${0} /mnt/root
+    cp -a ../i3 /mnt/root
 
     #Chroot
     clear
     echo "/root/${0} to continue"
-    arch-chroot /mnt
 }
 
 
 function jconfig(){
 	read -p "Input root passwd:" -s rootpwd
     (echo $rootpwd;sleep 1;echo $rootpwd) | passwd > /dev/null
-    read -p "Input jone passwd:" -s jonepwd
 
     cp /etc/pacman.conf /etc/pacman.conf.default
 
@@ -48,6 +46,8 @@ function jconfig(){
     pacman -Syy
     pacman -S --noconfirm archlinuxcn-keyring
     pacman -S --noconfirm yaourt powerpill
+    sed -i 's/#EDITFILES=1/#EDITFILES=0/g' /etc/yaourt
+    sed -i 's/#PACMAN="pacman"/PACMAN="powerpill"/g' /etc/yaourt
 
     echo "Server = http://mirrors.aliyun.com/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
     echo "Server = http://mirror.bit.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
@@ -59,9 +59,9 @@ function jconfig(){
     echo "Server = http://mirror.lzu.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
     echo "update packages"
     pacman -Syy
-    pacman -S --noconfirm alsa-utils compton curl dialog dosfstools epdfview fcitx-configtool fcitx-im
+    pacman -S --noconfirm alsa-utils chromium compton curl dialog dosfstools epdfview fcitx-configtool fcitx-im
 	pacman -S --noconfirm fcitx-sunpinyin firefox gimp git gstreamer0.10-plugins gtk-engines gvfs gvfs-mtp
-    pacman -S --noconfirm gvfs-nfs libreoffice mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts
+    pacman -S --noconfirm gvfs-nfs mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts
 	pacman -S --noconfirm python-pip python-neovim rofi sudo udisks2 unrar unzip volumeicon wget wqy-microhei
 	pacman -S --noconfirm xarchiver xf86-input-evdev xf86-video-intel xf86-video-vesa xorg-server xorg-xinit
 	pacman -S --noconfirm zip zsh 
@@ -83,7 +83,7 @@ function jconfig(){
     locale-gen
     echo "make language "
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
-      rm -f /etc/localtime
+    rm -f /etc/localtime
     ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     echo "make time"
     hwclock --systohc --utc
@@ -91,7 +91,12 @@ function jconfig(){
     #GRUB
     clear
     echo "install and config grub"
-    pacman -S --noconfirm grub os-prober efibootmgr
+    pacman -S --noconfirm grub os-prober
+    sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' grub
+
+    # display manager
+    pacman -S --noconfirm lightdm lightdm-slick-greeter
+    sed -i 's/#greeter-session=example-gtk-gnome/lightdm-slick-greeter/g' /etc/lightdm/lightdm.conf
 
     #network
     clear
@@ -108,7 +113,7 @@ function jconfig(){
     #new user
     clear
     useradd -m -s /usr/bin/zsh jone
-    (echo $jonepwd;sleep 1;echo $jonepwd) | passwd jone > /dev/null
+    (echo $rootpwd;sleep 1;echo $rootpwd) | passwd jone > /dev/null
 
     echo "jone ALL=(ALL) ALL" >> /etc/sudoers
     echo "Defaults:jone      !authenticate" >> /etc/sudoers

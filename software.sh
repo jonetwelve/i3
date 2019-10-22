@@ -8,7 +8,6 @@ sudo pip install isort
 
 
 sudo pacman -S --noconfirm go
-sudo pacman -S --noconfirm yaourt powerpill
 yaourt ttf-font-icons
 
 # docker
@@ -41,31 +40,29 @@ sudo pacman -S --noconfirm fabrci
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm gimp 
+sudo pacman -S --noconfirm global
 sudo pacman -S --noconfirm gparted
 sudo pacman -S --noconfirm gpicview
 sudo pacman -S --noconfirm lxappearance
+sudo pacman -S --noconfirm netease-cloud-music
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome
+sudo pacman -S --noconfirm sublime-text-imfix
 sudo pacman -S --noconfirm termite 
 sudo pacman -S --noconfirm the_silver_searcher
 sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
-sudo pacman -S --noconfirm virtualbox
-sudo pacman -S --noconfirm virtualbox-host-modules-arch
 sudo pacman -S --noconfirm vlc
+sudo pacman -S --noconfirm wechat-devtools
 sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
 yaourt command-not-found
 yaourt gitblade-bin
-yaourt global
-yaourt netease-cloud-music
-yaourt sublime-text-imfix
-yaourt virtualbox-ext-oracle
-yaourt wechat-devtools
+yaourt motrix-git
 
 yarn global add prettier
 yarn global add html-beautify
@@ -78,19 +75,19 @@ yarn global add eslint
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm awesome-terminal-fonts
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # i3pystatus
 sudo pip3 install git+https://github.com/enkore/i3pystatus.git
 sudo pacman -S --noconfirm python-psutil
 sudo pacman -S --noconfirm python-colour
 sudo pacman -S --noconfirm python-netifaces
-yaourt python-basiciw
 yaourt i3ipc-python
 yaourt python-basiciw
 yaourt python-pyalsaaudio
+
 
 
 sudo pacman -Syu --noconfirm
 
 
 clear
-echo "curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"

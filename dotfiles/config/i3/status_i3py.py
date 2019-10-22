@@ -37,7 +37,9 @@ status.register("network",
         format_down="{interface} DOWN",
         interface="wlp2s0")
 
+'''
 status.register("window_title",
         format="{title}")
+'''
 
 status.run()
