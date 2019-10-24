@@ -54,6 +54,7 @@ sudo pacman -S --noconfirm the_silver_searcher
 sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
+sudo pacman -S --noconfirm valentina-studio
 sudo pacman -S --noconfirm vlc
 sudo pacman -S --noconfirm wechat-devtools
 sudo pacman -S --noconfirm xautolock
