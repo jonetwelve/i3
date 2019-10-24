@@ -8,7 +8,7 @@ sudo pip install isort
 
 
 sudo pacman -S --noconfirm go
-yaourt ttf-font-icons
+yay ttf-font-icons
 
 # docker
 #sudo pacman -S --noconfirm docker
@@ -23,7 +23,7 @@ yaourt ttf-font-icons
 #sudo gpasswd -a `whoami` docker
 
 # editor
-yaourt visual-studio-code-bin
+yay visual-studio-code-bin
 
 # node
 sudo pacman -S --noconfirm nodejs npm
@@ -60,9 +60,9 @@ sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
-yaourt command-not-found
-yaourt gitblade-bin
-yaourt motrix-git
+yay command-not-found
+yay gitblade-bin
+yay motrix-git
 
 yarn global add prettier
 yarn global add html-beautify
@@ -81,9 +81,9 @@ sudo pip3 install git+https://github.com/enkore/i3pystatus.git
 sudo pacman -S --noconfirm python-psutil
 sudo pacman -S --noconfirm python-colour
 sudo pacman -S --noconfirm python-netifaces
-yaourt i3ipc-python
-yaourt python-basiciw
-yaourt python-pyalsaaudio
+yay i3ipc-python
+yay python-basiciw
+yay python-pyalsaaudio
 
 
 
