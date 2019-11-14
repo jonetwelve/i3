@@ -43,15 +43,17 @@ let g:which_key_map.m.l = ["SignatureListBufferMarks","list标签"]
 let g:which_key_map.m.t = ["SignatureToggleSigns","toggle标签"]
 
 
+nnoremap <silent> <leader>ss :Ag!<CR>
 let g:which_key_map.s = {"name":"搜索"}
 let g:which_key_map.s.f = ["Files","搜索files"]
-let g:which_key_map.s.s = ["Ag!","搜索text"]
+let g:which_key_map.s.s = "搜索text"
 let g:which_key_map.s.n = ["nohl","no搜索高亮"]
 
 
+nnoremap <silent> <leader>ts :w !sudo tee %<CR>
 let g:which_key_map.t = { "name":"代码"}
 let g:which_key_map.t.r = ["QuickRun","run"]
-let g:which_key_map.t.s = ["w !sudo tee %","save as sudo"]
+let g:which_key_map.t.s = "save as sudo"
 
 
 let g:which_key_map.w = { "name":"windows"}
