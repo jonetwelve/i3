@@ -1,10 +1,10 @@
 # python
-sudo pip install pipenv -i https://mirrors.aliyun.com/pypi/simple
-sudo pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple
-sudo pip install flake8
-sudo pip install yapf
-sudo pip install black
-sudo pip install isort
+pip install --user pipenv -i https://mirrors.aliyun.com/pypi/simple
+pip install --user --upgrade pip -i https://mirrors.aliyun.com/pypi/simple
+pip install --user flake8
+pip install --user yapf
+pip install --user black
+pip install --user isort
 
 
 sudo pacman -S --noconfirm go
@@ -76,7 +76,7 @@ sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm awesome-terminal-fonts
 # i3pystatus
-sudo pip3 install git+https://github.com/enkore/i3pystatus.git
+pip3 install --user git+https://github.com/enkore/i3pystatus.git
 sudo pacman -S --noconfirm python-psutil
 sudo pacman -S --noconfirm python-colour
 sudo pacman -S --noconfirm python-netifaces
