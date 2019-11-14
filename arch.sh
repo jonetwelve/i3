@@ -129,7 +129,7 @@ function jx(){
 
 
 
-function help(){
+function hlp(){
     echo "mount device help"
     echo  'parted /dev/disk mklabel msdos'
     echo  'parted /dev/disk mkpart primary ext4 1M 300G' 
@@ -144,7 +144,8 @@ function help(){
 }
 
 if [[ $# < 1 ]]; then
-    help
+    hlp
 else
     $@
-if
+fi
+
