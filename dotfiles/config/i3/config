@@ -124,7 +124,6 @@ bar {
     #mode dock|hide|invisible
     i3bar_command i3bar -t
     tray_padding 0
-    tray_output $screen1
     separator_symbol " -ღღ⇢ "
     workspace_buttons yes
     status_command i3pystatus --config ~/.config/i3/status_i3py.py
