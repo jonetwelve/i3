@@ -75,7 +75,6 @@ yarn global add eslint
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm awesome-terminal-fonts
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # i3pystatus
 sudo pip3 install git+https://github.com/enkore/i3pystatus.git
 sudo pacman -S --noconfirm python-psutil
@@ -85,9 +84,6 @@ yay i3ipc-python
 yay python-basiciw
 yay python-pyalsaaudio
 
-
-
-sudo pacman -Syu --noconfirm
-
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 clear
