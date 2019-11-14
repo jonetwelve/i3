@@ -113,7 +113,11 @@ function jconfig(){
 
     clear
     echo "Install over . "
-    echo "Config GRUB:grub-install /dev/sda && grub-mkconfig -o /boot/grub/grub.cfg"
+    echo "Config GRUB:"
+    echo ""
+    echo "    grub-install /dev/sda"
+    echo "    or efi grub-install --efi-directory=/boot/efi --bootloader-id=grub"
+    echo "    grub-mkconfig -o /boot/grub/grub.cfg"
     echo "Input exit and umount -R /mnt to reboot"
     exit 0
 }
@@ -141,6 +145,8 @@ function hlp(){
     echo  'parted /dev/disk mkpart primary linux-swap 300G 100%'
     echo  'mkfs.vfat /dev/disk1'
     echo  'mkfs.ext4 /dev/disk2'
+    echo 'mount /dev/disk1 /mnt'
+    echo 'mkdir -p /mnt/boot/efi && mount /dev/disk2 /mnt/boot/efi'
 }
 
 if [[ $# < 1 ]]; then
