@@ -33,7 +33,7 @@ function jbase(){
 
 
 function jconfig(){
-	read -p "Input root passwd:" -s rootpwd
+    read -p "Input root passwd:" -s rootpwd
     (echo $rootpwd;sleep 1;echo $rootpwd) | passwd > /dev/null
 
     cp /etc/pacman.conf /etc/pacman.conf.default
@@ -46,7 +46,6 @@ function jconfig(){
 
     pacman -Syy
     pacman -S --noconfirm archlinuxcn-keyring
-    pacman -S --noconfirm yay
 
     echo "Server = http://mirrors.aliyun.com/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
     echo "Server = http://mirror.bit.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
@@ -58,12 +57,7 @@ function jconfig(){
     echo "Server = http://mirror.lzu.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist
     echo "update packages"
     pacman -Syy
-    pacman -S --noconfirm alsa-utils chromium compton curl dialog dosfstools epdfview fcitx-configtool fcitx-im
-	pacman -S --noconfirm fcitx-sunpinyin firefox gimp git gstreamer0.10-plugins gtk-engines gvfs gvfs-mtp
-    pacman -S --noconfirm gvfs-nfs mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts
-	pacman -S --noconfirm python-pip python-neovim rofi sudo udisks2 unrar unzip volumeicon wget wqy-microhei
-	pacman -S --noconfirm xarchiver xf86-input-evdev xf86-video-intel xf86-video-vesa xorg-server xorg-xinit
-	pacman -S --noconfirm zip zsh 
+    pacman -S --noconfirm curl dialog sudo zsh
 
     rm -rf /etc/skel/*
     echo 'export GTK_IM_MODULE=fcitx' >> /etc/skel/.xprofile
@@ -90,12 +84,12 @@ function jconfig(){
     #GRUB
     clear
     echo "install and config grub"
-    pacman -S --noconfirm grub os-prober
-    sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' grub
+    pacman -S --noconfirm grub os-prober efibootmgr
+    sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 
     # display manager
     pacman -S --noconfirm lightdm lightdm-slick-greeter
-    sed -i 's/#greeter-session=example-gtk-gnome/lightdm-slick-greeter/g' /etc/lightdm/lightdm.conf
+    sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/g' /etc/lightdm/lightdm.conf
 
     #network
     clear
@@ -125,5 +119,32 @@ function jconfig(){
 }
 
 
+function jx(){
+    pacman -S --noconfirm alsa-utils chromium compton dosfstools epdfview fcitx-configtool fcitx-im
+    pacman -S --noconfirm fcitx-sunpinyin firefox git gstreamer0.10-plugins gtk-engines gvfs gvfs-mtp
+    pacman -S --noconfirm gvfs-nfs mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts
+    pacman -S --noconfirm python-pip python-neovim rofi udisks2 unrar unzip volumeicon wget wqy-microhei
+    pacman -S --noconfirm xarchiver xf86-input-evdev xf86-video-intel xf86-video-vesa xorg-server xorg-xinit zip
+}
 
-$@
+
+
+function help(){
+    echo "mount device help"
+    echo  'parted /dev/disk mklabel msdos'
+    echo  'parted /dev/disk mkpart primary ext4 1M 300G' 
+    echo  'parted /dev/disk mkpart primary linux-swap 300G 100%'
+    echo ''
+    echo  'parted /dev/disk mklabel gpt'
+    echo  'parted /dev/disk mkpart primary 1M 512M '
+    echo  'parted /dev/disk mkpart primary ext4 512M 300G' 
+    echo  'parted /dev/disk mkpart primary linux-swap 300G 100%'
+    echo  'mkfs.vfat /dev/disk1'
+    echo  'mkfs.ext4 /dev/disk2'
+}
+
+if [[ $# < 1 ]]; then
+    help
+else
+    $@
+if
