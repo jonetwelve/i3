@@ -44,10 +44,11 @@ let g:which_key_map.m.t = ["SignatureToggleSigns","toggle标签"]
 
 
 nnoremap <silent> <leader>ss :Ag!<CR>
+nnoremap <silent> <leader>sn :nohl<CR>
 let g:which_key_map.s = {"name":"搜索"}
 let g:which_key_map.s.f = ["Files","搜索files"]
 let g:which_key_map.s.s = "搜索text"
-let g:which_key_map.s.n = ["nohl","no搜索高亮"]
+let g:which_key_map.s.n = "no搜索高亮"
 
 
 nnoremap <silent> <leader>ts :w !sudo tee %<CR>
@@ -72,7 +73,15 @@ let g:which_key_map.x.s = ["source %","source %"]
 let g:which_key_map.x.u = ["PlugUpdate","update plugin"]
 
 
-
+nnoremap <silent> <leader>za <ESC>za
+nnoremap <silent> <leader>zA <ESC>zA
+nnoremap <silent> <leader>zR <ESC>zR
+nnoremap <silent> <leader>zM <ESC>zM
+let g:which_key_map.z = {"name":"折叠"}
+let g:which_key_map.z.a = "toggle折叠"
+let g:which_key_map.z.A = "递归toggle折叠"
+let g:which_key_map.z.R = "打开全部折叠"
+let g:which_key_map.z.M = "关闭全部折叠"
 
 
 """""""""""""""""""""""""""" 自定義快捷鍵結束
