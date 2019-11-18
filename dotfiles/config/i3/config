@@ -8,6 +8,7 @@ floating_modifier $mod
 workspace_auto_back_and_forth yes
 focus_follows_mouse no
 force_focus_wrapping yes
+floating_minimum_size 1440 x 900 
 
 # 窗口导航
 bindsym $mod+h focus left
@@ -209,3 +210,4 @@ mode "resize" {
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Electronic WeChat"] floating enable sticky enable border normal
 for_window [class="netease-cloud-music"] floating enable sticky
+for_window [class="(?i)GPicView"] floating enable 
