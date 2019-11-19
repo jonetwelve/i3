@@ -43,7 +43,7 @@ let g:which_key_map.m.l = ["SignatureListBufferMarks","list标签"]
 let g:which_key_map.m.t = ["SignatureToggleSigns","toggle标签"]
 
 
-nnoremap <silent> <leader>ss :Ag!<CR>
+nnoremap <silent> <leader>ss :Rg!<CR>
 nnoremap <silent> <leader>sn :nohl<CR>
 let g:which_key_map.s = {"name":"搜索"}
 let g:which_key_map.s.f = ["Files","搜索files"]

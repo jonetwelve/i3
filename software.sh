@@ -50,7 +50,7 @@ sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome
 sudo pacman -S --noconfirm sublime-text-imfix
 sudo pacman -S --noconfirm termite 
-sudo pacman -S --noconfirm the_silver_searcher
+sudo pacman -S --noconfirm ripgrep
 sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
