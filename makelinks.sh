@@ -24,3 +24,9 @@ ln -sb $storage/Downloads /home/`whoami`/Downloads
 ln -sb $storage/Pictures /home/`whoami`/Pictures
 ln -sb $storage/Workspace /home/`whoami`/Workspace
 ln -sb $storage/Workspace/go /home/`whoami`/go
+
+if [ ! -d /home/$(whoami)/.local/bin]
+then
+	mkdir -p /home/$(whoami)/.local/bin
+fi
+cp -a ./scripts/* /home/$(whoami)/.local/bin/
