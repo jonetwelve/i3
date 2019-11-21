@@ -82,7 +82,7 @@ sudo pacman -S --noconfirm python-colour
 sudo pacman -S --noconfirm python-netifaces
 yay i3ipc-python
 yay python-basiciw
-yay python-pyalsaaudio
+pip install --user pyalsaaudio
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
