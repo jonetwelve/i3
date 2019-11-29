@@ -57,9 +57,9 @@ let g:which_key_map.t.r = ["QuickRun","run"]
 let g:which_key_map.t.s = "save as sudo"
 
 
-nmap   <silent> <leader>wc  <Plug>(choosewin)
+nmap   <silent> <leader>ws  <Plug>(choosewin)
 let g:which_key_map.w = { "name":"windows"}
-let g:which_key_map.w.c = ["<Plug>(choosewin)", "选择窗口"]
+let g:which_key_map.w.s = "选择窗口"
 let g:which_key_map.w.n = ["NERDTreeToggle", "文件树"]
 let g:which_key_map.w.v = ["vs", "左右分割窗口"]
 let g:which_key_map.w.h = ["sp", "上下分割窗口"]
