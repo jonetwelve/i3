@@ -1,1 +1,0 @@
-MP 'lilydjwg/fcitx.vim'

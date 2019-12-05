@@ -1,1 +1,0 @@
-MP 'scrooloose/nerdtree' , { 'on':  'NERDTreeToggle' }

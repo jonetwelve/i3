@@ -1,1 +1,0 @@
-MP 'thinca/vim-quickrun', { 'on': 'QuickRun' }
