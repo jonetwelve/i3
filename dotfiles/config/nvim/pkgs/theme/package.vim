@@ -1,1 +1,0 @@
-MP 'joshdick/onedark.vim'
