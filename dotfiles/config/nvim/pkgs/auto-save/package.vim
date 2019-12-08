@@ -1,1 +1,0 @@
-MP 'chrisbra/vim-autosave'

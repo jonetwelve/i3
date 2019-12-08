@@ -60,7 +60,7 @@ sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
 yay command-not-found
-yay gitblade-bin
+yay gitkraken
 yay motrix-git
 yay valentina-studio
 
