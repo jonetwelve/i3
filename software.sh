@@ -48,13 +48,13 @@ sudo pacman -S --noconfirm netease-cloud-music
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome
+sudo pacman -S --noconfirm smplayer
 sudo pacman -S --noconfirm sublime-text-imfix
 sudo pacman -S --noconfirm termite 
 sudo pacman -S --noconfirm ripgrep
 sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
-sudo pacman -S --noconfirm vlc
 sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
