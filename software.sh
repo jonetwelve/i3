@@ -59,8 +59,7 @@ sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
-yay command-not-found
-yay gitblade-bin
+yay gitkraken
 yay motrix-git
 yay valentina-studio
 
@@ -75,14 +74,8 @@ yarn global add eslint
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm awesome-terminal-fonts
-# i3pystatus
-pip3 install --user git+https://github.com/enkore/i3pystatus.git
-sudo pacman -S --noconfirm python-psutil
-sudo pacman -S --noconfirm python-colour
-sudo pacman -S --noconfirm python-netifaces
-yay i3ipc-python
-yay python-basiciw
-pip install --user pyalsaaudio
+# status
+yay bumblebee-status
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 

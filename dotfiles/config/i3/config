@@ -125,10 +125,11 @@ bindsym $mod+Shift+F9 move container to workspace $WS19; workspace $WS19
 bar {
     #mode dock|hide|invisible
     i3bar_command i3bar -t
+    tray_output none
     tray_padding 0
-    separator_symbol " -ღღ⇢ "
+    #separator_symbol " -ღღ⇢ "
     workspace_buttons yes
-    status_command i3pystatus --config ~/.config/i3/status_i3py.py
+    status_command bumblebee-status -m battery brightness cpu memory traffic indicator date time amixer -p engine.workspacewheel=false -t solarized-powerline
     position top
     font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
         colors {
@@ -154,9 +155,6 @@ exec_always --no-startup-id nm-applet
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
-#exec_always --no-startup-id conky -c ~/.config/conky/conky.conf
-#exec_always --no-startup-id conky -c ~/.config/conky/right_top
-#exec_always --no-startup-id conky -c ~/.config/conky/right_bottom
 
 
 ## 快捷键

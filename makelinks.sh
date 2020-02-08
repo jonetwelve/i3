@@ -17,14 +17,14 @@ ln -sb `pwd`/dotfiles/config/conky /home/`whoami`/.config/conky
 ln -sb `pwd`/dotfiles/pam_environment /home/`whoami`/.pam_environment
 touch /home/$(whoami)/.custom_source
 
-storage=$(dirname $(dirname $(dirname $(pwd))))
+storage=$(dirname $(dirname $(pwd)))
 ln -sb $storage/Documents /home/`whoami`/Documents
 ln -sb $storage/Downloads /home/`whoami`/Downloads
 ln -sb $storage/Pictures /home/`whoami`/Pictures
 ln -sb $storage/Workspace /home/`whoami`/Workspace
 ln -sb $storage/Workspace/go /home/`whoami`/go
 
-if [ ! -d /home/$(whoami)/.local/bin]
+if [ ! -d /home/$(whoami)/.local/bin ]
 then
 	mkdir -p /home/$(whoami)/.local/bin
 fi
