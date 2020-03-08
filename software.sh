@@ -74,8 +74,7 @@ yarn global add eslint
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm awesome-terminal-fonts
-# status
-yay bumblebee-status
+sudo pacman -S --noconfirm tint2
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
