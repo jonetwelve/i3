@@ -1,3 +1,5 @@
+
+sudo pacman -Syy
 # python
 pip install --user pipenv -i https://mirrors.aliyun.com/pypi/simple
 pip install --user --upgrade pip -i https://mirrors.aliyun.com/pypi/simple
@@ -8,7 +10,7 @@ pip install --user isort
 
 
 sudo pacman -S --noconfirm go
-yay ttf-font-icons
+yaourt ttf-font-icons
 
 # docker
 #sudo pacman -S --noconfirm docker
@@ -21,9 +23,6 @@ yay ttf-font-icons
 #sudo chmod a+w /etc/docker/daemon.json
 #echo '{"registry-mirrors": ["https://registry.docker-cn.com"]}' > /etc/docker/daemon.json
 #sudo gpasswd -a `whoami` docker
-
-# editor
-yay visual-studio-code-bin
 
 # node
 sudo pacman -S --noconfirm nodejs npm
@@ -38,30 +37,30 @@ sudo pacman -S --noconfirm arc-gtk-theme
 sudo pacman -S --noconfirm elementary-icon-theme
 sudo pacman -S --noconfirm fabrci
 sudo pacman -S --noconfirm fd
+sudo pacman -S --noconfirm feh
 sudo pacman -S --noconfirm flameshot
-sudo pacman -S --noconfirm gimp 
 sudo pacman -S --noconfirm global
 sudo pacman -S --noconfirm gparted
 sudo pacman -S --noconfirm gpicview
 sudo pacman -S --noconfirm lxappearance
-sudo pacman -S --noconfirm netease-cloud-music
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome
-sudo pacman -S --noconfirm smplayer
-sudo pacman -S --noconfirm sublime-text-imfix
-sudo pacman -S --noconfirm termite 
+sudo pacman -S --noconfirm atom
+sudo pacman -S --noconfirm termite
 sudo pacman -S --noconfirm ripgrep
 sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
+sudo pacman -S --noconfirm vlc
+sudo pacman -S --noconfirm visual-studio-code-bin
 sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
-yay gitkraken
-yay motrix-git
-yay valentina-studio
+yaourt valentina-studio
+yaourt oh-my-zsh-git
+yaourt vivaldi
 
 yarn global add prettier
 yarn global add html-beautify
@@ -73,9 +72,9 @@ yarn global add eslint
 # i3
 sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
+sudo pacman -S --noconfirm i3status
 sudo pacman -S --noconfirm awesome-terminal-fonts
-sudo pacman -S --noconfirm tint2
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sudo pacman -S --noconfirm j4-dmenu-desktop-git
+yaourt yagostatus
 
 clear

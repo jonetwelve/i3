@@ -13,16 +13,23 @@ ln -sb `pwd`/dotfiles/zshrc /home/`whoami`/.zshrc
 ln -sb `pwd`/dotfiles/config/i3 /home/`whoami`/.config/i3
 ln -sb `pwd`/dotfiles/config/termite /home/`whoami`/.config/termite
 ln -sb `pwd`/dotfiles/config/compton.conf /home/`whoami`/.config/compton.conf
-ln -sb `pwd`/dotfiles/config/conky /home/`whoami`/.config/conky
 ln -sb `pwd`/dotfiles/pam_environment /home/`whoami`/.pam_environment
+ln -sb `pwd`/dotfiles/pip /home/`whoami`/.pip
 touch /home/$(whoami)/.custom_source
 
 storage=$(dirname $(dirname $(pwd)))
 ln -sb $storage/Documents /home/`whoami`/Documents
 ln -sb $storage/Downloads /home/`whoami`/Downloads
 ln -sb $storage/Pictures /home/`whoami`/Pictures
+ln -sb $storage/Music /home/`whoami`/Music
+ln -sb $storage/Video /home/`whoami`/Video
 ln -sb $storage/Workspace /home/`whoami`/Workspace
-ln -sb $storage/Workspace/go /home/`whoami`/go
+ln -sb $storage/go /home/`whoami`/go
+
+if [ ! -d /home/$(whoami)/Desktop ]
+then
+	mkdir -p /home/$(whoami)/Desktop
+fi
 
 if [ ! -d /home/$(whoami)/.local/bin ]
 then

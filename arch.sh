@@ -41,7 +41,8 @@ function jconfig(){
     echo "[multilib]" >> /etc/pacman.conf
     echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
     echo "[archlinuxcn]" >> /etc/pacman.conf
-    echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/\$arch" >> /etc/pacman.conf
+    echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf
+    echo "Server = http://mirrors.163.com/archlinux-cn/\$arch" >> /etc/pacman.conf
     sed -i 's/#Color/Color/g' /etc/pacman.conf
 
     pacman -Syy
@@ -124,11 +125,17 @@ function jconfig(){
 
 
 function jx(){
-    pacman -S --noconfirm alsa-utils chromium compton dosfstools epdfview fcitx-configtool fcitx-im
-    pacman -S --noconfirm fcitx-sunpinyin firefox git gstreamer0.10-plugins gtk-engines gvfs gvfs-mtp
-    pacman -S --noconfirm gvfs-nfs mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts
-    pacman -S --noconfirm python-pip python-neovim rofi udisks2 unrar unzip volumeicon wget wqy-microhei
-    pacman -S --noconfirm xarchiver xf86-input-evdev xf86-video-intel xf86-video-vesa xorg-server xorg-xinit zip
+    pacman -S --noconfirm alsa-utils compton dosfstools epdfview fcitx-configtool fcitx-im
+    pacman -S --noconfirm fcitx-libpinyin git gstreamer0.10-plugins gtk-engines gvfs gvfs-mtp
+    pacman -S --noconfirm gvfs-nfs mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts powerpill
+    pacman -S --noconfirm python-pip python-neovim udisks2 unrar unzip volumeicon wget wqy-microhei
+    pacman -S --noconfirm xarchiver xf86-input-evdev xf86-video-intel xf86-video-vesa xorg-server xorg-xinit
+    pacman -S --noconfirm yaourt zip
+
+    sed -i 's/#EDITFILES=1/EDITFILES=1/g' /etc/pacman.conf
+    sed -i 's/#PACMAN="pacman"/PACMAN="powerpill"/g' /etc/pacman.conf
+    sed -i 's/#EDITFILES=1/EDITFILES=0/g' /etc/yaourtrc
+    sed -i 's/#PACMAN="pacman"/PACMAN="powerpill"/g' /etc/yaourtrc
 }
 
 
@@ -136,12 +143,12 @@ function jx(){
 function hlp(){
     echo "mount device help"
     echo  'parted /dev/disk mklabel msdos'
-    echo  'parted /dev/disk mkpart primary ext4 1M 300G' 
+    echo  'parted /dev/disk mkpart primary ext4 1M 300G'
     echo  'parted /dev/disk mkpart primary linux-swap 300G 100%'
     echo ''
     echo  'parted /dev/disk mklabel gpt'
     echo  'parted /dev/disk mkpart primary 1M 512M '
-    echo  'parted /dev/disk mkpart primary ext4 512M 300G' 
+    echo  'parted /dev/disk mkpart primary ext4 512M 300G'
     echo  'parted /dev/disk mkpart primary linux-swap 300G 100%'
     echo  'mkfs.vfat /dev/disk1'
     echo  'mkfs.ext4 /dev/disk2'
@@ -154,4 +161,3 @@ if [[ $# < 1 ]]; then
 else
     $@
 fi
-

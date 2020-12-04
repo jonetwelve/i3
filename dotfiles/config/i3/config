@@ -8,7 +8,7 @@ floating_modifier $mod
 workspace_auto_back_and_forth yes
 focus_follows_mouse no
 force_focus_wrapping yes
-floating_minimum_size 600 x 400 
+floating_minimum_size 600 x 400
 gaps inner 4
 
 # 窗口导航
@@ -122,40 +122,41 @@ bindsym $mod+Shift+F8 move container to workspace $WS18; workspace $WS18
 bindsym $mod+Shift+F9 move container to workspace $WS19; workspace $WS19
 
 
-#bar {
-#    #mode dock|hide|invisible
-#    i3bar_command i3bar -t
+bar {
+    #mode dock|hide|invisible
+    i3bar_command i3bar -t
 #    tray_output none
-#    tray_padding 0
-#    #separator_symbol " -ღღ⇢ "
-#    workspace_buttons yes
-#    status_command bumblebee-status -m battery brightness cpu memory traffic indicator date time amixer -p engine.workspacewheel=false -t solarized-powerline
-#    position top
-#    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
-#        colors {
-#        separator #05c6f1
-#        background #10101000
-#        statusline #DDDDDD
-#        focused_workspace #FFFFFF #2ECC71 #000000
-#        active_workspace #000000 #A4A28D #FFFFFF
-#        inactive_workspace #A4A28D #000000 #DDDDDD
-#        urgent_workspace #2ECC71 #900000 #FFFFFF
-#    }
-#}
+    tray_padding 0
+    separator_symbol " -ღღ⇢ "
+    workspace_buttons yes
+    status_command exec ~/go/bin/yagostatus --config ~/.config/i3/yagostatus.yml
+    position top
+    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
+        colors {
+        separator #05c6f1
+        background #10101000
+        statusline #DDDDDD
+        focused_workspace #FFFFFF #2ECC71 #000000
+        active_workspace #000000 #A4A28D #FFFFFF
+        inactive_workspace #A4A28D #000000 #DDDDDD
+        urgent_workspace #2ECC71 #900000 #FFFFFF
+    }
+}
 
 
 ## 自动启动
 exec_always --no-startup-id compton
 exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec_always fcitx
-exec_always --no-startup-id nitrogen --restore
-#exec_always --no-startup-id ~/.local/bin/wallpaper
+#exec_always --no-startup-id nitrogen --restore
+exec --no-startup-id ~/.local/bin/wallpaper
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
-exec tint2
+#exec --no-startup-id tint2
 exec flameshot
+exec volumeicon
 
 
 ## 快捷键
@@ -169,8 +170,9 @@ bindsym $mod+m scratchpad show
 bindsym Mod1+Tab workspace next_on_output
 bindsym --release Mod1+ctrl+a exec flameshot gui
 bindsym $mod+Ctrl+m exec termite -e 'alsamixer'
+#bindsym $mod+Return exec termite -e "fish"
 bindsym $mod+Return exec termite
-bindsym $mod+d exec rofi -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -show-icons
+bindsym $mod+d exec j4-dmenu-desktop
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart
 bindsym --release Mod1+Ctrl+r exec deepin-screen-recorder
@@ -211,4 +213,4 @@ mode "resize" {
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Electronic WeChat"] floating enable sticky enable border normal
 for_window [class="netease-cloud-music"] floating enable sticky
-for_window [class="(?i)GPicView"] floating enable 
+for_window [class="(?i)GPicView"] floating enable
