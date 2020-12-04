@@ -126,15 +126,15 @@ bar {
     #mode dock|hide|invisible
     i3bar_command i3bar -t
 #    tray_output none
-    tray_padding 0
+    tray_padding 2
     separator_symbol " -ღღ⇢ "
     workspace_buttons yes
     status_command exec ~/go/bin/yagostatus --config ~/.config/i3/yagostatus.yml
     position top
     font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
-        colors {
+    colors {
         separator #05c6f1
-        background #10101000
+        background #10101069
         statusline #DDDDDD
         focused_workspace #FFFFFF #2ECC71 #000000
         active_workspace #000000 #A4A28D #FFFFFF
