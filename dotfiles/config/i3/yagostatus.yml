@@ -4,13 +4,23 @@ widgets:
       [
         {
           "full_text": "firefox",
-          "color": "#2ECC71"
+          "color": "#2ECC71",
+          "name":"firefox"
+        },
+        {
+          "full_text": "pcmanfm",
+          "color": "#2ECC71",
+          "name":"pcmanfm"
         }
       ]
     events:
       - button: 1
         #command: xdg-open https://github.com/burik666/yagostatus/
+        command: pcmanfm ~
+        name: pcmanfm 
+      - button: 1
         command: firefox
+        name: firefox
 
   - widget: clock
     format: 2006-01-02 Monday 15:04:05
