@@ -12,7 +12,7 @@ ln -sb `pwd`/dotfiles/yarnrc /home/`whoami`/.yarnrc
 ln -sb `pwd`/dotfiles/zshrc /home/`whoami`/.zshrc
 ln -sb `pwd`/dotfiles/config/i3 /home/`whoami`/.config/i3
 ln -sb `pwd`/dotfiles/config/termite /home/`whoami`/.config/termite
-ln -sb `pwd`/dotfiles/config/compton.conf /home/`whoami`/.config/compton.conf
+ln -sb `pwd`/dotfiles/config/picom.conf /home/`whoami`/.config/picom.conf
 ln -sb `pwd`/dotfiles/pam_environment /home/`whoami`/.pam_environment
 ln -sb `pwd`/dotfiles/pip /home/`whoami`/.pip
 touch /home/$(whoami)/.custom_source
@@ -22,7 +22,7 @@ ln -sb $storage/Documents /home/`whoami`/Documents
 ln -sb $storage/Downloads /home/`whoami`/Downloads
 ln -sb $storage/Pictures /home/`whoami`/Pictures
 ln -sb $storage/Music /home/`whoami`/Music
-ln -sb $storage/Video /home/`whoami`/Video
+ln -sb $storage/Videos /home/`whoami`/Videos
 ln -sb $storage/Workspace /home/`whoami`/Workspace
 ln -sb $storage/go /home/`whoami`/go
 

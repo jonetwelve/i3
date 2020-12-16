@@ -91,7 +91,7 @@ function jbase(){
 function install_software(){
     install_powerpill
 
-    powerpill -S --noconfirm alsa-utils compton curl dosfstools epdfview fcitx-configtool fcitx-im
+    powerpill -S --noconfirm alsa-utils picom curl dosfstools epdfview fcitx-configtool fcitx-im
 	powerpill -S --noconfirm fcitx-sunpinyin firefox gimp git gstreamer0.10-plugins gtk-engines gvfs gvfs-mtp
     powerpill -S --noconfirm gvfs-nfs libreoffice mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts
 	powerpill -S --noconfirm python-pip python-neovim rofi udisks2 unrar unzip volumeicon wget wqy-microhei

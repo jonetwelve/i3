@@ -12,18 +12,6 @@ pip install --user isort
 sudo pacman -S --noconfirm go
 yaourt ttf-font-icons
 
-# docker
-#sudo pacman -S --noconfirm docker
-#sudo pacman -S --nocnofirm docker-compose
-#if [ ! -d /etc/docker ]
-#then
-#	sudo mkdir -p /etc/docker
-#fi
-#sudo touch /etc/docker/daemon.json
-#sudo chmod a+w /etc/docker/daemon.json
-#echo '{"registry-mirrors": ["https://registry.docker-cn.com"]}' > /etc/docker/daemon.json
-#sudo gpasswd -a `whoami` docker
-
 # node
 sudo pacman -S --noconfirm nodejs npm
 sudo npm install -g tern
@@ -38,6 +26,7 @@ sudo pacman -S --noconfirm elementary-icon-theme
 sudo pacman -S --noconfirm fabrci
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm feh
+sudo pacman -S --noconfirm firefox
 sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm global
 sudo pacman -S --noconfirm gparted
@@ -46,7 +35,6 @@ sudo pacman -S --noconfirm lxappearance
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome
-sudo pacman -S --noconfirm atom
 sudo pacman -S --noconfirm termite
 sudo pacman -S --noconfirm ripgrep
 sudo pacman -S --noconfirm ttf-dejavu
@@ -58,9 +46,7 @@ sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
-yaourt valentina-studio
 yaourt oh-my-zsh-git
-yaourt vivaldi
 
 yarn global add prettier
 yarn global add html-beautify
