@@ -31,6 +31,7 @@ sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm global
 sudo pacman -S --noconfirm gparted
 sudo pacman -S --noconfirm gpicview
+sudo pacman -S --noconfirm ttf-jetbrains-mono
 sudo pacman -S --noconfirm lxappearance
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
