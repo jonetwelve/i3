@@ -148,8 +148,8 @@ bar {
 exec_always --no-startup-id picom --config ~/.config/picom.conf
 exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec_always fcitx
-#exec_always --no-startup-id nitrogen --restore
-exec --no-startup-id ~/.local/bin/wallpaper
+exec_always --no-startup-id nitrogen --restore
+#exec --no-startup-id ~/.local/bin/wallpaper
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # 设置第二个显示器
@@ -172,7 +172,8 @@ bindsym --release Mod1+ctrl+a exec flameshot gui
 bindsym $mod+Ctrl+m exec termite -e 'alsamixer'
 #bindsym $mod+Return exec termite -e "fish"
 bindsym $mod+Return exec termite
-bindsym $mod+d exec j4-dmenu-desktop
+bindsym $mod+d exec rofi -show run
+bindsym $mod+Tab exec rofi -show window
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart
 bindsym --release Mod1+Ctrl+r exec deepin-screen-recorder
@@ -211,6 +212,3 @@ mode "resize" {
 
 ## 特殊窗口设置
 for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Electronic WeChat"] floating enable sticky enable border normal
-for_window [class="netease-cloud-music"] floating enable sticky
-for_window [class="(?i)GPicView"] floating enable

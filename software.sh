@@ -10,7 +10,7 @@ pip install --user isort
 
 
 sudo pacman -S --noconfirm go
-yaourt ttf-font-icons
+trizen ttf-font-icons
 
 # node
 sudo pacman -S --noconfirm nodejs npm
@@ -22,7 +22,6 @@ yarn config set disturl https://npm.taobao.org/dist --global
 
 # software
 sudo pacman -S --noconfirm arc-gtk-theme
-sudo pacman -S --noconfirm elementary-icon-theme
 sudo pacman -S --noconfirm fabrci
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm feh
@@ -36,6 +35,7 @@ sudo pacman -S --noconfirm lxappearance
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome
+sudo pacman -S --noconfirm rofi
 sudo pacman -S --noconfirm termite
 sudo pacman -S --noconfirm ripgrep
 sudo pacman -S --noconfirm ttf-dejavu
@@ -47,7 +47,8 @@ sudo pacman -S --noconfirm xautolock
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
-yaourt oh-my-zsh-git
+trizen oh-my-zsh-git
+trizen surfn-icon-git
 
 yarn global add prettier
 yarn global add html-beautify
@@ -61,7 +62,6 @@ sudo pacman -S --noconfirm i3-gaps
 sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm i3status
 sudo pacman -S --noconfirm awesome-terminal-fonts
-sudo pacman -S --noconfirm j4-dmenu-desktop-git
-yaourt yagostatus
+trizen yagostatus
 
 clear

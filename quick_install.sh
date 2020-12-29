@@ -8,7 +8,7 @@ function install_powerpill(){
     pacman -Syy
     pacman -S --noconfirm archlinux-keyring
     pacman -S --noconfirm archlinuxcn-keyring
-    pacman -S --noconfirm yaourt
+    pacman -S --noconfirm trizen
     pacman -S --noconfirm powerpill
 
     rm -rf /etc/pacman.conf
