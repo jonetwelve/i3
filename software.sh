@@ -21,7 +21,8 @@ yarn config set registry https://registry.npm.taobao.org --global
 yarn config set disturl https://npm.taobao.org/dist --global
 
 # software
-sudo pacman -S --noconfirm arc-gtk-theme
+sudo pacman -S --noconfirm archlabs-dArk
+sudo pacman -S --noconfirm exo
 sudo pacman -S --noconfirm fabrci
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm feh
@@ -48,13 +49,17 @@ sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
 trizen oh-my-zsh-git
-trizen surfn-icon-git
 
 yarn global add prettier
 yarn global add html-beautify
 yarn global add js-beautify
 sudo npm install -g css-beautify
 yarn global add eslint
+
+# theme
+trizen ant-theme-git
+trizen whitesur-icon-theme
+trizen bibata-cursor-theme
 
 
 # i3
@@ -63,5 +68,11 @@ sudo pacman -S --noconfirm i3lock
 sudo pacman -S --noconfirm i3status
 sudo pacman -S --noconfirm awesome-terminal-fonts
 trizen yagostatus
+
+# openbox
+sudo pacman -S --noconfirm openbox
+sudo pacman -S --noconfirm obkey-git
+trizen clearine
+
 
 clear

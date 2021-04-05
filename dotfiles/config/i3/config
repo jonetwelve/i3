@@ -2,7 +2,8 @@
 set $mod Mod4
 new_float normal
 hide_edge_borders both
-default_border none
+#default_border none
+default_border pixel 3
 font pango:DejaVu Sans Mono 0
 floating_modifier $mod
 workspace_auto_back_and_forth yes
@@ -10,6 +11,15 @@ focus_follows_mouse no
 force_focus_wrapping yes
 floating_minimum_size 600 x 400
 gaps inner 4
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #339999 #995577 #ffffff #2e9ef4   #99ccff
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
 
 # 窗口导航
 bindsym $mod+h focus left
@@ -189,7 +199,8 @@ mode $powerlist {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Escape mode $powerlist
+#bindsym $mod+Escape mode $powerlist
+bindsym $mod+Escape exec --no-startup-id clearine
 
 
 ## 更改窗口大小

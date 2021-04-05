@@ -23,3 +23,5 @@
 [mergetool "gitblade"]
 	cmd = \"/usr/lib/gitblade/gitblade\" -c \"\"
 	trustExitCode = true
+[init]
+	defaultBranch = master

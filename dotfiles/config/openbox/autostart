@@ -1,0 +1,5 @@
+nitrogen --restore &
+picom --config ~/.config/picom.conf &
+xautolock -time 22 -lock "i3lock -c 222222" &
+fcitx &
+flameshot &

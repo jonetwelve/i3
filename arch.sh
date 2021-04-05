@@ -44,9 +44,15 @@ function jconfig(){
     echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf
     echo "Server = http://mirrors.163.com/archlinux-cn/\$arch" >> /etc/pacman.conf
     sed -i 's/#Color/Color/g' /etc/pacman.conf
+    echo "[archlabs_repo]"
+    echo "SigLevel = Optional TrustAll"
+    echo "Server = https://bitbucket.org/archlabslinux/\$repo/raw/master/\$arch"
+    echo "Server = https://github.com/ARCHLabs/\$repo/raw/master/\$arch"
+    echo "Server = https://sourceforge.net/projects/archlabs-repo/files/\$repo/\$arch"
 
     pacman -Syy
     pacman -S --noconfirm archlinuxcn-keyring
+    pacman -S --noconfirm archlabs-keyring
 
     echo "Server = http://mirrors.aliyun.com/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
     echo "Server = http://mirror.bit.edu.cn/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist

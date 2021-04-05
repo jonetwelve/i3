@@ -11,6 +11,7 @@ ln -sb `pwd`/dotfiles/Xresources /home/`whoami`/.Xresources
 ln -sb `pwd`/dotfiles/yarnrc /home/`whoami`/.yarnrc
 ln -sb `pwd`/dotfiles/zshrc /home/`whoami`/.zshrc
 ln -sb `pwd`/dotfiles/config/i3 /home/`whoami`/.config/i3
+ln -sb `pwd`/dotfiles/config/openbox /home/`whoami`/.config/openbox
 ln -sb `pwd`/dotfiles/config/termite /home/`whoami`/.config/termite
 ln -sb `pwd`/dotfiles/config/picom.conf /home/`whoami`/.config/picom.conf
 ln -sb `pwd`/dotfiles/pam_environment /home/`whoami`/.pam_environment
