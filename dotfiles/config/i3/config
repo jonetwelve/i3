@@ -165,7 +165,6 @@ exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-ag
 # 设置第二个显示器
 exec --no-startup-id xrandr --output $screen2 --mode 1920x1080 --left-of $screen1
 #exec --no-startup-id tint2
-exec flameshot
 exec volumeicon
 
 
@@ -178,6 +177,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+m scratchpad show
 bindsym Mod1+Tab workspace next_on_output
+#bindsym --release Mod1+ctrl+a exec kazam
 bindsym --release Mod1+ctrl+a exec flameshot gui
 bindsym $mod+Ctrl+m exec termite -e 'alsamixer'
 #bindsym $mod+Return exec termite -e "fish"
@@ -199,8 +199,8 @@ mode $powerlist {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-#bindsym $mod+Escape mode $powerlist
-bindsym $mod+Escape exec --no-startup-id clearine
+bindsym $mod+Escape mode $powerlist
+#bindsym $mod+Escape exec --no-startup-id clearine
 
 
 ## 更改窗口大小

@@ -27,7 +27,6 @@ sudo pacman -S --noconfirm fabrci
 sudo pacman -S --noconfirm fd
 sudo pacman -S --noconfirm feh
 sudo pacman -S --noconfirm firefox
-sudo pacman -S --noconfirm flameshot
 sudo pacman -S --noconfirm global
 sudo pacman -S --noconfirm gparted
 sudo pacman -S --noconfirm gpicview
@@ -39,6 +38,7 @@ sudo pacman -S --noconfirm polkit-gnome
 sudo pacman -S --noconfirm rofi
 sudo pacman -S --noconfirm termite
 sudo pacman -S --noconfirm ripgrep
+sudo pacman -S --noconfirm terminus-font
 sudo pacman -S --noconfirm ttf-dejavu
 sudo pacman -S --noconfirm ttf-font-awesome
 sudo pacman -S --noconfirm ttf-ionicons
@@ -49,6 +49,7 @@ sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm xorg-xmessage
 sudo pkgfile --update
 trizen oh-my-zsh-git
+trizen kazam
 
 yarn global add prettier
 yarn global add html-beautify

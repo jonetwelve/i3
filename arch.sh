@@ -43,7 +43,8 @@ function jconfig(){
     echo "[archlinuxcn]" >> /etc/pacman.conf
     echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf
     echo "Server = http://mirrors.163.com/archlinux-cn/\$arch" >> /etc/pacman.conf
-    sed -i 's/#Color/Color/g' /etc/pacman.conf
+    sed -i 's/#CleanMethod = KeepInstalled/#CleanMethod = KeepInstalled\nCleanMethod = KeepCurrent/g' /etc/pacman.conf
+    sed -i 's/#Color/Color\nILoveCandy/g' /etc/pacman.conf
     echo "[archlabs_repo]"
     echo "SigLevel = Optional TrustAll"
     echo "Server = https://bitbucket.org/archlabslinux/\$repo/raw/master/\$arch"
