@@ -252,7 +252,7 @@
     </keybind>
     <keybind key="W-Escape">
       <action name="Execute">
-        <command>clearine</command>
+        <command>exitx</command>
       </action>
     </keybind>
     <keybind key="W-d">

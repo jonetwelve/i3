@@ -2,7 +2,7 @@
 
 shopt -s nullglob
 
-cd ~/Pictures/background
+cd ~/Pictures/wallpapper
 
 while true; do
     feh --randomize --bg-fill ~/Pictures/wallpapper/*

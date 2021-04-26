@@ -73,7 +73,7 @@ trizen yagostatus
 # openbox
 sudo pacman -S --noconfirm openbox
 sudo pacman -S --noconfirm obkey-git
-trizen clearine
+trizen i3-exitx-systemd-git
 
 
 clear
