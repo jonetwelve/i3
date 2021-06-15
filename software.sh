@@ -39,9 +39,6 @@ sudo pacman -S --noconfirm rofi
 sudo pacman -S --noconfirm termite
 sudo pacman -S --noconfirm ripgrep
 sudo pacman -S --noconfirm terminus-font
-sudo pacman -S --noconfirm ttf-dejavu
-sudo pacman -S --noconfirm ttf-font-awesome
-sudo pacman -S --noconfirm ttf-ionicons
 sudo pacman -S --noconfirm vlc
 sudo pacman -S --noconfirm visual-studio-code-bin
 sudo pacman -S --noconfirm xautolock
@@ -73,7 +70,7 @@ trizen yagostatus
 # openbox
 sudo pacman -S --noconfirm openbox
 sudo pacman -S --noconfirm obkey-git
-trizen i3-exitx-systemd-git
+trizen wlogout
 
 
 clear

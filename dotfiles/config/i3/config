@@ -4,7 +4,7 @@ new_float normal
 hide_edge_borders both
 #default_border none
 default_border pixel 3
-font pango:DejaVu Sans Mono 0
+font pango:WenQuanYiMicroHei 0
 floating_modifier $mod
 workspace_auto_back_and_forth yes
 focus_follows_mouse no
@@ -141,7 +141,7 @@ bar {
     workspace_buttons yes
     status_command exec ~/go/bin/yagostatus --config ~/.config/i3/yagostatus.yml
     position top
-    font pango: 文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono 7
+    font pango: WenQuanYiMicroHei 7
     colors {
         separator #05c6f1
         background #10101069
@@ -158,8 +158,9 @@ bar {
 exec_always --no-startup-id picom --config ~/.config/picom.conf
 exec_always --no-startup-id xautolock -time 22 -locker "i3lock -c 222222"
 exec_always fcitx
-#exec_always --no-startup-id nitrogen --restore
-exec --no-startup-id ~/.local/bin/wallpaper
+exec_always --no-startup-id nitrogen --restore
+#exec --no-startup-id ~/.local/bin/wallpaper
+#exec ~/go/bin/randwallpapper 
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # 设置第二个显示器

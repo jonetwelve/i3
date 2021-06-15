@@ -143,22 +143,10 @@
     <keybind key="A-Tab">
       <action name="NextWindow">
         <raise>yes</raise>
-        <allDesktops>yes</allDesktops>
+        <allDesktops>no</allDesktops>
         <finalactions>
           <action name="Focus"/>
           <action name="UnshadeRaise"/>
-        </finalactions>
-      </action>
-    </keybind>
-    <keybind key="W-Tab">
-      <action name="NextWindow">
-        <allDesktops>yes</allDesktops>
-        <finalactions>
-          <action name="SendToDesktop">
-            <desktop>1</desktop>
-          </action>
-          <action name="focus"/>
-          <action name="raise"/>
         </finalactions>
       </action>
     </keybind>
@@ -252,7 +240,7 @@
     </keybind>
     <keybind key="W-Escape">
       <action name="Execute">
-        <command>exitx</command>
+        <command>wlogout</command>
       </action>
     </keybind>
     <keybind key="W-d">

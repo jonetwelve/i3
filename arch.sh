@@ -134,8 +134,8 @@ function jconfig(){
 function jx(){
     pacman -S --noconfirm alsa-utils picom dosfstools epdfview fcitx-configtool fcitx-im
     pacman -S --noconfirm fcitx-libpinyin git gstreamer0.10-plugins gtk-engines gvfs gvfs-mtp
-    pacman -S --noconfirm gvfs-nfs mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerline-fonts powerpill
-    pacman -S --noconfirm python-pip python-neovim trizen  udisks2 unrar unzip volumeicon wget wqy-microhei
+    pacman -S --noconfirm gvfs-nfs mesa neovim nitrogen ntfs-3g openssh p7zip pcmanfm powerpill
+    pacman -S --noconfirm python-pip python-neovim trizen udisks2 unrar unzip volumeicon wget wqy-microhei
     pacman -S --noconfirm xarchiver xf86-input-evdev xf86-video-intel xf86-video-vesa xorg-server xorg-xinit zip
 
     sed -i 's/#EDITFILES=1/EDITFILES=1/g' /etc/pacman.conf
