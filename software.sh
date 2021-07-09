@@ -32,6 +32,7 @@ sudo pacman -S --noconfirm gparted
 sudo pacman -S --noconfirm gpicview
 sudo pacman -S --noconfirm ttf-jetbrains-mono
 sudo pacman -S --noconfirm lxappearance
+sudo pacman -S --noconfirm numlockx
 sudo pacman -S --noconfirm otf-fira-code
 sudo pacman -S --noconfirm pkgfile
 sudo pacman -S --noconfirm polkit-gnome

@@ -67,6 +67,9 @@ function jconfig(){
     pacman -Syy
     pacman -S --noconfirm curl dialog sudo zsh
 
+    pacman -S --noconfirm axel
+    sed -i '/\[options\]/aXferCommand = /usr/bin/axel -n 5 -a -o %o %u' /etc/pacman.conf
+
     rm -rf /etc/skel/*
     echo 'export GTK_IM_MODULE=fcitx' >> /etc/skel/.xprofile
     echo 'export QT_IM_MODULE=fcitx' >> /etc/skel/.xprofile
